@@ -1,6 +1,6 @@
 {
-  "name": "mediabox-frontend",
-  "version": "1.0.6",
+  "name": "mediabox-website",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
