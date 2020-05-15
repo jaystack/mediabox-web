@@ -72,7 +72,7 @@ function Footer() {
                 Quick Links
               </Typography>
               <Grid container className={classes.smallVerticalPadding}>
-                <Grid item xs={12} sm={12} md={6}>
+                <Grid item xs={12} sm={6} md={6}>
                   <List className={classes.noPadding}>
                     <ListItem className={classes.linkListItem}>
                       <ListItemText primary="Why mediabox" />
@@ -88,7 +88,7 @@ function Footer() {
                     </ListItem>
                   </List>
                 </Grid>
-                <Grid item xs={12} sm={12} md={6}>
+                <Grid item xs={12} sm={6} md={6}>
                   <List className={classes.noPadding}>
                     <ListItem className={classes.linkListItem}>
                       <ListItemText primary="Account" />

@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import HideOnScroll from './HideOnScroll';
+import Link from 'next/link';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,9 +38,15 @@ function PageHeader(props) {
         <AppBar>
           <Toolbar>
             <div className={classes.start}>
-              <img src="/mediabox-logo-textonly.svg" className={classes.brand} />
+              <Link href="/" passHref>
+                <a>
+                  <img src="/mediabox-logo-textonly.svg" className={classes.brand} />
+                </a>
+              </Link>
             </div>
-            <Button color="inherit">Login</Button>
+            <Link href="/contact" passHref>
+              <Button color="inherit" component="a">Contact</Button>
+            </Link>
           </Toolbar>
         </AppBar>
       </HideOnScroll>

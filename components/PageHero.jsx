@@ -1,10 +1,7 @@
 import React from 'react';
 import * as PropTypes from 'prop-types'
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import {GlobeCanvas} from './GlobeCanvas';
 
-import Typography from '@material-ui/core/Typography';
-import {fade} from '@material-ui/core';
 import ScrollIcon from './ScrollIcon';
 import Hero from './Hero';
 
@@ -18,10 +15,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function HomePageHeader() {
+function PageHero({ title, image }) {
   const classes = useStyles();
   return (
-    <Hero title="Advanced Digital Asset and Brand Management Software">
+    <Hero title={title} image={image}>
       <div className={classes.scrollDown}>
         <ScrollIcon/>
       </div>
@@ -29,4 +26,9 @@ function HomePageHeader() {
   )
 }
 
-export default HomePageHeader;
+PageHero.propTypes = {
+  title: PropTypes.string,
+  image: PropTypes.string,
+};
+
+export default PageHero;

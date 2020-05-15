@@ -6,11 +6,13 @@ import {GlobeCanvas} from './GlobeCanvas';
 import Typography from '@material-ui/core/Typography';
 import {fade} from '@material-ui/core';
 import ScrollIcon from './ScrollIcon';
+import {motion, useTransform, useViewportScroll} from 'framer-motion';
 
 const useStyles = makeStyles(theme => ({
   hero: {
     minHeight: '60vh',
     position: 'relative',
+    overflow: 'hidden',
   },
   heroBackground: {
     top: 0,
@@ -18,7 +20,9 @@ const useStyles = makeStyles(theme => ({
     right: 0,
     bottom: 0,
     position: 'absolute',
-    background: 'url(/network.jpg) center center',
+    backgroundImage: 'url(/network.jpg)',
+    backgroundPosition: 'center center',
+    willChange: 'transform',
   },
   heroOverlay: {
     paddingTop: theme.spacing(8),
@@ -40,11 +44,15 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Hero({ title, children }) {
+function Hero({ title, children, image }) {
   const classes = useStyles();
+  const { scrollY } = useViewportScroll();
+  const y = useTransform(scrollY, value => value / 3);
+  const backgroundImage = `url(${image})`;
+
   return (
     <div className={classes.hero}>
-      <div className={classes.heroBackground} />
+      <motion.div className={classes.heroBackground} style={{ y, backgroundImage }} extraThing="hello" />
       <div className={classes.heroOverlay}>
         <Typography variant="h2" component="h1" className={classes.heroMainText}>
           { title }
@@ -60,6 +68,7 @@ function Hero({ title, children }) {
 Hero.propTypes = {
   children: PropTypes.any,
   title: PropTypes.string,
+  image: PropTypes.string,
 };
 
 export default Hero;

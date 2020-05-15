@@ -17,7 +17,7 @@ import Globe from '@material-ui/icons/Public';
 import SiteMap from '@material-ui/icons/AccountTree';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
-import HomePageHeader from '../components/HomePageHeader';
+import PageHero from '../components/PageHero';
 import SectionSeparator from '../components/SectionSeparator';
 import VideoPreview from '../components/VideoPreview';
 import SectionIcon from '../components/SectionIcon';
@@ -70,6 +70,10 @@ const style = theme => ({
   responsive: {
     maxWidth: '100%',
   },
+  listItem: {
+    paddingTop: theme.spacing(0.5),
+    paddingBottom: theme.spacing(0.5),
+  }
 });
 
 const useStyles = makeStyles(style);
@@ -99,7 +103,7 @@ function Home() {
         exit="exit"
       >
         <div>
-          <HomePageHeader />
+          <PageHero title="Advanced Digital Asset and Brand Management Software" image="/network.jpg"/>
           <div className={classes.backgroundPrimary} style={{ position: 'relative' }}>
             <Grid container>
               <Grid
@@ -142,7 +146,7 @@ function Home() {
           <div className={clsx(classes.padded, classes.flex)} style={{paddingTop: 120, paddingBottom: 180, position: 'relative', backgroundColor: '#1c97c3', color: 'white', flexDirection: 'column'}}>
             <SectionIcon color="#fff" icon={<Globe />} gutterBottom />
             <Typography variant="h4" gutterBottom style={{maxWidth: 800, textAlign: 'center', marginBottom: 24}}>
-              MediaBox utomates marketing’s creative, acquisition, execution and fulfilment processes.
+              MediaBox automates marketing’s creative, acquisition, execution and fulfilment processes.
             </Typography>
             <Typography paragraph variant="body1" style={{maxWidth: 600, textAlign: 'center'}}>
               Enabling corporate marketing departments to ingest, create, store, edit, and fulfil demands for marketing assets globally.
@@ -160,7 +164,11 @@ function Home() {
                 className={classes.flex}
               >
                 <div>
-                  <SectionIcon color={theme.palette.text} icon={<SiteMap />} gutterBottom />
+                  <SectionIcon
+                    color={theme.palette.getContrastText(theme.palette.primary.main)}
+                    icon={<SiteMap />}
+                    gutterBottom
+                  />
                   <Typography variant="h3">
                     Complete Asset Management
                   </Typography>
@@ -171,7 +179,7 @@ function Home() {
                   <List>
                     {
                       completeAssetManagementItems.map(item => (
-                        <ListItem>
+                        <ListItem key={item} className={classes.listItem}>
                           <ListItemIcon classes={{ root: classes.smallerIcon }}>
                             <KeyboardArrowRight />
                           </ListItemIcon>
