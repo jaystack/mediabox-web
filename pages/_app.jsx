@@ -1,0 +1,65 @@
+import App from 'next/app';
+import React from 'react';
+import Head from 'next/head';
+import { compose } from 'recompose';
+import { withRouter } from 'next/router';
+
+import { Provider } from 'react-redux';
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import withReduxStore from 'next-redux-wrapper';
+import { AnimatePresence } from 'framer-motion';
+
+// import api from '../api';
+import theme from '../lib/theme';
+import makeStore from '../storecp';
+import PageHeader from '../components/PageHeader';
+import Footer from '../components/Footer';
+
+class MyApp extends App {
+  static async getInitialProps({ Component, ctx }) {
+    //
+    return {};
+  }
+
+  componentDidMount() {
+    //
+  }
+
+  componentWillUnmount() {
+    //
+  }
+
+  render() {
+    const { Component, pageProps, store, router } = this.props;
+
+    return (
+      <React.Fragment>
+        <Head>
+          <meta
+            key="viewport"
+            name="viewport"
+            content="width=device-width,minimum-scale=1,initial-scale=1"
+          />
+        </Head>
+        <ThemeProvider theme={theme}>
+          <Provider store={store}>
+            <CssBaseline />
+            <PageHeader/>
+            <AnimatePresence exitBeforeEnter>
+              <Component {...pageProps} key={router.asPath} />
+            </AnimatePresence>
+            <Footer />
+          </Provider>
+        </ThemeProvider>
+      </React.Fragment>
+    );
+  }
+}
+
+const enhance = compose(
+  withReduxStore(makeStore),
+  withRouter,
+);
+
+export default enhance(MyApp);
