@@ -1,14 +1,21 @@
 import React from 'react';
-import PaperJS, { Path } from 'paper';
+import PaperJS, { Path, Group, PointText, Point } from 'paper';
 import TinyColor from 'tinycolor2';
 import useTheme from '@material-ui/core/styles/useTheme';
+import Popover from '@material-ui/core/Popover';
+import NoSsr from '@material-ui/core/NoSsr';
+import Typography from '@material-ui/core/Typography';
+import {motion, AnimatePresence} from 'framer-motion';
 
 const getSVG = url => new Promise(resolve => PaperJS.project.importSVG(url, resolve));
 
 function HomeIllustration() {
   const theme = useTheme();
   const canvasRef = React.useRef(null);
-  const configureCanvas = () => {
+  const timeoutRef = React.useRef(null);
+  const [anchorData, setAnchorData] = React.useState(null);
+
+  const configureCanvas = async () => {
     PaperJS.setup(canvasRef.current);
 
     const path = new Path.Circle({
@@ -31,13 +38,10 @@ function HomeIllustration() {
       fillColor: '#333334',
     });
 
-    const prepareLogo = async () => {
-      const logo = await getSVG('/mediabox-darkbg.svg');
-      logo.scale(0.07);
-      logo.position = centralCircle.bounds.center;
-    };
 
-    prepareLogo();
+    const logo = await getSVG('/mediabox-darkbg.svg');
+    logo.scale(0.07);
+    logo.position = centralCircle.bounds.center;
 
     function createSectionCircle(el, i, arr) {
       const center = path.getPointAt(
@@ -48,26 +52,48 @@ function HomeIllustration() {
         radius: PaperJS.view.size.width / 12,
         fillColor: el.color,
       });
-      const text = new PaperJS.PointText({
-        position: new PaperJS.Point(circle.bounds.center.x, circle.bounds.center.y + 17),
+
+      const text = new PointText({
+        position: new Point(circle.bounds.center.x, circle.bounds.center.y + 17),
         justification: 'center',
         content: el.initial,
         fillColor: 'white',
         fontFamily: 'Roboto',
-        fontWeight: 'bold',
+        fontWeight: 900,
         fontSize: 48
       });
       text.pivot = text.bounds.center;
+
+      return new Group([circle, text]);
     }
 
     const lettersRaw = [
-      { initial: 'A', color: '#209ac3' },
-      { initial: 'B', color: '#262626' },
-      { initial: 'C', color: '#a1b8bf' },
-      { initial: 'D', color: '#262626' },
-      { initial: 'E', color: '#a1b8bf' }
+      { initial: 'A', color: '#209ac3', title: 'Create' },
+      { initial: 'B', color: '#262626', title: 'Manage' },
+      { initial: 'C', color: '#a1b8bf', title: 'Distribute' },
+      { initial: 'D', color: '#262626', title: 'Archive' },
+      { initial: 'E', color: '#a1b8bf', title: 'Retrieve' }
     ];
-    lettersRaw.forEach(createSectionCircle);
+    const letters = lettersRaw.map(createSectionCircle);
+
+    const onMouseEnter = index => e => {
+      e.stopPropagation();
+      clearTimeout(timeoutRef.current);
+      setAnchorData({
+        ...lettersRaw[index],
+        position: letters[index].bounds.center,
+      });
+    };
+
+    const onMouseLeave = () => {
+      timeoutRef.current = setTimeout(() => setAnchorData(null), 150)
+    };
+
+    letters.forEach((l, i) => {
+      l.on('mouseenter', onMouseEnter(i));
+      l.on('mouseleave', onMouseLeave);
+    });
+    // canvasRef.current.addEventListener('mouseleave', onMouseLeave);
 
     function onFrame(event) {
       const slowness = 3000;
@@ -81,7 +107,7 @@ function HomeIllustration() {
         : progress;
     }
 
-    function getScalingTransformer(progress, shouldLog) {
+    function getScalingTransformer(progress) {
       const oneFifth = path.length / 5;
       const fifthsInNewProgress = progress / oneFifth;
       return fifthsInNewProgress > 1
@@ -117,24 +143,56 @@ function HomeIllustration() {
     PaperJS.view.draw();
   };
 
-  React.useEffect(configureCanvas, []);
+  React.useEffect(() => { configureCanvas() }, []);
 
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
-    }}>
-      <canvas
-        ref={canvasRef}
-        resize
-        height={1000}
-        width={1000}
-        style={{margin: '3rem auto', maxWidth: 500, width: '100%'}}
-      />
-    </div>
+    <React.Fragment>
+      <NoSsr>
+        <Popover
+          open={Boolean(anchorData)}
+          anchorReference="anchorPosition"
+          anchorPosition={{
+            top: (canvasRef.current?.getBoundingClientRect()?.top || 0) + (anchorData?.position?.y || 0),
+            left: (canvasRef.current?.getBoundingClientRect()?.left || 0) + (anchorData?.position?.x || 0),
+          }}
+          anchorOrigin={{
+            vertical: 'center',
+            horizontal: 'top',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+        >
+          <div style={{padding: theme.spacing(2), maxWidth: theme.spacing(40)}}>
+            <AnimatePresence exitBeforeEnter>
+              <motion.div key={anchorData?.title}>
+                <Typography variant="h6" gutterBottom>
+                  { anchorData?.title }
+                </Typography>
+                <Typography variant="body1">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut tempor tellus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus imperdiet erat quis ultrices tincidunt.
+                </Typography>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </Popover>
+      </NoSsr>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2),
+      }}>
+        <canvas
+          ref={canvasRef}
+          height={1000}
+          width={1000}
+          style={{margin: '3rem auto', maxWidth: 500, width: '100%'}}
+        />
+      </div>
+    </React.Fragment>
   );
 }
 

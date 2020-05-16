@@ -74,6 +74,19 @@ const style = theme => ({
   listItem: {
     paddingTop: theme.spacing(0.5),
     paddingBottom: theme.spacing(0.5),
+  },
+  sectionBg: {
+    position: 'absolute',
+    top:0,
+    left:0,
+    right:0,
+    bottom:0,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  brandBg: {
+    backgroundImage: 'url(/network.jpg)',
+    filter: `blur(${theme.spacing(0.5)}px)`
   }
 });
 
@@ -212,11 +225,12 @@ function Home() {
             </Grid>
           </div>
 
-          <div style={{position: 'relative'}}>
+          <div style={{position: 'relative', overflow: 'hidden'}}>
+            <div className={clsx(classes.sectionBg, classes.brandBg)} />
             <SectionSeparator fill="#ffffff" height={150} variant="diagonalTop" />
             <div
               className={clsx(classes.padded, classes.flex)}
-              style={{paddingTop: theme.spacing(30), paddingBottom: theme.spacing(30), position: 'relative', backgroundColor: '#1c97c3', color: 'white', flexDirection: 'column'}}
+              style={{paddingTop: theme.spacing(30), paddingBottom: theme.spacing(30), position: 'relative', backgroundColor: 'rgba(28, 151, 195, 0.9)', color: 'white', flexDirection: 'column'}}
             >
               <Typography variant="h2">
                 Brand Management
