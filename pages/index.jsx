@@ -25,6 +25,7 @@ import useTheme from '@material-ui/core/styles/useTheme';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
+import HomeIllustration from '../components/HomeIllustration';
 
 const style = theme => ({
   padding: {
@@ -97,7 +98,7 @@ function Home() {
         <title>Home</title>
       </Head>
       <motion.div
-        variants={fadeTransition(0.25)}
+        variants={fadeTransition(0.4)}
         initial="initial"
         animate="enter"
         exit="exit"
@@ -205,7 +206,7 @@ function Home() {
                 md={6}
               >
                 <div>
-                  <img className={classes.responsive} src="/asset-mgmt.jpg" />
+                  <HomeIllustration />
                 </div>
               </Grid>
             </Grid>

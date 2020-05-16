@@ -109,7 +109,7 @@ function Contact() {
         />
       </Head>
       <motion.div
-        variants={fadeTransition(0.25)}
+        variants={fadeTransition(0.4)}
         initial="initial"
         animate="enter"
         exit="exit"
