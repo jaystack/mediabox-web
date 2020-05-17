@@ -1,5 +1,6 @@
 import React from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import * as PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -101,10 +102,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function ScrollIcon() {
+function ScrollIcon({ onClick }) {
   const classes = useStyles();
   return (
-    <a href="#" className={classes.container}>
+    <a href="#" className={classes.container} onClick={onClick}>
       <svg className={classes.icon} viewBox="0 0 30 45" enableBackground="new 0 0 30 45">
         <path
           className={classes.gesture}
@@ -118,5 +119,9 @@ function ScrollIcon() {
     </a>
   )
 }
+
+ScrollIcon.propTypes = {
+  onClick: PropTypes.func,
+};
 
 export default ScrollIcon;

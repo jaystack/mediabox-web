@@ -54,17 +54,6 @@ function HomeIllustration() {
         fillColor: el.color,
       });
 
-      // const text = new PointText({
-      //   position: new Point(circle.bounds.center.x, circle.bounds.center.y + (17 * scaleModifier)),
-      //   justification: 'center',
-      //   content: el.initial,
-      //   fillColor: 'white',
-      //   fontFamily: 'Roboto',
-      //   fontWeight: 900,
-      //   fontSize: 48 * scaleModifier,
-      // });
-      // text.pivot = text.bounds.center;
-
       const icon = await getSVG(el.icon);
       icon.scale(1.75 * scaleModifier);
       icon.position = new Point(circle.bounds.center.x, circle.bounds.center.y);

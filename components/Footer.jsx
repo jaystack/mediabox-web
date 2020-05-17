@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -66,6 +67,13 @@ function Footer() {
           <Grid container>
             <Grid item xs={12} md={3} lg={3} className={classes.paddedMdAndDown}>
               <img src="/mediabox-lightbg.svg" className={classes.logo} />
+              {/*<TextField*/}
+              {/*  label="Size"*/}
+              {/*  id="outlined-size-small"*/}
+              {/*  defaultValue="Small"*/}
+              {/*  variant="outlined"*/}
+              {/*  size="small"*/}
+              {/*/>*/}
             </Grid>
             <Grid item xs={12} md={6} lg={6} className={classes.paddedMdAndDown}>
               <Typography variant="button" className={classes.footerHeader}>

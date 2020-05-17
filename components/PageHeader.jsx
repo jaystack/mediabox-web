@@ -44,6 +44,12 @@ function PageHeader(props) {
                 </a>
               </Link>
             </div>
+            <Link href="/about-us" passHref>
+              <Button color="inherit" component="a">About Us</Button>
+            </Link>
+            <Link href="/faqs" passHref>
+              <Button color="inherit" component="a">FAQs</Button>
+            </Link>
             <Link href="/contact" passHref>
               <Button color="inherit" component="a">Contact</Button>
             </Link>

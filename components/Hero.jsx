@@ -6,7 +6,7 @@ import {GlobeCanvas} from './GlobeCanvas';
 import Typography from '@material-ui/core/Typography';
 import {fade} from '@material-ui/core';
 import ScrollIcon from './ScrollIcon';
-import {motion, useTransform, useViewportScroll} from 'framer-motion';
+import {motion, useSpring, useTransform, useViewportScroll} from 'framer-motion';
 import NoSsr from '@material-ui/core/NoSsr';
 
 const useStyles = makeStyles(theme => ({
@@ -41,6 +41,7 @@ const useStyles = makeStyles(theme => ({
   heroMainText: {
     color: '#fff',
     maxWidth: '60%',
+    fontWeight: 800,
     textAlign: 'center',
     [theme.breakpoints.down('sm')]: {
       maxWidth: '85%',
@@ -54,6 +55,14 @@ function Hero({ title, children, image }) {
   const { scrollY } = useViewportScroll();
   const y = useTransform(scrollY, value => value / 3);
   const backgroundImage = `url(${image})`;
+  const scrollYValue = useSpring(0, { damping: 10 });
+
+  React.useEffect(() => {
+    scrollYValue.onChange(v => window.screenTop = v);
+    return () => scrollYValue.destroy();
+  }, []);
+
+  const scrollPastHero = e => scrollYValue.set(e.target.clientHeight);
 
   return (
     <div className={classes.hero}>
@@ -65,7 +74,7 @@ function Hero({ title, children, image }) {
           { title }
         </Typography>
       </div>
-      <div className={classes.scrollDown}>
+      <div className={classes.scrollDown} onClick={scrollPastHero}>
         { children }
       </div>
     </div>

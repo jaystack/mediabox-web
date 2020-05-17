@@ -127,7 +127,7 @@ function Contact() {
                 <Toolbar />
                 <div className={classes.padded}>
                   <div style={{paddingBottom: theme.spacing(3)}}>
-                    <Typography variant="h4" component="h1" gutterBottom>
+                    <Typography variant="h4" component="h1" gutterBottom style={{ fontWeight: 800 }}>
                       HAVE A QUESTION?
                     </Typography>
                     <Typography variant="h6" component="h3" gutterBottom>
@@ -165,7 +165,7 @@ function Contact() {
                     </div>
                   </div>
                   <div>
-                    <Typography variant="h4" component="h2" gutterBottom>
+                    <Typography variant="h4" component="h2" gutterBottom style={{ fontWeight: 800 }}>
                       TECHNICAL SUPPORT
                     </Typography>
                     <div style={{

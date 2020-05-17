@@ -17,12 +17,25 @@ const useStyles = makeStyles(theme => ({
 
 function PageHero({ title, image }) {
   const classes = useStyles();
+  const hero = React.useRef(null);
+  const handleScrollDown = e => {
+    e.preventDefault();
+    const y = hero.current.clientHeight;
+    // console.log(y);
+    window.scrollTo({
+      top: y,
+      left: 0,
+      behavior: 'smooth'
+    });
+  };
   return (
-    <Hero title={title} image={image}>
-      <div className={classes.scrollDown}>
-        <ScrollIcon/>
-      </div>
-    </Hero>
+    <div ref={hero}>
+      <Hero title={title} image={image}>
+        <div className={classes.scrollDown}>
+          <ScrollIcon onClick={handleScrollDown}/>
+        </div>
+      </Hero>
+    </div>
   )
 }
 

@@ -26,6 +26,7 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import HomeIllustration from '../components/HomeIllustration';
+import {useMediaQuery} from '@material-ui/core';
 
 const style = theme => ({
   padding: {
@@ -86,25 +87,56 @@ const style = theme => ({
   },
   brandBg: {
     backgroundImage: 'url(/network.jpg)',
-    filter: `blur(${theme.spacing(0.5)}px)`
+    // filter: `blur(${theme.spacing(0.5)}px)`
+  },
+  moreRoundedCard: {
+    borderRadius: theme.spacing(1.5),
+    boxShadow: `
+      0 ${theme.spacing(1)}px ${theme.spacing(1)}px -${theme.spacing(.5)}px rgba(0, 0, 0, 0.05),
+      0 ${theme.spacing(2)}px ${theme.spacing(2)}px ${theme.spacing(.25)}px rgba(0,0,0,0.05),
+      0 ${theme.spacing(1)}px ${theme.spacing(3)}px ${theme.spacing(.5)}px rgba(0,0,0,0.06)
+    `,
+    '& h4': {
+      fontWeight: 900,
+    }
+  }
+  ,
+  whiteCard: {
+    backgroundImage: 'url(/bg-page-section.png)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center top',
+    color: theme.palette.secondary.main,
+  },
+  blueCard: {
+    background: theme.palette.secondary.main,
+    color: '#fff',
+  },
+  darkCard: {
+    background: theme.palette.primary.main,
+    color: '#fff',
   }
 });
 
 const useStyles = makeStyles(style);
 const completeAssetManagementItems = [
-  'Upload',
-  'Store',
-  'Organise',
-  'Manage',
-  'Find',
-  'Distribute',
-  'Protect',
-  'Promote',
+  [
+    'Upload',
+    'Store',
+    'Organise',
+    'Manage',
+  ],
+  [
+    'Find',
+    'Distribute',
+    'Protect',
+    'Promote',
+  ]
 ];
 
 function Home() {
   const classes = useStyles();
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   return (
     <React.Fragment>
       <Head>
@@ -157,7 +189,7 @@ function Home() {
 
           <div className={clsx(classes.padded, classes.flex)} style={{paddingTop: 120, paddingBottom: 180, position: 'relative', backgroundColor: '#1c97c3', color: 'white', flexDirection: 'column'}}>
             <SectionIcon color="#fff" icon={<Globe />} gutterBottom />
-            <Typography variant="h4" gutterBottom style={{maxWidth: 800, textAlign: 'center', marginBottom: 24}}>
+            <Typography variant="h5" gutterBottom style={{maxWidth: 600, textAlign: 'center', marginBottom: 24}}>
               MediaBox automates marketing’s creative, acquisition, execution and fulfilment processes.
             </Typography>
             <Typography paragraph variant="body1" style={{maxWidth: 600, textAlign: 'center'}}>
@@ -166,77 +198,119 @@ function Home() {
             <SectionSeparator fill="#ffffff" height={150} variant="diagonalBottom" bottom />
           </div>
 
-          <div>
-            <Grid container className={clsx(classes.padded, classes.splitSectionText, classes.noTopPadding)}>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={6}
-                className={classes.flex}
-              >
-                <div>
-                  <SectionIcon
-                    color={theme.palette.getContrastText(theme.palette.primary.main)}
-                    icon={<SiteMap />}
-                    gutterBottom
-                  />
-                  <Typography variant="h3">
-                    Complete Asset Management
-                  </Typography>
-                  <br/>
-                  <Typography component="p" variant="h5" paragraph>
-                    The All-in-One Digital Asset Management Solution
-                  </Typography>
-                  <List>
-                    {
-                      completeAssetManagementItems.map(item => (
-                        <ListItem key={item} className={classes.listItem}>
-                          <ListItemIcon classes={{ root: classes.smallerIcon }}>
-                            <KeyboardArrowRight />
-                          </ListItemIcon>
-                          <ListItemText primary={item} classes={{ root: classes.smallerItem }} />
-                        </ListItem>
-                      ))
-                    }
-                  </List>
-                  <div className={classes.verticalPadding}>
-                    <Typography component="p" variant="subtitle1" paragraph>
-                      All your digital assets in one place, with secure access anytime, anywhere, worldwide.
+          <div className={classes.splitSectionText}>
+            <Container>
+              <Grid container className={clsx(classes.padded, classes.noTopPadding)}>
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={6}
+                  className={classes.flex}
+                >
+                  <div>
+                    <SectionIcon
+                      color={theme.palette.getContrastText(theme.palette.background.default)}
+                      icon={<SiteMap />}
+                      gutterBottom
+                    />
+                    <Typography variant="h4">
+                      Complete Asset Management
                     </Typography>
+                    <Typography component="p" variant="h6" paragraph style={{ opacity: .75, fontWeight: 400 }}>
+                      The All-in-One Digital Asset Management Solution
+                    </Typography>
+                    <Grid container>
+                      {
+                        completeAssetManagementItems.map(item => (
+                          <Grid item xs={12} sm={12} md={6}>
+                            <List disablePadding>
+                              {
+                                item.map(item => (
+                                  <ListItem key={item} className={classes.listItem}>
+                                    <ListItemIcon classes={{ root: classes.smallerIcon }}>
+                                      <KeyboardArrowRight />
+                                    </ListItemIcon>
+                                    <ListItemText primary={item} classes={{ root: classes.smallerItem }} />
+                                  </ListItem>
+                                ))
+                              }
+                            </List>
+                          </Grid>
+                        ))
+                      }
+                    </Grid>
+                    <div className={classes.verticalPadding}>
+                      <Typography component="p" variant="subtitle1" paragraph>
+                        All your digital assets in one place, with secure access anytime, anywhere, worldwide.
+                      </Typography>
+                    </div>
+                    <Button variant="contained" color="secondary" size="large">
+                      Find Out More
+                    </Button>
                   </div>
-                  <Button variant="contained" color="secondary" size="large">
-                    Find Out More
-                  </Button>
-                </div>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={6}
+                >
+                  <div>
+                    <HomeIllustration />
+                  </div>
+                </Grid>
               </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={6}
-              >
-                <div>
-                  <HomeIllustration />
-                </div>
-              </Grid>
-            </Grid>
+            </Container>
           </div>
 
           <div style={{position: 'relative', overflow: 'hidden'}}>
-            <div className={clsx(classes.sectionBg, classes.brandBg)} />
+            <div className={clsx(classes.sectionBg, classes.brandBg)} style={{ top: isMobile ? 0 : 'auto' }}>
+              <video
+                width="1800"
+                height="700"
+                preload="auto"
+                loop="true"
+                autoPlay="true"
+                muted="true"
+                playsinline=""
+                style={{
+                  visibility: 'visible',
+                  width: isMobile ? 'auto' : '100%',
+                  height: isMobile ? '100%' : 'auto',
+                  opacity: 1,
+                  objectFit: 'cover',
+                  position: 'relative',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                }}
+              >
+                <source
+                  src="https://godev.co.uk/wp-content/uploads/2020/04/video-of-a-woman-pouring-coffee-into-an-11-oz-mug-31586_73gMsjwS.compressed.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
             <SectionSeparator fill="#ffffff" height={150} variant="diagonalTop" />
             <div
               className={clsx(classes.padded, classes.flex)}
-              style={{textAlign: 'center',paddingTop: theme.spacing(30), paddingBottom: theme.spacing(30), position: 'relative', backgroundColor: 'rgba(28, 151, 195, 0.9)', color: 'white', flexDirection: 'column'}}
+              style={{
+                textAlign: 'center',
+                paddingTop: theme.spacing(30),
+                paddingBottom: theme.spacing(30),
+                position: 'relative',
+                backgroundColor: 'rgba(28, 151, 195, 0.9)',
+                color: 'white',
+                flexDirection: 'column',
+              }}
             >
-              <Typography variant="h2">
+              <Typography variant="h2" style={{ lineHeight: .875, marginBottom: theme.spacing(2), fontWeight: 600 }}>
                 Brand Management
               </Typography>
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h6" gutterBottom style={{ marginBottom: theme.spacing(3) }}>
                 the all-in-one solution to manage & distribute content
               </Typography>
-              <Button variant="contained" color="primary" size="large" style={{marginTop: theme.spacing(3)}}>
+              <Button variant="contained" color="primary" size="large">
                 Learn More
               </Button>
             </div>
@@ -247,42 +321,57 @@ function Home() {
             <Container component="div">
               <div
                 className={clsx(classes.padded, classes.flex)}
-                style={{paddingTop: theme.spacing(12), paddingBottom: theme.spacing(12), position: 'relative', flexDirection: 'column'}}
+                style={{
+                  paddingTop: theme.spacing(12),
+                  paddingBottom: theme.spacing(12),
+                  position: 'relative',
+                  flexDirection: 'column',
+                }}
               >
-                <Typography variant="h3" component="h2" style={{textAlign: 'center'}} gutterBottom>
+                <Typography variant="h3" component="h2" style={{textAlign: 'center', fontWeight: 600}} gutterBottom>
                   START CENTRALISING, SHARING & PROMOTING YOUR ASSETS NOW
                 </Typography>
-                <Typography variant="subtitle1" gutterBottom>
-                  the all-in-one solution to manage & distribute content
+                <Typography variant="h6" gutterBottom style={{textAlign: 'center'}}>
+                  Protecting your brand, globally, from one centralised resource.
                 </Typography>
 
                 <Grid
                   container
                   spacing={3}
+                  justify="center"
                   style={{paddingTop: theme.spacing(6), paddingBottom: theme.spacing(6)}}
                 >
                   <Grid item xs={12} sm={12} md={6} lg={4}>
-                    <Paper style={{padding: theme.spacing(6)}}>
+                    <Paper
+                      className={clsx(classes.darkCard, classes.moreRoundedCard)}
+                      style={{padding: theme.spacing(6)}}
+                    >
                       <Typography variant="h4">
                         Watch our demo
                       </Typography>
-                      <Button variant="contained" color="primary" size="large" style={{marginTop: theme.spacing(3)}}>
+                      <Button variant="contained" color="secondary" size="large" style={{marginTop: theme.spacing(3)}}>
                         Learn More
                       </Button>
                     </Paper>
                   </Grid>
                   <Grid item xs={12} sm={12} md={6} lg={4}>
-                    <Paper style={{padding: theme.spacing(6)}}>
+                    <Paper
+                      className={clsx(classes.whiteCard, classes.moreRoundedCard)}
+                      style={{padding: theme.spacing(6)}}
+                    >
                       <Typography variant="h4">
                         Book a live demo
                       </Typography>
-                      <Button variant="contained" color="primary" size="large" style={{marginTop: theme.spacing(3)}}>
+                      <Button variant="contained" color="secondary" size="large" style={{marginTop: theme.spacing(3)}}>
                         Learn More
                       </Button>
                     </Paper>
                   </Grid>
                   <Grid item xs={12} sm={12} md={6} lg={4}>
-                    <Paper style={{padding: theme.spacing(6)}}>
+                    <Paper
+                      className={clsx(classes.blueCard, classes.moreRoundedCard)}
+                      style={{padding: theme.spacing(6)}}
+                    >
                       <Typography variant="h4">
                         Speak to the team
                       </Typography>
