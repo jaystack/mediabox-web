@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import {fade} from '@material-ui/core';
 import ScrollIcon from './ScrollIcon';
 import {motion, useTransform, useViewportScroll} from 'framer-motion';
+import NoSsr from '@material-ui/core/NoSsr';
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -41,6 +42,10 @@ const useStyles = makeStyles(theme => ({
     color: '#fff',
     maxWidth: '60%',
     textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: '85%',
+      fontSize: `${theme.spacing(4.5)}px`,
+    }
   },
 }));
 
@@ -52,7 +57,9 @@ function Hero({ title, children, image }) {
 
   return (
     <div className={classes.hero}>
-      <motion.div className={classes.heroBackground} style={{ y, backgroundImage }} extraThing="hello" />
+      <NoSsr>
+        <motion.div className={classes.heroBackground} style={{ y, backgroundImage }} extraThing="hello" />
+      </NoSsr>
       <div className={classes.heroOverlay}>
         <Typography variant="h2" component="h1" className={classes.heroMainText}>
           { title }

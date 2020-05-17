@@ -127,9 +127,7 @@ function Home() {
                 md={6}
               >
                 <div className={classes.padded}>
-                  <VideoPreview
-                    preview="https://i.vimeocdn.com/video/783220671.webp?mw=1280&mh=720"
-                  />
+                  <VideoPreview preview="/videopreview.webp" />
                 </div>
               </Grid>
               <Grid
@@ -230,7 +228,7 @@ function Home() {
             <SectionSeparator fill="#ffffff" height={150} variant="diagonalTop" />
             <div
               className={clsx(classes.padded, classes.flex)}
-              style={{paddingTop: theme.spacing(30), paddingBottom: theme.spacing(30), position: 'relative', backgroundColor: 'rgba(28, 151, 195, 0.9)', color: 'white', flexDirection: 'column'}}
+              style={{textAlign: 'center',paddingTop: theme.spacing(30), paddingBottom: theme.spacing(30), position: 'relative', backgroundColor: 'rgba(28, 151, 195, 0.9)', color: 'white', flexDirection: 'column'}}
             >
               <Typography variant="h2">
                 Brand Management
