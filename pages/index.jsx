@@ -127,7 +127,7 @@ function Home() {
                 md={6}
               >
                 <div className={classes.padded}>
-                  <VideoPreview preview="/videopreview.webp" />
+                  <VideoPreview preview="/videopreview.jpg" />
                 </div>
               </Grid>
               <Grid
