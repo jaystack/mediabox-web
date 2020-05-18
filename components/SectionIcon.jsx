@@ -5,9 +5,9 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: theme.spacing(6),
-    height: theme.spacing(6),
-    borderRadius: theme.spacing(6),
+    width: theme.spacing(8),
+    height: theme.spacing(8),
+    borderRadius: theme.spacing(8),
     borderWidth: 2,
     borderStyle: 'solid',
     display: 'flex',
@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
   },
   gutterBottom: {
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(4),
   }
 }));
 

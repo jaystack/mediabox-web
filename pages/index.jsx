@@ -142,6 +142,10 @@ function Home() {
       <Head>
         <title>Home</title>
       </Head>
+      <PageHero
+        title="Advanced Digital Asset and Brand Management Software"
+        image="/network.jpg"
+      />
       <motion.div
         variants={fadeTransition(0.4)}
         initial="initial"
@@ -149,7 +153,6 @@ function Home() {
         exit="exit"
       >
         <div>
-          <PageHero title="Advanced Digital Asset and Brand Management Software" image="/network.jpg"/>
           <div className={classes.backgroundPrimary} style={{ position: 'relative' }}>
             <Grid container>
               <Grid
@@ -223,7 +226,7 @@ function Home() {
                     <Grid container>
                       {
                         completeAssetManagementItems.map(item => (
-                          <Grid item xs={12} sm={12} md={6}>
+                          <Grid item xs={12} sm={12} md={6} key={JSON.stringify(item)}>
                             <List disablePadding>
                               {
                                 item.map(item => (
@@ -270,10 +273,10 @@ function Home() {
                 width="1800"
                 height="700"
                 preload="auto"
-                loop="true"
-                autoPlay="true"
-                muted="true"
-                playsinline=""
+                loop
+                autoPlay
+                muted
+                playsInline
                 style={{
                   visibility: 'visible',
                   width: isMobile ? 'auto' : '100%',

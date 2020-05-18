@@ -8,6 +8,7 @@ import {fade} from '@material-ui/core';
 import ScrollIcon from './ScrollIcon';
 import {motion, useSpring, useTransform, useViewportScroll} from 'framer-motion';
 import NoSsr from '@material-ui/core/NoSsr';
+import {fadeTransition, standardTransition} from '../lib/transitions';
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -67,12 +68,29 @@ function Hero({ title, children, image }) {
   return (
     <div className={classes.hero}>
       <NoSsr>
-        <motion.div className={classes.heroBackground} style={{ y, backgroundImage }} extraThing="hello" />
+        <motion.div
+          key={classes.backgroundImage}
+          variants={fadeTransition(0.2, 0.2)}
+          animate="enter"
+          initial="initial"
+          exit="exit"
+          className={classes.heroBackground}
+          style={{ y, backgroundImage }}
+          extraThing="hello"
+        />
       </NoSsr>
       <div className={classes.heroOverlay}>
-        <Typography variant="h2" component="h1" className={classes.heroMainText}>
-          { title }
-        </Typography>
+        <motion.div
+          style={{display: 'flex', justifyContent: 'center'}}
+          variants={standardTransition}
+          animate="enter"
+          initial="initial"
+          exit="exit"
+        >
+          <Typography variant="h2" component="h1" className={classes.heroMainText}>
+            { title }
+          </Typography>
+        </motion.div>
       </div>
       <div className={classes.scrollDown} onClick={scrollPastHero}>
         { children }

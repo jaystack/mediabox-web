@@ -9,12 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import PageHero from '../components/PageHero';
 import useTheme from '@material-ui/core/styles/useTheme';
 
-;
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Container from '@material-ui/core/Container';
 import SectionSeparator from '../components/SectionSeparator';
 import Button from '@material-ui/core/Button';
@@ -95,7 +89,7 @@ function Contact() {
   return (
     <React.Fragment>
       <Head>
-        <title>Frequently Asked Questions</title>
+        <title>About Us</title>
       </Head>
       <motion.div
         variants={fadeTransition(0.4)}
