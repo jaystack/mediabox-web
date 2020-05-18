@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     minHeight: '60vh',
     position: 'relative',
     overflow: 'hidden',
+    background: theme.palette.secondary.main,
   },
   heroBackground: {
     top: 0,
