@@ -74,6 +74,10 @@ const style = theme => ({
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
   },
+  verticalPaddingLarge: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+  },
   responsive: {
     maxWidth: '100%',
   },
@@ -109,6 +113,10 @@ const style = theme => ({
   },
   darkBackground: {
     backgroundColor: theme.palette.primary.main,
+    color: theme.palette.getContrastText(theme.palette.primary.main),
+  },
+  blueBackground: {
+    backgroundColor: theme.palette.secondary.main,
     color: theme.palette.getContrastText(theme.palette.primary.main),
   },
 });
@@ -184,7 +192,7 @@ function DigitalAssetManagement() {
               sm={12}
               md={6}
             >
-              <div className={clsx(classes.padded, classes.whiteBackground)}>
+              <div className={clsx(classes.padded)}>
                 <img src="/multimedia.png" className={classes.responsive} />
               </div>
               {/*<Divider />*/}
@@ -196,7 +204,7 @@ function DigitalAssetManagement() {
               xs={12}
               sm={12}
               md={6}
-              className={clsx(classes.darkBackground, classes.padded, classes.flex)}
+              className={clsx(classes.blueBackground, classes.padded, classes.flex)}
             >
               <div>
                 <Typography variant="h4" gutterBottom>
@@ -226,109 +234,114 @@ function DigitalAssetManagement() {
           <div style={{position: 'relative', margin: '0 auto'}} className={classes.padded}>
             <Container>
               <div style={{paddingTop: theme.spacing(2), paddingBottom: theme.spacing(2)}}>
-                <Grid container spacing={3} alignItems="center">
-                  <Grid item xs={12} sm={12} md={6}>
-                    <SectionIcon
-                      color={theme.palette.getContrastText(theme.palette.background.default)}
-                      icon={<FolderIcon />}
-                      gutterBottom
-                    />
-                    <Typography variant="h3" gutterBottom>
-                      Organise
-                    </Typography>
-                    <Typography component="p" variant="h6" paragraph className={classes.verticalPadding} style={{ opacity: .75, fontWeight: 400 }}>
-                      Organise your digital assets with a clear and easy to follow folder structure built to suit your needs.
-                    </Typography>
-                    <Grid container>
-                      <List>
-                        {
-                          items.map(item => (
-                            <ListItem key={item} className={classes.listItem}>
-                              <ListItemIcon classes={{root: classes.smallerIcon}}>
-                                <KeyboardArrowRight />
-                              </ListItemIcon>
-                              <ListItemText primary={item} classes={{root: classes.smallerItem}} />
-                            </ListItem>
-                          ))
-                        }
-                      </List>
+                <div className={classes.verticalPaddingLarge}>
+                  <Grid container spacing={3} alignItems="center">
+                    <Grid item xs={12} sm={12} md={6}>
+                      <SectionIcon
+                        color={theme.palette.getContrastText(theme.palette.background.default)}
+                        icon={<FolderIcon />}
+                        gutterBottom
+                      />
+                      <Typography variant="h3" gutterBottom>
+                        Organise
+                      </Typography>
+                      <Typography component="p" variant="h6" paragraph className={classes.verticalPadding} style={{ opacity: .75, fontWeight: 400 }}>
+                        Organise your digital assets with a clear and easy to follow folder structure built to suit your needs.
+                      </Typography>
+                      <Grid container>
+                        <List>
+                          {
+                            items.map(item => (
+                              <ListItem key={item} className={classes.listItem}>
+                                <ListItemIcon classes={{root: classes.smallerIcon}}>
+                                  <KeyboardArrowRight />
+                                </ListItemIcon>
+                                <ListItemText primary={item} classes={{root: classes.smallerItem}} />
+                              </ListItem>
+                            ))
+                          }
+                        </List>
+                      </Grid>
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <CubeCanvas image="/images/maze.svg" />
                     </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <CubeCanvas image="/images/maze.svg" />
-                  </Grid>
-                </Grid>
+                </div>
 
 
-                <Grid container spacing={3} alignItems="center">
-                  <Grid item xs={12} sm={12} md={6}>
-                    <CubeCanvas x={79} y={12} z={29} image="/images/monitorIcon.svg" />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <SectionIcon
-                      color={theme.palette.getContrastText(theme.palette.background.default)}
-                      icon={<Headset />}
-                      gutterBottom
-                    />
-                    <Typography variant="h3" gutterBottom>
-                      Manage and Monitor
-                    </Typography>
-                    <Typography component="p" variant="h6" className={classes.verticalPadding} style={{ opacity: .75, fontWeight: 400 }}>
-                      Stay in control with granular permission settings and usage reports.
-                    </Typography>
-                    <Typography component="p" variant="h6" paragraph className={classes.verticalPadding} style={{ opacity: .75, fontWeight: 400 }}>
-                      Easy setup of viewing permissions and asset downloads combined with clear usage reporting, ensures compliance whilst highlighting levels of ongoing activity.                    </Typography>
-                    <Grid container>
-                      <List>
-                        {
-                          monitorItems.map(item => (
-                            <ListItem key={item} className={classes.listItem}>
-                              <ListItemIcon classes={{root: classes.smallerIcon}}>
-                                <KeyboardArrowRight />
-                              </ListItemIcon>
-                              <ListItemText primary={item} classes={{root: classes.smallerItem}} />
-                            </ListItem>
-                          ))
-                        }
-                      </List>
+                <div className={classes.verticalPaddingLarge}>
+                  <Grid container spacing={3} alignItems="center">
+                    <Grid item xs={12} sm={12} md={6}>
+                      <CubeCanvas x={79} y={12} z={29} image="/images/monitorIcon.svg" />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <SectionIcon
+                        color={theme.palette.getContrastText(theme.palette.background.default)}
+                        icon={<Headset />}
+                        gutterBottom
+                      />
+                      <Typography variant="h3" gutterBottom>
+                        Manage and Monitor
+                      </Typography>
+                      <Typography component="p" variant="h6" className={classes.verticalPadding} style={{ opacity: .75, fontWeight: 400 }}>
+                        Stay in control with granular permission settings and usage reports.
+                      </Typography>
+                      <Typography component="p" variant="h6" paragraph className={classes.verticalPadding} style={{ opacity: .75, fontWeight: 400 }}>
+                        Easy setup of viewing permissions and asset downloads combined with clear usage reporting, ensures compliance whilst highlighting levels of ongoing activity.                    </Typography>
+                      <Grid container>
+                        <List>
+                          {
+                            monitorItems.map(item => (
+                              <ListItem key={item} className={classes.listItem}>
+                                <ListItemIcon classes={{root: classes.smallerIcon}}>
+                                  <KeyboardArrowRight />
+                                </ListItemIcon>
+                                <ListItemText primary={item} classes={{root: classes.smallerItem}} />
+                              </ListItem>
+                            ))
+                          }
+                        </List>
+                      </Grid>
                     </Grid>
                   </Grid>
-                </Grid>
+                </div>
 
 
-                <Grid container spacing={3} alignItems="center">
-                  <Grid item xs={12} sm={12} md={6}>
-                    <SectionIcon
-                      color={theme.palette.getContrastText(theme.palette.background.default)}
-                      icon={<PermContactCalendarIcon />}
-                      gutterBottom
-                    />
-                    <Typography variant="h3" gutterBottom>
-                      Permissions
-                    </Typography>
-                    <Typography component="p" variant="h6" className={classes.verticalPadding} style={{ opacity: .75, fontWeight: 400 }}>
-                      Bespoke permissions and access controls gives you confidence in the knowledge that your colleagues, clients, or third party organisations, can only see the digital assets you want them to, and only the power to use them, the way you want them to.
-                    </Typography>
-                    <Grid container>
-                      <List>
-                        {
-                          permissionsIcon.map(item => (
-                            <ListItem key={item} className={classes.listItem}>
-                              <ListItemIcon classes={{root: classes.smallerIcon}}>
-                                <KeyboardArrowRight />
-                              </ListItemIcon>
-                              <ListItemText primary={item} classes={{root: classes.smallerItem}} />
-                            </ListItem>
-                          ))
-                        }
-                      </List>
+                <div className={classes.verticalPaddingLarge}>
+                  <Grid container spacing={3} alignItems="center">
+                    <Grid item xs={12} sm={12} md={6}>
+                      <SectionIcon
+                        color={theme.palette.getContrastText(theme.palette.background.default)}
+                        icon={<PermContactCalendarIcon />}
+                        gutterBottom
+                      />
+                      <Typography variant="h3" gutterBottom>
+                        Permissions
+                      </Typography>
+                      <Typography component="p" variant="h6" className={classes.verticalPadding} style={{ opacity: .75, fontWeight: 400 }}>
+                        Bespoke permissions and access controls gives you confidence in the knowledge that your colleagues, clients, or third party organisations, can only see the digital assets you want them to, and only the power to use them, the way you want them to.
+                      </Typography>
+                      <Grid container>
+                        <List>
+                          {
+                            permissionsIcon.map(item => (
+                              <ListItem key={item} className={classes.listItem}>
+                                <ListItemIcon classes={{root: classes.smallerIcon}}>
+                                  <KeyboardArrowRight />
+                                </ListItemIcon>
+                                <ListItemText primary={item} classes={{root: classes.smallerItem}} />
+                              </ListItem>
+                            ))
+                          }
+                        </List>
+                      </Grid>
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6}>
+                      <CubeCanvas x={129} y={64} z={2} image="/images/maze.svg" />
                     </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={12} md={6}>
-                    <CubeCanvas x={129} y={64} z={2} image="/images/maze.svg" />
-                  </Grid>
-                </Grid>
-
+                </div>
 
               </div>
             </Container>
