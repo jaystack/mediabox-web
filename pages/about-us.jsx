@@ -91,6 +91,7 @@ function Contact() {
       <Head>
         <title>About Us</title>
       </Head>
+      <PageHero title="Who Are MediaBox?" image="/about.jpg"/>
       <motion.div
         variants={fadeTransition(0.4)}
         initial="initial"
@@ -98,7 +99,6 @@ function Contact() {
         exit="exit"
       >
         <div>
-          <PageHero title="Who Are MediaBox?" image="/about.jpg"/>
           <div style={{position: 'relative', maxWidth: theme.spacing(120), margin: '0 auto'}} className={classes.padded}>
             <Container>
               <Typography component="p" variant="h6" paragraph>

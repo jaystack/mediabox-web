@@ -95,6 +95,7 @@ function Contact() {
       <Head>
         <title>Frequently Asked Questions</title>
       </Head>
+      <PageHero title="Frequently Asked Questions" image="/faqs.jpg" />
       <motion.div
         variants={fadeTransition(0.4)}
         initial="initial"
@@ -102,7 +103,6 @@ function Contact() {
         exit="exit"
       >
         <div>
-          <PageHero title="Frequently Asked Questions" image="/faqs.jpg" />
           <div style={{ position: 'relative' }} className={classes.padded}>
             <Container>
               <ExpansionPanel>

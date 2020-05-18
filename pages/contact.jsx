@@ -108,6 +108,7 @@ function Contact() {
           rel="stylesheet"
         />
       </Head>
+      <PageHero title="Contact Us" image="/contact.jpg" />
       <motion.div
         variants={fadeTransition(0.4)}
         initial="initial"
@@ -115,7 +116,6 @@ function Contact() {
         exit="exit"
       >
         <div>
-          <PageHero title="Contact Us" image="/contact.jpg" />
           <div style={{ position: 'relative' }}>
             <Grid container>
               <Grid
