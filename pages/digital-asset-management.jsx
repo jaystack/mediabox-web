@@ -242,7 +242,7 @@ function DigitalAssetManagement() {
                         icon={<FolderIcon />}
                         gutterBottom
                       />
-                      <Typography variant="h3" gutterBottom>
+                      <Typography variant="h3" gutterBottom style={{fontWeight: 900}}>
                         Organise
                       </Typography>
                       <Typography component="p" variant="h6" paragraph className={classes.verticalPadding} style={{ opacity: .75, fontWeight: 400 }}>
@@ -281,7 +281,7 @@ function DigitalAssetManagement() {
                         icon={<Headset />}
                         gutterBottom
                       />
-                      <Typography variant="h3" gutterBottom>
+                      <Typography variant="h3" gutterBottom style={{fontWeight: 900}}>
                         Manage and Monitor
                       </Typography>
                       <Typography component="p" variant="h6" className={classes.verticalPadding} style={{ opacity: .75, fontWeight: 400 }}>
@@ -316,7 +316,7 @@ function DigitalAssetManagement() {
                         icon={<PermContactCalendarIcon />}
                         gutterBottom
                       />
-                      <Typography variant="h3" gutterBottom>
+                      <Typography variant="h3" gutterBottom style={{fontWeight: 900}}>
                         Permissions
                       </Typography>
                       <Typography component="p" variant="h6" className={classes.verticalPadding} style={{ opacity: .75, fontWeight: 400 }}>

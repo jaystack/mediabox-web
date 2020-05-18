@@ -8,7 +8,7 @@ import {fade} from '@material-ui/core';
 import ScrollIcon from './ScrollIcon';
 import {motion, useSpring, useTransform, useViewportScroll} from 'framer-motion';
 import NoSsr from '@material-ui/core/NoSsr';
-import {fadeTransition, standardTransition} from '../lib/transitions';
+import {fadeTransition, standardInvertedTransition, standardTransition} from '../lib/transitions';
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column',
+    // flexDirection: 'column',
     top: 0,
     left: 0,
     right: 0,
@@ -48,6 +48,11 @@ const useStyles = makeStyles(theme => ({
       maxWidth: '85%',
       fontSize: `${theme.spacing(4.5)}px`,
     }
+  },
+  center: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexGrow: 1,
   },
 }));
 
@@ -70,7 +75,7 @@ function Hero({ title, children, image }) {
       <NoSsr>
         <motion.div
           key={classes.backgroundImage}
-          variants={fadeTransition(0.2, 0.2)}
+          variants={standardInvertedTransition}
           animate="enter"
           initial="initial"
           exit="exit"
@@ -81,7 +86,7 @@ function Hero({ title, children, image }) {
       </NoSsr>
       <div className={classes.heroOverlay}>
         <motion.div
-          style={{display: 'flex', justifyContent: 'center'}}
+          className={classes.center}
           variants={standardTransition}
           animate="enter"
           initial="initial"
