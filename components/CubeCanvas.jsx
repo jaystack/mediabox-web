@@ -35,8 +35,10 @@ const {
 export function CubeCanvas({ x, y, z, image }) {
   const classes = useStyles();
   const webGlEl = React.useRef(null);
+  const canvasRef = React.useRef(null);
+  let renderer, camera, width, height;
 
-  React.useEffect(() => {
+  const run = () => {
 
     if (!Detector.webgl) {
       Detector.addGetWebGLMessage(webGlEl);
@@ -45,20 +47,20 @@ export function CubeCanvas({ x, y, z, image }) {
 
     const imageLoader = new TextureLoader();
 
-    const width  = webGlEl.current.clientWidth;
-    const height = webGlEl.current.clientWidth;
+    width  = webGlEl.current.clientWidth;
+    height = webGlEl.current.clientWidth;
 
     // Earth params
     const radius   = 0.5, segments = 128, rotation = 6;
 
     const scene = new Scene();
 
-    const camera = new PerspectiveCamera(35, width / height, 0.01, 1000);
+    camera = new PerspectiveCamera(35, width / height, 0.01, 1000);
     // camera.position.x = -0.5;
     // camera.position.y = .5;
     camera.position.z = 1.5;
 
-    const renderer = new WebGLRenderer({ antialias: true, alpha: true });
+    renderer = new WebGLRenderer({ antialias: true, alpha: true, canvas: canvasRef.current });
     renderer.setClearColor(0xffffff, 0);
     renderer.setSize(width, height);
 
@@ -74,13 +76,6 @@ export function CubeCanvas({ x, y, z, image }) {
     sphere.rotation.z = -0.35 + z;
     scene.add(sphere);
 
-    // const clouds = createClouds(radius, segments);
-    // clouds.rotation.y = rotation;
-    // scene.add(clouds);
-
-    // const stars = createStars(90, 64);
-    // scene.add(stars);
-
     const controls = new TrackballControls(camera, webGlEl.current);
     controls.noZoom = true;
     controls.noPan = true;
@@ -88,14 +83,9 @@ export function CubeCanvas({ x, y, z, image }) {
     renderer.domElement.style.display = 'block';
     renderer.domElement.style.position = 'relative';
 
-    webGlEl.current.appendChild(renderer.domElement);
+    // webGlEl.current.appendChild(renderer.domElement);
 
     const renderPass = new RenderPass( scene, camera );
-
-    // const bloomPass = new UnrealBloomPass( new THREE.Vector2( width, height ), 1.5, 0.4, 0.85 );
-    // bloomPass.threshold = 0;
-    // bloomPass.strength = 1.8;
-    // bloomPass.radius = 0.05;
 
     const composer = new EffectComposer(renderer);
     composer.addPass( renderPass );
@@ -129,30 +119,28 @@ export function CubeCanvas({ x, y, z, image }) {
         })
       );
     }
+  }
 
-    // function createClouds(radius, segments) {
-    //   return new Mesh(
-    //     new SphereGeometry(radius + 0.003, segments, segments),
-    //     new MeshPhongMaterial({
-    //       map: imageLoader.load('images/fair_clouds_4k.png'),
-    //       transparent: true
-    //     })
-    //   );
-    // }
+  const resize = () => {
+    // console.log('resize');
+    // camera.aspect = width / height;
+    // camera.updateProjectionMatrix();
+    //
+    // renderer.setSize(width, height);
+  };
 
-    function createStars(radius, segments) {
-      return new Mesh(
-        new SphereGeometry(radius, segments, segments),
-        new MeshBasicMaterial({
-          map: imageLoader.load('images/galaxy_starfield.png'),
-          side: BackSide
-        })
-      );
-    }
-  });
+  React.useEffect(run);
+  React.useEffect(() => {
+    window.addEventListener('resize', resize);
+    return () => window.removeEventListener('resize', resize);
+  }, []);
 
 
-  return (<div ref={webGlEl} className={classes.canvasHolder} />)
+  return (
+    <div ref={webGlEl} className={classes.canvasHolder}>
+      <canvas ref={canvasRef} />
+    </div>
+  )
 }
 
 CubeCanvas.defaultProps = {

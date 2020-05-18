@@ -271,7 +271,7 @@ function DigitalAssetManagement() {
 
 
                 <div className={classes.verticalPaddingLarge}>
-                  <Grid container spacing={3} alignItems="center">
+                  <Grid container spacing={3} alignItems="center" direction={isMobile ? 'column-reverse' : 'row'}>
                     <Grid item xs={12} sm={12} md={6}>
                       <CubeCanvas x={79} y={12} z={29} image="/images/monitorIcon.svg" />
                     </Grid>
@@ -356,7 +356,7 @@ function DigitalAssetManagement() {
             <div style={{position: 'absolute', top: 0, left: 0, right: 0}}>
               <SectionSeparator fill="#fafafa" height={theme.spacing(15)} variant="diagonalTop"/>
             </div>
-            <Container style={{position: 'relative', paddingTop: theme.spacing(10)}}>
+            <Container style={{position: 'relative', paddingTop: theme.spacing(15)}}>
               <div className={clsx(classes.flex, { [classes.flexColumn]: isMobile })}>
                 <Typography
                   component="p"
