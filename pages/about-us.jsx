@@ -104,7 +104,7 @@ function Contact() {
         exit="exit"
       >
         <div>
-          <PageHero title="Who Are MediaBox?" image="/faqs.jpg"/>
+          <PageHero title="Who Are MediaBox?" image="/about.jpg"/>
           <div style={{position: 'relative', maxWidth: theme.spacing(120), margin: '0 auto'}} className={classes.padded}>
             <Container>
               <Typography component="p" variant="h6" paragraph>
