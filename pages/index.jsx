@@ -26,7 +26,7 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import HomeIllustration from '../components/HomeIllustration';
-import {useMediaQuery} from '@material-ui/core';
+import {fade, useMediaQuery} from '@material-ui/core';
 
 const style = theme => ({
   padding: {
@@ -302,7 +302,7 @@ function Home() {
                 paddingTop: theme.spacing(30),
                 paddingBottom: theme.spacing(30),
                 position: 'relative',
-                backgroundColor: 'rgba(28, 151, 195, 0.9)',
+                backgroundColor: fade(theme.palette.primary.main, 0.9),
                 color: 'white',
                 flexDirection: 'column',
               }}
@@ -313,7 +313,7 @@ function Home() {
               <Typography variant="h6" gutterBottom style={{ marginBottom: theme.spacing(3) }}>
                 the all-in-one solution to manage & distribute content
               </Typography>
-              <Button variant="contained" color="primary" size="large">
+              <Button variant="contained" color="secondary" size="large">
                 Learn More
               </Button>
             </div>
