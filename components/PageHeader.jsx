@@ -93,7 +93,7 @@ function PageHeader(props) {
   const dropdownRef = React.useRef(null);
   const midRef = React.useRef(null);
 
-  const xPos = useSpring(0, { stiffness: 300, damping:20 });
+  const xPos = useSpring(0, { stiffness: 300, damping:25 });
 
   const resetTimer = () => clearTimeout(timeoutRef.current);
   const dismiss = () => setDesktopMenuOpen(0);
