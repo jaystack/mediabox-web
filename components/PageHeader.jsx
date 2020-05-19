@@ -47,6 +47,7 @@ const useStyles = makeStyles(theme => ({
   },
   dropDown: {
     width: theme.spacing(30),
+    zIndex: theme.zIndex.appBar + 1,
     position: 'relative',
   },
   dropDownInner: {
@@ -55,9 +56,9 @@ const useStyles = makeStyles(theme => ({
   dropDownInnerTriangle: {
     content: '""',
     display: 'block',
-    width: theme.spacing(2.5),
-    height: theme.spacing(2.5),
-    borderWidth: theme.spacing(1.25),
+    width: theme.spacing(2),
+    height: theme.spacing(2),
+    borderWidth: theme.spacing(1),
     borderColor: 'transparent',
     borderBottomColor: 'white',
     borderStyle: 'solid',
@@ -65,10 +66,10 @@ const useStyles = makeStyles(theme => ({
     transformOrigin: 'center',
     position: 'absolute',
     left: '50%',
-    top: -theme.spacing(2.5),
+    top: -theme.spacing(2),
   },
   dropDownPaper: {
-    marginTop: theme.spacing(1.25),
+    marginTop: theme.spacing(1),
     overflow: 'hidden',
     position: 'relative',
   },
@@ -92,6 +93,7 @@ function PageHeader(props) {
   const xPos = useSpring(0, { stiffness: 300, damping:20 });
 
   const resetTimer = () => clearTimeout(timeoutRef.current);
+  const dismiss = () => setDesktopMenuOpen(0);
 
   const handleMenu = id => e => {
     setDesktopMenuOpen(true);
@@ -108,14 +110,14 @@ function PageHeader(props) {
   };
 
   const renderFeatures = () => (
-    <List>
+    <List dense>
       <Link href="/digital-asset-management" passHref>
-        <ListItem button divider component="a">
+        <ListItem button divider component="a" onClick={dismiss}>
           <ListItemText primary="Digital Asset Management" />
         </ListItem>
       </Link>
       <Link href="/brand" passHref>
-        <ListItem button component="a">
+        <ListItem button component="a" onClick={dismiss}>
           <ListItemText primary="Brand Management" />
         </ListItem>
       </Link>
@@ -123,19 +125,19 @@ function PageHeader(props) {
   );
 
   const renderAbout = () => (
-    <List>
+    <List dense>
       <Link href="/about-us" passHref>
-        <ListItem button divider component="a">
+        <ListItem button divider component="a" onClick={dismiss}>
           <ListItemText primary="Who Are MediaBox?" />
         </ListItem>
       </Link>
       <Link href="/why-mediabox" passHref>
-        <ListItem button divider component="a">
+        <ListItem button divider component="a" onClick={dismiss}>
           <ListItemText primary="Why MediaBox?" />
         </ListItem>
       </Link>
       <Link href="/faqs" passHref>
-        <ListItem button component="a">
+        <ListItem button component="a" onClick={dismiss}>
           <ListItemText primary="Frequently Asked Questions" />
         </ListItem>
       </Link>
@@ -179,17 +181,17 @@ function PageHeader(props) {
               onMouseEnter={resetTimer}
               onMouseLeave={handleMenuClose}
             >
-              <AnimatePresence exitBeforeEnter>
-                <motion.div
-                  key={activeParent}
-                  variants={standardWithAbsTransition}
-                  animate="enter"
-                  initial="initial"
-                  exit="exit"
-                >
+              {/*<AnimatePresence exitBeforeEnter>*/}
+              {/*  <motion.div*/}
+              {/*    key={activeParent}*/}
+              {/*    variants={standardWithAbsTransition}*/}
+              {/*    animate="enter"*/}
+              {/*    initial="initial"*/}
+              {/*    exit="exit"*/}
+              {/*  >*/}
                   { renderDrawdown() }
-                </motion.div>
-              </AnimatePresence>
+              {/*  </motion.div>*/}
+              {/*</AnimatePresence>*/}
             </Paper>
           </div>
         </Grow>
