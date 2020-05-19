@@ -75,11 +75,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function PageHeader(props) {
+
+  // TODO - output all nodes, use React.cloneElement
+  //  to replace content of dropdown
+
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [desktopMenuOpen, setDesktopMenuOpen] = React.useState(false);
-  const [activeParentEl, setActiveParentEl] = React.useState(null);
   const [activeParent, setActiveParent] = React.useState(null);
   const timeoutRef = React.useRef(null);
   const appBarRef = React.useRef(null);
@@ -93,7 +96,6 @@ function PageHeader(props) {
   const handleMenu = id => e => {
     setDesktopMenuOpen(true);
     setActiveParent(id);
-    setActiveParentEl(e.currentTarget);
     const { x, width } = e.currentTarget.getBoundingClientRect();
     xPos.set(x - theme.spacing(15) + (width / 2));
     resetTimer();
@@ -151,11 +153,11 @@ function PageHeader(props) {
     }
   };
 
-  React.useEffect(() => {
-    const { x, width } = midRef.current.getBoundingClientRect();
-    xPos.set(x + (width / 2));
-    xPos.stop();
-  }, []);
+  // React.useEffect(() => {
+  //   const { x, width } = midRef.current.getBoundingClientRect();
+  //   xPos.set(x + (width / 2));
+  //   xPos.stop();
+  // }, []);
 
   return (
     <React.Fragment>
