@@ -12,6 +12,7 @@ import useTheme from '@material-ui/core/styles/useTheme';
 import Container from '@material-ui/core/Container';
 import SectionSeparator from '../components/SectionSeparator';
 import Button from '@material-ui/core/Button';
+import StandardCTA from '../components/StandardCTA';
 
 const style = theme => ({
   padding: {
@@ -138,9 +139,12 @@ function Contact() {
             style={{position: 'relative', background: theme.palette.primary.main, color: '#fff'}}
           >
             <div style={{position: 'absolute', top: 0, left: 0, right: 0}}>
-              <SectionSeparator fill="#fafafa" height={theme.spacing(15)} variant="diagonalTop"/>
+              <SectionSeparator fill="#fafafa" height={theme.spacing(10)} variant="diagonalTop"/>
             </div>
-            <Container style={{position: 'relative', paddingTop: theme.spacing(10)}}>
+            <div style={{position: 'absolute', bottom: 0, left: 0, right: 0}}>
+              <SectionSeparator fill="#fafafa" height={theme.spacing(10)} variant="diagonalBottom" bottom/>
+            </div>
+            <Container style={{position: 'relative', paddingTop: theme.spacing(10), paddingBottom: theme.spacing(10)}}>
               <div className={classes.flex}>
                 <Typography component="p" variant="h3" className={classes.grow} style={{fontWeight: 700}}>
                   Got a question?
@@ -153,6 +157,8 @@ function Contact() {
               </div>
             </Container>
           </div>
+
+          <StandardCTA/>
         </div>
       </motion.div>
     </React.Fragment>

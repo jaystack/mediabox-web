@@ -27,6 +27,7 @@ import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import HomeIllustration from '../components/HomeIllustration';
 import {fade, useMediaQuery} from '@material-ui/core';
+import StandardCTA from '../components/StandardCTA';
 
 const style = theme => ({
   padding: {
@@ -89,32 +90,6 @@ const style = theme => ({
     backgroundImage: 'url(/network.jpg)',
     // filter: `blur(${theme.spacing(0.5)}px)`
   },
-  moreRoundedCard: {
-    borderRadius: theme.spacing(1.5),
-    boxShadow: `
-      0 ${theme.spacing(1)}px ${theme.spacing(1)}px -${theme.spacing(.5)}px rgba(0, 0, 0, 0.05),
-      0 ${theme.spacing(2)}px ${theme.spacing(2)}px ${theme.spacing(.25)}px rgba(0,0,0,0.05),
-      0 ${theme.spacing(1)}px ${theme.spacing(3)}px ${theme.spacing(.5)}px rgba(0,0,0,0.06)
-    `,
-    '& h4': {
-      fontWeight: 900,
-    }
-  }
-  ,
-  whiteCard: {
-    backgroundImage: 'url(/bg-page-section.png)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center top',
-    color: theme.palette.secondary.main,
-  },
-  blueCard: {
-    background: theme.palette.secondary.main,
-    color: '#fff',
-  },
-  darkCard: {
-    background: theme.palette.primary.main,
-    color: '#fff',
-  }
 });
 
 const useStyles = makeStyles(style);
@@ -320,73 +295,7 @@ function Home() {
             <SectionSeparator fill="#fafafa" height={150} variant="diagonalBottom" bottom/>
           </div>
 
-          <div style={{position: 'relative'}}>
-            <Container component="div">
-              <div
-                className={clsx(classes.padded, classes.flex)}
-                style={{
-                  paddingTop: theme.spacing(12),
-                  paddingBottom: theme.spacing(12),
-                  position: 'relative',
-                  flexDirection: 'column',
-                }}
-              >
-                <Typography variant="h3" component="h2" style={{textAlign: 'center', fontWeight: 600}} gutterBottom>
-                  START CENTRALISING, SHARING & PROMOTING YOUR ASSETS NOW
-                </Typography>
-                <Typography variant="h6" gutterBottom style={{textAlign: 'center'}}>
-                  Protecting your brand, globally, from one centralised resource.
-                </Typography>
-
-                <Grid
-                  container
-                  spacing={3}
-                  justify="center"
-                  style={{paddingTop: theme.spacing(6), paddingBottom: theme.spacing(6)}}
-                >
-                  <Grid item xs={12} sm={12} md={6} lg={4}>
-                    <Paper
-                      className={clsx(classes.darkCard, classes.moreRoundedCard)}
-                      style={{padding: theme.spacing(6)}}
-                    >
-                      <Typography variant="h4">
-                        Watch our demo
-                      </Typography>
-                      <Button variant="contained" color="secondary" size="large" style={{marginTop: theme.spacing(3)}}>
-                        Learn More
-                      </Button>
-                    </Paper>
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6} lg={4}>
-                    <Paper
-                      className={clsx(classes.whiteCard, classes.moreRoundedCard)}
-                      style={{padding: theme.spacing(6)}}
-                    >
-                      <Typography variant="h4">
-                        Book a live demo
-                      </Typography>
-                      <Button variant="contained" color="secondary" size="large" style={{marginTop: theme.spacing(3)}}>
-                        Learn More
-                      </Button>
-                    </Paper>
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6} lg={4}>
-                    <Paper
-                      className={clsx(classes.blueCard, classes.moreRoundedCard)}
-                      style={{padding: theme.spacing(6)}}
-                    >
-                      <Typography variant="h4">
-                        Speak to the team
-                      </Typography>
-                      <Button variant="contained" color="primary" size="large" style={{marginTop: theme.spacing(3)}}>
-                        Learn More
-                      </Button>
-                    </Paper>
-                  </Grid>
-                </Grid>
-              </div>
-            </Container>
-          </div>
+          <StandardCTA/>
         </div>
 
       </motion.div>

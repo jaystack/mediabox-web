@@ -1,25 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import {AnimatePresence, motion, useSpring} from 'framer-motion';
+// import useMediaQuery from '@material-ui/core/useMediaQuery';
+import useTheme from '@material-ui/core/styles/useTheme';
+import {motion, useSpring} from 'framer-motion';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
-import MenuIcon from '@material-ui/icons/Menu';
-import HideOnScroll from './HideOnScroll';
-import Link from 'next/link';
-import {useMediaQuery} from '@material-ui/core';
-import useTheme from '@material-ui/core/styles/useTheme';
 import Paper from '@material-ui/core/Paper';
 import Grow from '@material-ui/core/Grow';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import {standardTransition, standardWithAbsTransition} from '../lib/transitions';
+
+import HideOnScroll from './HideOnScroll';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -85,7 +81,7 @@ function PageHeader(props) {
 
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  // const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [desktopMenuOpen, setDesktopMenuOpen] = React.useState(false);
   const [activeParent, setActiveParent] = React.useState(null);
   const timeoutRef = React.useRef(null);
@@ -170,7 +166,7 @@ function PageHeader(props) {
         style={{
           x: xPos,
           top: appBarRef.current?.getBoundingClientRect().bottom,
-          position: 'absolute',
+          position: 'fixed',
           zIndex: theme.zIndex.appBar,
         }}
         ref={dropdownRef}
@@ -199,7 +195,7 @@ function PageHeader(props) {
           </div>
         </Grow>
       </motion.div>
-      <HideOnScroll>
+      <HideOnScroll subscribe={dismiss}>
         <AppBar ref={appBarRef}>
           <Toolbar>
             <div className={classes.start}>
@@ -220,6 +216,7 @@ function PageHeader(props) {
                 </Button>
                 <Link href="/about-us" passHref>
                   <Button
+                    onClick={dismiss}
                     color="inherit"
                     component="a"
                     onMouseEnter={handleMenu(1)}
