@@ -43,7 +43,10 @@ const useStyles = makeStyles(theme => ({
   mid: {
     flexGrow: 1,
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    }
   },
   dropDown: {
     width: theme.spacing(30),
@@ -206,33 +209,29 @@ function PageHeader(props) {
                 </a>
               </Link>
             </div>
-            {
-              !isMobile && (
-                <div className={classes.mid} ref={midRef}>
+              <div className={classes.mid} ref={midRef}>
+                <Button
+                  color="inherit"
+                  component="a"
+                  onMouseEnter={handleMenu(0)}
+                  onMouseLeave={handleMenuClose}
+                >
+                  Features
+                </Button>
+                <Link href="/about-us" passHref>
                   <Button
                     color="inherit"
                     component="a"
-                    onMouseEnter={handleMenu(0)}
+                    onMouseEnter={handleMenu(1)}
                     onMouseLeave={handleMenuClose}
                   >
-                    Features
+                    About
                   </Button>
-                  <Link href="/about-us" passHref>
-                    <Button
-                      color="inherit"
-                      component="a"
-                      onMouseEnter={handleMenu(1)}
-                      onMouseLeave={handleMenuClose}
-                    >
-                      About
-                    </Button>
-                  </Link>
-                  <Link href="/contact" passHref>
-                    <Button color="inherit" component="a">Contact</Button>
-                  </Link>
-                </div>
-              )
-            }
+                </Link>
+                <Link href="/contact" passHref>
+                  <Button color="inherit" component="a">Contact</Button>
+                </Link>
+              </div>
             <div className={classes.end}>
               <Link href="/contact" passHref>
                 <Button color="inherit" component="a">Sign In</Button>

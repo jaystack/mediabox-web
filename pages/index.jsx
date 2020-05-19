@@ -203,7 +203,7 @@ function Home() {
 
           <div className={classes.splitSectionText}>
             <Container>
-              <Grid container className={clsx(classes.padded, classes.noTopPadding)}>
+              <Grid container className={clsx(classes.padded, classes.noTopPadding)} spacing={3}>
                 <Grid
                   item
                   xs={12}
@@ -217,7 +217,7 @@ function Home() {
                       icon={<SiteMap />}
                       gutterBottom
                     />
-                    <Typography variant="h4">
+                    <Typography variant="h4" gutterBottom>
                       Complete Asset Management
                     </Typography>
                     <Typography component="p" variant="h6" paragraph style={{ opacity: .75, fontWeight: 400 }}>
