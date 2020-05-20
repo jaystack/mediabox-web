@@ -167,7 +167,8 @@ function PageHeader(props) {
   const inner = React.useRef(null);
 
   const spring = { stiffness: 300, damping:25 };
-  const heightSpring = { stiffness: 25, damping:100, mass: .5, velocity: 2 };
+  const heightSpring = { duration: .2, type: "tween" };
+  // const heightSpring = { stiffness: 25, damping:100, mass: .5, velocity: 2 };
   const [controls, ref] = useAutoHeightAnimation(heightSpring, [activeParent]);
   const xPos = useSpring(0, spring);
 
