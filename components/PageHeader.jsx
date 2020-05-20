@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import Link from 'next/link';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-// import useMediaQuery from '@material-ui/core/useMediaQuery';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useTheme from '@material-ui/core/styles/useTheme';
-import {motion, useSpring} from 'framer-motion';
+import {AnimatePresence, motion, useSpring} from 'framer-motion';
+import { fade } from '@material-ui/core/styles/colorManipulator';
+import clsx from 'clsx';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,8 +17,15 @@ import Grow from '@material-ui/core/Grow';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+
+import MenuIcon from '@material-ui/icons/Menu';
+import CloseIcon from '@material-ui/icons/Close';
 
 import HideOnScroll from './HideOnScroll';
+import {useAutoHeightAnimation} from '../lib/useAutoHeightAnimation';
+import {standardTransition} from '../lib/transitions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,16 +40,28 @@ const useStyles = makeStyles(theme => ({
   brand: {
     height: theme.spacing(3),
     width: 'auto',
+    [theme.breakpoints.down('sm')]: {
+      height: theme.spacing(2.25),
+    }
+  },
+  brandA: {
+    '-webkit-tap-highlight-color': 'transparent',
+    display: 'block',
   },
   start: {
-    [theme.breakpoints.down('sm')]: {
-      flexGrow: 1,
-    }
+    flexGrow: 1,
+    position: 'relative',
+  },
+  end: {
+    position: 'relative',
   },
   mid: {
     flexGrow: 1,
     display: 'flex',
     justifyContent: 'center',
+    position: 'absolute',
+    left: theme.spacing(24),
+    right: theme.spacing(24),
     [theme.breakpoints.down('sm')]: {
       display: 'none',
     }
@@ -64,6 +86,7 @@ const useStyles = makeStyles(theme => ({
     transform: 'translate(-50%)',
     transformOrigin: 'center',
     position: 'absolute',
+    zIndex:20,
     left: '50%',
     top: -theme.spacing(2),
   },
@@ -72,7 +95,58 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
     position: 'relative',
   },
+  hiddenDesktop: {
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    }
+  },
+  hiddenMobile: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    }
+  },
+  mobileMenu: {
+    background: fade(theme.palette.secondary.main, .95),
+    color: theme.palette.getContrastText(theme.palette.secondary.main),
+    position: 'fixed',
+    top: theme.spacing(7),
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: theme.zIndex.appBar - 1,
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  section: {
+    marginBottom: theme.spacing(4),
+  },
+  sectionTitle: {
+    fontWeight: 900,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+  }
 }));
+
+const RenderSegmentFrame = ({ children, title }) => {
+  const classes = useStyles();
+  return (
+    <div className={classes.section}>
+      <Typography
+        variant="h5"
+        component="p"
+        className={classes.sectionTitle}
+      >
+        { title }
+      </Typography>
+      { children }
+    </div>
+  );
+}
+
+RenderSegmentFrame.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.node,
+};
 
 function PageHeader(props) {
 
@@ -81,24 +155,34 @@ function PageHeader(props) {
 
   const classes = useStyles();
   const theme = useTheme();
-  // const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   const [desktopMenuOpen, setDesktopMenuOpen] = React.useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [activeParent, setActiveParent] = React.useState(null);
   const timeoutRef = React.useRef(null);
   const appBarRef = React.useRef(null);
   const dropdownRef = React.useRef(null);
   const midRef = React.useRef(null);
+  const inner = React.useRef(null);
 
-  const xPos = useSpring(0, { stiffness: 300, damping:25 });
+  const spring = { stiffness: 300, damping:25 };
+  const heightSpring = { stiffness: 25, damping:100, mass: .5, velocity: 2 };
+  const [controls, ref] = useAutoHeightAnimation(heightSpring, [activeParent]);
+  const xPos = useSpring(0, spring);
 
   const resetTimer = () => clearTimeout(timeoutRef.current);
-  const dismiss = () => setDesktopMenuOpen(0);
+  const dismiss = () => {
+    setDesktopMenuOpen(false);
+    setMobileMenuOpen(false);
+  };
 
   const handleMenu = id => e => {
     setDesktopMenuOpen(true);
     setActiveParent(id);
     const { x, width } = e.currentTarget.getBoundingClientRect();
-    xPos.set(x - theme.spacing(15) + (width / 2));
+    const nx = x - theme.spacing(15) + (width / 2);
+    xPos.set(nx);
     resetTimer();
   };
 
@@ -108,8 +192,10 @@ function PageHeader(props) {
     }, 600);
   };
 
-  const renderFeatures = () => (
-    <List dense>
+  const handleToggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+
+  const renderFeatures = dense => (
+    <List dense={!dense} ref={inner}>
       <Link href="/digital-asset-management" passHref>
         <ListItem button divider component="a" onClick={dismiss}>
           <ListItemText primary="Digital Asset Management" />
@@ -123,8 +209,8 @@ function PageHeader(props) {
     </List>
   );
 
-  const renderAbout = () => (
-    <List dense>
+  const renderAbout = dense => (
+    <List dense={!dense} ref={inner}>
       <Link href="/about-us" passHref>
         <ListItem button divider component="a" onClick={dismiss}>
           <ListItemText primary="Who Are MediaBox?" />
@@ -143,22 +229,48 @@ function PageHeader(props) {
     </List>
   );
 
+  const renderContact = dense => (
+    <List dense={!dense} ref={inner}>
+      <Link href="/contact" passHref>
+        <ListItem button divider component="a" onClick={dismiss}>
+          <ListItemText primary="Contact Us" />
+        </ListItem>
+      </Link>
+      <ListItem button divider component="a" onClick={dismiss} href="tel:+442037459067">
+        <ListItemText primary="+44 2037 459067" />
+      </ListItem>
+      <ListItem button component="a" onClick={dismiss} href="mailto:info@mediaboxsolutions.co.uk">
+        <ListItemText primary="info@mediaboxsolutions.co.uk" />
+      </ListItem>
+    </List>
+  );
+
+
+
   const renderDrawdown = () => {
     switch (activeParent) {
       case 0:
         return renderFeatures();
       case 1:
         return renderAbout();
+      case 2:
+        return renderContact();
       default:
         return <div/>;
     }
   };
 
-  // React.useEffect(() => {
-  //   const { x, width } = midRef.current.getBoundingClientRect();
-  //   xPos.set(x + (width / 2));
-  //   xPos.stop();
-  // }, []);
+  React.useEffect(() => {
+    const { x, width } = midRef.current.getBoundingClientRect();
+    xPos.set(x + (width / 2));
+    xPos.stop();
+
+  }, []);
+
+  React.useEffect(
+    () => { document.body.style.overflow = mobileMenuOpen ? 'hidden' : null},
+    [mobileMenuOpen],
+  );
 
   return (
     <React.Fragment>
@@ -167,72 +279,110 @@ function PageHeader(props) {
           x: xPos,
           top: appBarRef.current?.getBoundingClientRect().bottom,
           position: 'fixed',
-          zIndex: theme.zIndex.appBar,
         }}
         ref={dropdownRef}
         className={classes.dropDown}
       >
-        <Grow in={desktopMenuOpen} style={{ transformOrigin: 'center top' }}>
+        <Grow in={desktopMenuOpen && !isMobile} style={{ transformOrigin: 'center top' }}>
           <div className={classes.dropDownInner}>
             <div className={classes.dropDownInnerTriangle} />
             <Paper
               className={classes.dropDownPaper}
               onMouseEnter={resetTimer}
               onMouseLeave={handleMenuClose}
+              elevation={7}
             >
-              {/*<AnimatePresence exitBeforeEnter>*/}
-              {/*  <motion.div*/}
-              {/*    key={activeParent}*/}
-              {/*    variants={standardWithAbsTransition}*/}
-              {/*    animate="enter"*/}
-              {/*    initial="initial"*/}
-              {/*    exit="exit"*/}
-              {/*  >*/}
-                  { renderDrawdown() }
-              {/*  </motion.div>*/}
-              {/*</AnimatePresence>*/}
+              <motion.div style={{ transformOrigin: "top" }} animate={controls} ref={ref}>
+                { renderDrawdown() }
+              </motion.div>
             </Paper>
           </div>
         </Grow>
       </motion.div>
-      <HideOnScroll subscribe={dismiss}>
+
+
+      <Grow in={mobileMenuOpen && isMobile}>
+        <div className={classes.mobileMenu}>
+          { <RenderSegmentFrame title="Features">{ renderFeatures(true) }</RenderSegmentFrame> }
+          { <RenderSegmentFrame title="About">{ renderAbout(true) }</RenderSegmentFrame> }
+          { <RenderSegmentFrame title="Contact">{ renderContact(true) }</RenderSegmentFrame> }
+        </div>
+      </Grow>
+
+
+
+      <HideOnScroll subscribe={dismiss} disable={isMobile && mobileMenuOpen}>
         <AppBar ref={appBarRef}>
           <Toolbar>
             <div className={classes.start}>
               <Link href="/" passHref>
-                <a>
-                  <img src="/mediabox-logo-textonly.svg" className={classes.brand} />
+                <a className={classes.brandA} onClick={dismiss}>
+                  <img
+                    src={'/mediabox-emblem-darkbg.svg'}
+                    className={clsx(classes.brand, classes.hiddenDesktop)}
+                  />
+                  <img
+                    src={'/mediabox-logo-textonly.svg'}
+                    className={clsx(classes.brand, classes.hiddenMobile)}
+                  />
                 </a>
               </Link>
             </div>
-              <div className={classes.mid} ref={midRef}>
+            <div className={classes.mid} ref={midRef}>
+              <Button
+                color="inherit"
+                component="a"
+                onMouseEnter={handleMenu(0)}
+                onMouseLeave={handleMenuClose}
+              >
+                Features
+              </Button>
+              <Link href="/about-us" passHref>
                 <Button
+                  onClick={dismiss}
                   color="inherit"
                   component="a"
-                  onMouseEnter={handleMenu(0)}
+                  onMouseEnter={handleMenu(1)}
                   onMouseLeave={handleMenuClose}
                 >
-                  Features
+                  About
                 </Button>
-                <Link href="/about-us" passHref>
-                  <Button
-                    onClick={dismiss}
-                    color="inherit"
-                    component="a"
-                    onMouseEnter={handleMenu(1)}
-                    onMouseLeave={handleMenuClose}
-                  >
-                    About
-                  </Button>
-                </Link>
-                <Link href="/contact" passHref>
-                  <Button color="inherit" component="a">Contact</Button>
-                </Link>
-              </div>
+              </Link>
+              <Link href="/contact" passHref>
+                <Button
+                  onClick={dismiss}
+                  color="inherit"
+                  component="a"
+                  onMouseEnter={handleMenu(2)}
+                  onMouseLeave={handleMenuClose}
+                >
+                  Contact
+                </Button>
+              </Link>
+            </div>
             <div className={classes.end}>
               <Link href="/contact" passHref>
-                <Button color="inherit" component="a">Sign In</Button>
+                <Button color="inherit" component="a" className={classes.hiddenMobile}>
+                  Sign In
+                </Button>
               </Link>
+              <div>
+                <IconButton
+                  color="inherit"
+                  className={classes.hiddenDesktop}
+                  onClick={handleToggleMobileMenu}
+                >
+                  <AnimatePresence>
+                    <motion.div variants={standardTransition} initial="initial" exit="exit" animate="enter">
+                      {
+                        mobileMenuOpen
+                          ? <CloseIcon style={{display: 'block'}} />
+                          : <MenuIcon style={{display: 'block'}} />
+                      }
+                    </motion.div>
+                  </AnimatePresence>
+                </IconButton>
+              </div>
             </div>
           </Toolbar>
         </AppBar>

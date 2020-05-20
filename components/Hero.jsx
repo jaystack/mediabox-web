@@ -6,7 +6,7 @@ import {GlobeCanvas} from './GlobeCanvas';
 import Typography from '@material-ui/core/Typography';
 import {fade} from '@material-ui/core';
 import ScrollIcon from './ScrollIcon';
-import {motion, useSpring, useTransform, useViewportScroll} from 'framer-motion';
+import {motion, useMotionValue, useSpring, useTransform, useViewportScroll} from 'framer-motion';
 import NoSsr from '@material-ui/core/NoSsr';
 import {fadeTransition, standardInvertedTransition, standardTransition} from '../lib/transitions';
 
@@ -63,11 +63,19 @@ function Hero({ title, children, image }) {
   const y = useTransform(scrollY, value => value / 3);
   const backgroundImage = `url(${image})`;
   const scrollYValue = useSpring(0, { damping: 10 });
+  // const opacity = useSpring(0);
 
   React.useEffect(() => {
     scrollYValue.onChange(v => window.screenTop = v);
     return () => scrollYValue.destroy();
   }, []);
+
+  // React.useEffect(() => {
+  //   opacity.set(0);
+  //   const img = new Image();
+  //   img.onload = () => opacity.set(1);
+  //   img.src = image;
+  // },[]);
 
   const scrollPastHero = e => scrollYValue.set(e.target.clientHeight);
 

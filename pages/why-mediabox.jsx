@@ -13,6 +13,7 @@ import Container from '@material-ui/core/Container';
 import SectionSeparator from '../components/SectionSeparator';
 import Button from '@material-ui/core/Button';
 import StandardCTA from '../components/StandardCTA';
+import GotQuestion from '../components/GotQuestion';
 
 const style = theme => ({
   padding: {
@@ -134,30 +135,7 @@ function Contact() {
             {/*<SectionSeparator fill="#fafafa" height={150} variant="diagonalBottom" bottom />*/}
           </div>
 
-          <div
-            className={classes.padded}
-            style={{position: 'relative', background: theme.palette.primary.main, color: '#fff'}}
-          >
-            <div style={{position: 'absolute', top: 0, left: 0, right: 0}}>
-              <SectionSeparator fill="#fafafa" height={theme.spacing(10)} variant="diagonalTop"/>
-            </div>
-            <div style={{position: 'absolute', bottom: 0, left: 0, right: 0}}>
-              <SectionSeparator fill="#fafafa" height={theme.spacing(10)} variant="diagonalBottom" bottom/>
-            </div>
-            <Container style={{position: 'relative', paddingTop: theme.spacing(10), paddingBottom: theme.spacing(10)}}>
-              <div className={classes.flex}>
-                <Typography component="p" variant="h3" className={classes.grow} style={{fontWeight: 700}}>
-                  Got a question?
-                </Typography>
-                <div>
-                  <Button variant="contained" size="large" color="secondary">
-                    Contact Us
-                  </Button>
-                </div>
-              </div>
-            </Container>
-          </div>
-
+          <GotQuestion />
           <StandardCTA/>
         </div>
       </motion.div>

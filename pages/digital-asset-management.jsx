@@ -29,6 +29,7 @@ import ListItemText from '@material-ui/core/ListItemText/ListItemText';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import Divider from '@material-ui/core/Divider';
 import {useMediaQuery} from '@material-ui/core';
+import GotQuestion from '../components/GotQuestion';
 
 const style = theme => ({
   padding: {
@@ -167,6 +168,17 @@ function DigitalAssetManagement() {
               xs={12}
               sm={12}
               md={6}
+            >
+              <div className={clsx(classes.padded)}>
+                <img src="/multimedia.png" className={classes.responsive} />
+              </div>
+              {/*<Divider />*/}
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={6}
               className={clsx(classes.darkBackground, classes.flex)}
             >
               <div className={classes.padded}>
@@ -183,17 +195,6 @@ function DigitalAssetManagement() {
                 <Typography component="p" variant="body1" paragraph>
                   Store, process, and playback all of your assets in any file type within MediaBox itself, meaning you won’t have to download every video you wish to preview.
                 </Typography>
-              </div>
-              {/*<Divider />*/}
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={6}
-            >
-              <div className={clsx(classes.padded)}>
-                <img src="/multimedia.png" className={classes.responsive} />
               </div>
               {/*<Divider />*/}
             </Grid>
@@ -345,35 +346,10 @@ function DigitalAssetManagement() {
 
               </div>
             </Container>
-            {/*<SectionSeparator fill="#fafafa" height={150} variant="diagonalTop" />*/}
-            {/*<SectionSeparator fill="#fafafa" height={150} variant="diagonalBottom" bottom />*/}
           </div>
 
-          <div
-            className={classes.padded}
-            style={{position: 'relative', background: theme.palette.primary.main, color: '#fff'}}
-          >
-            <div style={{position: 'absolute', top: 0, left: 0, right: 0}}>
-              <SectionSeparator fill="#fafafa" height={theme.spacing(15)} variant="diagonalTop"/>
-            </div>
-            <Container style={{position: 'relative', paddingTop: theme.spacing(15)}}>
-              <div className={clsx(classes.flex, { [classes.flexColumn]: isMobile })}>
-                <Typography
-                  component="p"
-                  variant="h3"
-                  className={classes.grow}
-                  style={{fontWeight: 700, textAlign: isMobile ? 'center' : 'left'}}
-                >
-                  Got a question?
-                </Typography>
-                <div style={{ marginTop: isMobile ? theme.spacing(4) : 0}}>
-                  <Button variant="contained" size="large" color="secondary" fullWidth={isMobile}>
-                    Contact Us
-                  </Button>
-                </div>
-              </div>
-            </Container>
-          </div>
+
+          <GotQuestion bottom="#fff" />
         </div>
       </motion.div>
     </React.Fragment>

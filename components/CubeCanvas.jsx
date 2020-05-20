@@ -80,6 +80,7 @@ export function CubeCanvas({ x, y, z, image }) {
     controls.noZoom = true;
     controls.noPan = true;
 
+    renderer.setPixelRatio(window.devicePixelRatio ? window.devicePixelRatio : 1);
     renderer.domElement.style.display = 'block';
     renderer.domElement.style.position = 'relative';
 

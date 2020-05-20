@@ -28,6 +28,7 @@ import Paper from '@material-ui/core/Paper';
 import HomeIllustration from '../components/HomeIllustration';
 import {fade, useMediaQuery} from '@material-ui/core';
 import StandardCTA from '../components/StandardCTA';
+import SectionFrame from '../components/SectionFrame';
 
 const style = theme => ({
   padding: {
@@ -128,26 +129,23 @@ function Home() {
         exit="exit"
       >
         <div>
-          <div className={classes.backgroundPrimary} style={{ position: 'relative' }}>
-            <Grid container>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={6}
-              >
-                <div className={classes.padded}>
+
+
+          <section style={{ position: 'relative' }}>
+            <Grid container className={classes.backgroundPrimary}>
+              <Grid item xs={12} sm={12} md={6}>
+                <SectionFrame backgroundColor={theme.palette.primary.main}>
                   <VideoPreview preview="/videopreview.jpg" />
-                </div>
+                </SectionFrame>
               </Grid>
               <Grid
                 item
                 xs={12}
                 sm={12}
                 md={6}
-                className={clsx(classes.splitSectionText, classes.padded, classes.flex)}
+                className={clsx(classes.splitSectionText, classes.flex)}
               >
-                <div>
+                <SectionFrame backgroundColor="#fff">
                   <Typography variant="h5" gutterBottom>
                     Share and promote your digital assets with mediabox
                   </Typography>
@@ -158,12 +156,12 @@ function Home() {
                   <Typography component="p" variant="body1">
                     Allowing collaboration with clients and colleagues all over the world, from one centralised management tool.
                   </Typography>
-                </div>
+                </SectionFrame>
               </Grid>
             </Grid>
-            {/*<SectionSeparator fill="#fafafa" height={150} variant="diagonalTop" />*/}
-            {/*<SectionSeparator fill="#fafafa" height={150} variant="diagonalBottom" bottom />*/}
-          </div>
+          </section>
+
+
 
           <div className={clsx(classes.padded, classes.flex)} style={{paddingTop: 120, paddingBottom: 180, position: 'relative', backgroundColor: '#1c97c3', color: 'white', flexDirection: 'column'}}>
             <SectionIcon color="#fff" icon={<Globe />} gutterBottom />
@@ -254,8 +252,8 @@ function Home() {
                 playsInline
                 style={{
                   visibility: 'visible',
-                  width: isMobile ? 'auto' : '100%',
-                  height: isMobile ? '100%' : 'auto',
+                  width: 'auto',
+                  height: '100%',
                   opacity: 1,
                   objectFit: 'cover',
                   position: 'relative',

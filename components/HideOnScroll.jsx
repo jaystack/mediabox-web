@@ -4,12 +4,12 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 import Slide from '@material-ui/core/Slide';
 
-function HideOnScroll({ children, subscribe }) {
+function HideOnScroll({ children, disable, subscribe }) {
   const trigger = useScrollTrigger();
   React.useEffect(subscribe, [trigger]);
 
   return (
-    <Slide in={!trigger}>
+    <Slide in={disable || !trigger}>
       {children}
     </Slide>
   );
@@ -17,6 +17,7 @@ function HideOnScroll({ children, subscribe }) {
 
 HideOnScroll.propTypes = {
   children: PropTypes.element.isRequired,
+  disable: PropTypes.bool,
   subscribe: PropTypes.func,
 };
 
