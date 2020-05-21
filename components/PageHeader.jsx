@@ -14,6 +14,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Grow from '@material-ui/core/Grow';
+import Slide from '@material-ui/core/Slide';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -130,7 +131,7 @@ const useStyles = makeStyles(theme => ({
 const RenderSegmentFrame = ({ children, title }) => {
   const classes = useStyles();
   return (
-    <div className={classes.section}>
+    <div className={classes.section} key={title}>
       <Typography
         variant="h5"
         component="p"
@@ -141,11 +142,12 @@ const RenderSegmentFrame = ({ children, title }) => {
       { children }
     </div>
   );
-}
+};
 
 RenderSegmentFrame.propTypes = {
   title: PropTypes.string,
   children: PropTypes.node,
+  delay: PropTypes.number,
 };
 
 function PageHeader(props) {
@@ -212,11 +214,6 @@ function PageHeader(props) {
 
   const renderAbout = dense => (
     <List dense={!dense} ref={inner}>
-      <Link href="/about-us" passHref>
-        <ListItem button divider component="a" onClick={dismiss}>
-          <ListItemText primary="Who Are MediaBox?" />
-        </ListItem>
-      </Link>
       <Link href="/why-mediabox" passHref>
         <ListItem button divider component="a" onClick={dismiss}>
           <ListItemText primary="Why MediaBox?" />
@@ -232,11 +229,6 @@ function PageHeader(props) {
 
   const renderContact = dense => (
     <List dense={!dense} ref={inner}>
-      <Link href="/contact" passHref>
-        <ListItem button divider component="a" onClick={dismiss}>
-          <ListItemText primary="Contact Us" />
-        </ListItem>
-      </Link>
       <ListItem button divider component="a" onClick={dismiss} href="tel:+442037459067">
         <ListItemText primary="+44 2037 459067" />
       </ListItem>
@@ -302,13 +294,13 @@ function PageHeader(props) {
       </motion.div>
 
 
-      <Grow in={mobileMenuOpen && isMobile}>
+      <Slide in={mobileMenuOpen && isMobile} direction="up" >
         <div className={classes.mobileMenu}>
           { <RenderSegmentFrame title="Features">{ renderFeatures(true) }</RenderSegmentFrame> }
           { <RenderSegmentFrame title="About">{ renderAbout(true) }</RenderSegmentFrame> }
           { <RenderSegmentFrame title="Contact">{ renderContact(true) }</RenderSegmentFrame> }
         </div>
-      </Grow>
+      </Slide>
 
 
 
