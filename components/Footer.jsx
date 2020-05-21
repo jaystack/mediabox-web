@@ -79,26 +79,26 @@ function Footer() {
               <Grid container className={classes.smallVerticalPadding}>
                 <Grid item xs={12} sm={6} md={6}>
                   <List className={classes.noPadding} disablePadding>
-                    <ListItem className={classes.linkListItem}>
-                      <Link href="/why-mediabox" passHref>
-                        <ListItemText primary="Why MediaBox" component="a" />
-                      </Link>
-                    </ListItem>
-                    <ListItem className={classes.linkListItem}>
-                      <Link href="/brand" passHref>
-                        <ListItemText primary="Brand" component="a"/>
-                      </Link>
-                    </ListItem>
-                    <ListItem className={classes.linkListItem}>
-                      <Link href="/about-us" passHref>
-                        <ListItemText primary="About us" component="a" />
-                      </Link>
-                    </ListItem>
-                    <ListItem className={classes.linkListItem}>
-                      <Link href="/contact" passHref>
-                        <ListItemText primary="Contact" component="a" />
-                      </Link>
-                    </ListItem>
+                    <Link href="/why-mediabox" passHref>
+                      <ListItem className={classes.linkListItem} button>
+                          <ListItemText primary="Why MediaBox" />
+                      </ListItem>
+                    </Link>
+                    <Link href="/brand" passHref>
+                      <ListItem className={classes.linkListItem} button>
+                          <ListItemText primary="Brand"/>
+                      </ListItem>
+                    </Link>
+                    <Link href="/about-us" passHref>
+                      <ListItem className={classes.linkListItem} button>
+                        <ListItemText primary="About us" />
+                      </ListItem>
+                    </Link>
+                    <Link href="/contact" passHref>
+                      <ListItem className={classes.linkListItem} button>
+                        <ListItemText primary="Contact" />
+                      </ListItem>
+                    </Link>
                   </List>
                 </Grid>
                 <Grid item xs={12} sm={6} md={6}>
@@ -106,11 +106,11 @@ function Footer() {
                     <ListItem className={classes.linkListItem}>
                       <ListItemText primary="Account" />
                     </ListItem>
-                    <ListItem className={classes.linkListItem}>
-                      <Link href="/faqs" passHref>
-                        <ListItemText primary="FAQs" component="a" />
-                      </Link>
-                    </ListItem>
+                    <Link href="/faqs" passHref>
+                      <ListItem className={classes.linkListItem} button>
+                        <ListItemText primary="FAQs" />
+                      </ListItem>
+                    </Link>
                     <ListItem className={classes.linkListItem}>
                       <ListItemText primary="Login" />
                     </ListItem>
