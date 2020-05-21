@@ -82,6 +82,9 @@ const style = theme => ({
   },
   responsive: {
     maxWidth: '100%',
+    width: '100%',
+    height: 'auto',
+    objectFit: 'contain',
   },
   listItem: {
     paddingTop: theme.spacing(1),
@@ -336,7 +339,9 @@ function Brand() {
                       </List>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} container justify="center">
-                      <img src="/speed.jpg" className={classes.responsive} />
+                      <div>
+                        <img src="/speed.jpg" className={classes.responsive} />
+                      </div>
                     </Grid>
                   </Grid>
                 </div>
@@ -388,7 +393,9 @@ function Brand() {
                       </Button>
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} container justify="center">
-                      <img src="/loginPreview.png" className={classes.responsive} />
+                      <div>
+                        <img src="/loginPreview.png" className={classes.responsive} />
+                      </div>
                     </Grid>
                   </Grid>
                 </div>

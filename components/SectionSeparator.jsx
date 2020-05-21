@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
   },
   bottomAlign: {
-    bottom: -.05,
+    bottom: -1,
   }
 }));
 

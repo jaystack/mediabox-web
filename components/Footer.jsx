@@ -8,12 +8,16 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import TextField from '@material-ui/core/TextField';
+import Link from 'next/link';
 
 const useStyles = makeStyles(theme => ({
   root: {
     paddingTop: theme.spacing(10),
     paddingBottom: theme.spacing(10),
     background: '#fff',
+    '& a': {
+      color: theme.palette.getContrastText('#fff'),
+    },
   },
   footerHeader: {
     marginBottom: theme.spacing(2),
@@ -67,13 +71,6 @@ function Footer() {
           <Grid container>
             <Grid item xs={12} md={3} lg={3} className={classes.paddedMdAndDown}>
               <img src="/mediabox-lightbg.svg" className={classes.logo} />
-              {/*<TextField*/}
-              {/*  label="Size"*/}
-              {/*  id="outlined-size-small"*/}
-              {/*  defaultValue="Small"*/}
-              {/*  variant="outlined"*/}
-              {/*  size="small"*/}
-              {/*/>*/}
             </Grid>
             <Grid item xs={12} md={6} lg={6} className={classes.paddedMdAndDown}>
               <Typography variant="button" className={classes.footerHeader}>
@@ -81,28 +78,38 @@ function Footer() {
               </Typography>
               <Grid container className={classes.smallVerticalPadding}>
                 <Grid item xs={12} sm={6} md={6}>
-                  <List className={classes.noPadding}>
+                  <List className={classes.noPadding} disablePadding>
                     <ListItem className={classes.linkListItem}>
-                      <ListItemText primary="Why mediabox" />
+                      <Link href="/why-mediabox" passHref>
+                        <ListItemText primary="Why MediaBox" component="a" />
+                      </Link>
                     </ListItem>
                     <ListItem className={classes.linkListItem}>
-                      <ListItemText primary="Brand" />
+                      <Link href="/brand" passHref>
+                        <ListItemText primary="Brand" component="a"/>
+                      </Link>
                     </ListItem>
                     <ListItem className={classes.linkListItem}>
-                      <ListItemText primary="About us" />
+                      <Link href="/about-us" passHref>
+                        <ListItemText primary="About us" component="a" />
+                      </Link>
                     </ListItem>
                     <ListItem className={classes.linkListItem}>
-                      <ListItemText primary="Contact" />
+                      <Link href="/contact" passHref>
+                        <ListItemText primary="Contact" component="a" />
+                      </Link>
                     </ListItem>
                   </List>
                 </Grid>
                 <Grid item xs={12} sm={6} md={6}>
-                  <List className={classes.noPadding}>
+                  <List className={classes.noPadding} disablePadding>
                     <ListItem className={classes.linkListItem}>
                       <ListItemText primary="Account" />
                     </ListItem>
                     <ListItem className={classes.linkListItem}>
-                      <ListItemText primary="FAQs" />
+                      <Link href="/faqs" passHref>
+                        <ListItemText primary="FAQs" component="a" />
+                      </Link>
                     </ListItem>
                     <ListItem className={classes.linkListItem}>
                       <ListItemText primary="Login" />
