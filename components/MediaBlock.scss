@@ -6,6 +6,8 @@
 
     color: $white;
 
+    // Children
+
     &__media {
         position: absolute;
         top: 0;
@@ -38,4 +40,11 @@
         text-align: center;
     }
 
+    // Modifiers
+
+    &.-diagonalBottom {
+        &:after {
+            
+        }
+    }
 }

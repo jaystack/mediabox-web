@@ -28,6 +28,7 @@ function Test({ testpageContent }) {
           src: hero.asset.src,
           alt: hero.asset.alt,
         }}
+        variant="bottomDiagonal"
       />
     </div>
   );
