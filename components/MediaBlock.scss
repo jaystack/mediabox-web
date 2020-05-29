@@ -38,13 +38,54 @@
 
     &__title {
         text-align: center;
+        font-size: 80px;
+        font-family: poppins, sans-serif; //TODO
     }
 
     // Modifiers
 
-    &.-diagonalBottom {
+    &.-bottomDiagonal {
+        overflow: hidden;
+        position: relative;
         &:after {
-            
+            position: absolute;
+            content: '';
+            background: white;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 150px;
+            z-index: 5;
+            transform-origin: left top;
+            transform: skewY(4.5deg);
+        }
+    }
+
+    &__media {
+        &.-masked {
+            &:after {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: $mask;
+            }
+        }
+    }
+
+    &__image {
+        &.-faqsBackground {
+            display: block;
+            width: auto;
+            height: 1312px;
+            // object-fit: none;
         }
     }
 }
+
+
+// .mediaBlock__image-faqsBackground {
+//     border: solid 10px red !important;
+// }

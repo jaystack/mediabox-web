@@ -6,18 +6,28 @@ import "./MediaBlock.scss";
 
 // TODO: Image component, Heading component, button component,
 
-function MediaBlock({ title, subTitle, content, asset, ctaButton, variant, className }) {
+function createClassNames(prefix, modifiers) {
+  const modifierArr = (typeof modifiers === 'string' ? [modifiers] : modifiers || [])
+  .map(modifier => `-${modifier}`);
+  return classnames(prefix, modifierArr);
+}
+
+function MediaBlock({ title, subTitle, content, asset, ctaButton, variant, className, imageModifiers, mediaModifiers }) {
   const variants = {
     bottomDiagonal: '-bottomDiagonal',
   }
+  // const variants = (typeof variant === 'string' ? [variant] : variant).map(it => 'mediaBlock-' + it)
+
+  const imageModifierArr = (typeof imageModifiers === 'string' ? [imageModifiers] : imageModifiers || [])
+  .map(it => 'mediaBlock__image-' + it);
 
   return (
     <div
       className={classnames("mediaBlock", className, variants[variant])}
     >
-      <div className="mediaBlock__media">
+      <div className={createClassNames("mediaBlock__media", mediaModifiers)}>
         {asset && (
-          <img className="mediaBlock__image" src={asset.src} alt={asset.alt} />
+          <img className={createClassNames("mediaBlock__image", imageModifiers)} src={asset.src} alt={asset.alt} />
         )}
       </div>
       <div className="mediaBlock__inner">
