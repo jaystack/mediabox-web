@@ -1,0 +1,54 @@
+@import "../scss/abstracts";
+
+.collapsibleListItem {
+  $toggleBtnSize: 32px;
+  border-bottom: solid 2px rgba(0, 0, 0, 0.08);
+  // Elements
+  width: 100%;
+
+  &__title {
+    position: relative;
+    letter-spacing: -1px;
+    font-size: 38px;
+    line-height: 42px;
+    font-weight: 700;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.65);
+    transition: color 0.15s;
+
+    &:hover {
+      color: #083140;
+    }
+  }
+
+  &__titleText {
+      padding: 30px $toggleBtnSize 30px 0;
+  }
+
+  &__toggleBtn {
+    position: absolute;
+    display: flex;
+    width: $toggleBtnSize;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__toggleIcon {
+    margin: auto 0;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  &__content {
+    overflow-y: hidden;
+    max-height: 0;
+    transition: max-height 1s;
+  }
+
+  // Modifiers
+  &__content.-open {
+    max-height: 100vh;
+  }
+  
+}

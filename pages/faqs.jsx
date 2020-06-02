@@ -52,26 +52,6 @@ function Faqs({ faqContent }) {
         items={[
           {
             title: "What digital assets can MediaBox store?",
-            content: `<div style=""></div>`,
-          },
-          {
-            title: "What digital assets can MediaBox store?",
-            content: `<div style="">
-            <div class="inner-toggle-wrap">
-            <div class="wpb_text_column wpb_content_element ">
-            xxx
-            </div>
-            <div class="wpb_text_column wpb_content_element ">
-            yyy
-            </div>
-            <div class="wpb_text_column wpb_content_element ">
-            zzz
-            </div>
-          </div>
-          </div></div>`,
-          },
-          {
-            title: "What digital assets can MediaBox store?",
             content: `<div style=""><div class="inner-toggle-wrap">
           <div class="wpb_text_column wpb_content_element ">
             <div class="wpb_wrapper">
@@ -108,24 +88,40 @@ function Faqs({ faqContent }) {
           
           </div></div>`,
           },
-          { title: "Who can use it?", content: "<div>test2</div>" },
+          {
+            title: "How are my files stored?",
+            content:
+              "<div>A cloud based system backed up by XXX servers, saving you space and cost on storage.</div>",
+          },
+          {
+            title: "Who can use it?",
+            content:
+              "<p>Anyone.&nbsp; With our bespoke permissions controls you can choose exactly who sees and adds what assets, and control how they can use them.&nbsp; With MediaBox, you are in the driving seat.</p>",
+          },
           {
             title: "What devices is it compatible with?",
-            content: "<div>test2</div>",
+            content: `<div class="wpb_wrapper">
+            <p>Desktop computers and mobile devices on Android and Apple</p>
+        <div class="nectar_icon_wrap" data-style="border-animation" data-draw="" data-border-thickness="2px" data-padding="20px" data-color="accent-color" style="margin-right: 5px; ">
+            <div class="nectar_icon"><i style="font-size: 30px; line-height: 45px; height: 45px; width: 45px;" class="fa fa-android"></i></div>
+          </div><div class="nectar_icon_wrap" data-style="border-animation" data-draw="" data-border-thickness="2px" data-padding="20px" data-color="accent-color" style="">
+            <div class="nectar_icon"><i style="font-size: 30px; line-height: 45px; height: 45px; width: 45px;" class="fa fa-apple"></i></div>
+          </div>
+          </div>`,
           },
           {
             title:
               "Which operating systems and browsers does your system support, and is there complete feature parity across operating systems and browsers?",
-            content: "<div>test2</div>",
+            content: "<div>TBA</div>",
           },
           {
             title: "How does it integrate with our workflows?",
-            content: "<div>test2</div>",
+            content: "<div>TBA</div>",
           },
-          { title: "How much does it cost?", content: "<div>test2</div>" },
+          { title: "How much does it cost?", content: "<div>TBA</div>" },
           {
             title: "Can you tailor the suite to match my needs?",
-            content: "<div>test2</div>",
+            content: "<div>Yes. Our team are on hand to discuss your requirements to make the system work for you.</div>",
           },
         ]}
       />

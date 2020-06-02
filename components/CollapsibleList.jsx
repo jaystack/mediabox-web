@@ -1,43 +1,21 @@
 import React from "react";
 import * as PropTypes from "prop-types";
 import classnames from "classnames";
+import CollapsibleListItem from "./CollapsibleListItem";
 
 import "./CollapsibleList.scss";
 
-
 function CollapsibleList({ items, variant }) {
-  
   return (
     <div className={classnames("collapsibleList", variant)}>
       <div className="collapsibleList__inner">
-        {items.map((item, i) => {
-          return (
-            <div className="collapsibleList__item" key={`collapsibleIt_${i}`}>
-              <div className="collapsibleList__itemTitle">
-                <div className={classnames("collapsibleList__itemTitleText")}>{item.title}</div>
-                <div className={classnames("collapsibleList__itemToggleBtn")}>
-                  <i
-                    className={classnames(
-                      "collapsibleList__itemToggleIcon",
-                      "icon-plus-sign"
-                    )}
-                    style={{ width: "32px", height: "32px" }}
-                  >
-                    +
-                  </i>
-                </div>
-              </div>
-
-              <div
-                className={classnames(
-                  "collapsibleList__itemContent",
-                  item.classNames
-                )}
-                dangerouslySetInnerHTML={{ __html: item.content }}
-              />
-            </div>
-          );
-        })}
+        {items.map((item, i) => (
+          <CollapsibleListItem
+            key={`collapsibleIt_${i}`}
+            title={item.title}
+            content={item.content}
+          />
+        ))}
       </div>
     </div>
   );
@@ -45,7 +23,7 @@ function CollapsibleList({ items, variant }) {
 
 CollapsibleList.defaultProps = {
   items: [],
-  variant: "",
+  variant: [],
 };
 
 CollapsibleList.propTypes = {
