@@ -6,7 +6,7 @@ import Heading from "./Heading";
 
 import "./MediaBlock.scss";
 
-// TODO: Image component, Heading component, button component,
+// TODO: Image component, button component,
 
 function MediaBlock({ title, subTitle, content, asset, ctaButton, className, variant  }) {
   return (

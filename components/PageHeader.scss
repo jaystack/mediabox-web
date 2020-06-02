@@ -24,10 +24,18 @@
         display: flex;
         @extend %listReset;
         margin-bottom: -17px;
+
+        @include breakpointDown(1150px) {
+            display: none;
+        }
     }
 
     &__menuItem {
         font-size: 20px;
+
+        @include breakpointDown(1275px) {
+            font-size: 18px;
+        }
     }
 
     &__menuItemLink {
