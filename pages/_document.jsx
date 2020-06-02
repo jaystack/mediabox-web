@@ -2,8 +2,6 @@ import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 
-import "./base.scss";
-
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     // Resolution order

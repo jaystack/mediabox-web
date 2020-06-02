@@ -16,6 +16,8 @@ import makeStore from '../storecp';
 import PageHeader from '../components/PageHeader';
 import Footer from '../components/Footer';
 
+import "./base.scss";
+
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     //
@@ -44,7 +46,7 @@ class MyApp extends App {
         </Head>
         <ThemeProvider theme={theme}>
           <Provider store={store}>
-            <CssBaseline />
+            {/* <CssBaseline /> */}
             <PageHeader/>
             <AnimatePresence exitBeforeEnter>
               <Component {...pageProps} key={router.asPath} />
