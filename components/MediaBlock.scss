@@ -123,17 +123,39 @@
   &.-bottomDiagonal {
     overflow: hidden;
     position: relative;
+
     &:after {
-      position: absolute;
       content: "";
-      background: white;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 150px;
+      position: absolute;
       z-index: 5;
-      transform-origin: left top;
-      transform: skewY(4.5deg);
+
+      
+      left: 0;
+      bottom: 0;
+      height: 0;
+      width: 0;
+      border: {
+        top: 70px solid transparent;
+        bottom: 70px solid $white;
+        left: 50vw solid $white;
+        right: 50vw solid transparent;
+      }
+      transition: border-width 0.15s ease;
+
+  
+      @include breakpointDown($md) {
+        border: {
+          top-width: 50px;
+          bottom-width: 50px;
+        }
+      }
+  
+      @include breakpointDown($sm) {
+        border: {
+          top-width: 25px;
+          bottom-width: 25px;
+        }
+      }
     }
   }
 
