@@ -18,6 +18,7 @@ import Footer from '../components/Footer';
 
 import "./base.scss";
 
+
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     //
@@ -34,6 +35,41 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps, store, router } = this.props;
+    const navbarContent = {
+      title: "mediabox",
+      logoSrc: "/mediabox-darkbg.svg",
+      menuItems: [
+        {
+          title: "digital asset managment",
+          href: "/",
+        },
+        {
+          title: "why mediabox",
+          href: "/",
+        },
+        {
+          title: "brand",
+          href: "/",
+        },
+        {
+          title: "about us",
+          href: "/",
+        },
+        {
+          title: "faqs",
+          href: "/faqs",
+        },
+        {
+          title: "contact",
+          href: "/",
+        },
+        {
+          title: "login",
+          href: "/",
+        },
+      ],
+      
+    };
 
     return (
       <React.Fragment>
@@ -47,7 +83,7 @@ class MyApp extends App {
         <ThemeProvider theme={theme}>
           <Provider store={store}>
             {/* <CssBaseline /> */}
-            <PageHeader/>
+            <PageHeader navbarContent={navbarContent} />
             <AnimatePresence exitBeforeEnter>
               <Component {...pageProps} key={router.asPath} />
             </AnimatePresence>
