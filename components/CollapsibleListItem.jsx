@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import * as PropTypes from "prop-types";
 import classnames from "classnames";
 
@@ -8,7 +8,7 @@ function CollapsibleListItem({ title, content, variant }) {
   const [open, setOpen] = React.useState(false);
   const [transition, setTransition] = React.useState(false);
   const [contentHeight, setContentHeight] = React.useState(0);
-  const contentRef = useRef();
+  const contentRef = React.useRef();
 
   const updateHeight = () => {
     const height = contentRef?.current?.clientHeight || 0;
