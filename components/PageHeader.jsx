@@ -11,8 +11,10 @@ function PageHeader({ className, navbarContent }) {
   return (
     <>
       <nav className="navBar">
-        <Link className="mainLogo" href="/">
-          <img className="navBar__logo" src={navbarContent.logoSrc} alt={navbarContent.title} />
+        <Link href="/">
+          <a className="navBar__logoLink">
+            <img className="navBar__logo" src={navbarContent.logoSrc} alt={navbarContent.title} />
+          </a>
         </Link>
         <ul className="navBar__menu">
           {
