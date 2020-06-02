@@ -23,25 +23,40 @@
     &__menu {
         display: flex;
         @extend %listReset;
-        margin-bottom: -17px;
+        margin-bottom: -10px;
+        font-size: 20px;
+        
+        @include breakpointDown(1275px) {
+            margin-bottom: -9px;
+            font-size: 18px;
+        }
 
         @include breakpointDown(1150px) {
             display: none;
         }
     }
 
-    &__menuItem {
-        font-size: 20px;
-
-        @include breakpointDown(1275px) {
-            font-size: 18px;
-        }
-    }
-
     &__menuItemLink {
+        position: relative;
         display: block;
         padding: 10px;
         color: $white;
         text-decoration: none;
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            display: block;
+            width: 0;
+            height: 2px;
+            background-color: $white;
+            transition: width 0.23s ease-out;
+        }
+
+        &:hover:after {
+            width: calc( 100% - 20px );
+        }
     }
 }
