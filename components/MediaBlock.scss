@@ -48,8 +48,19 @@
     }
 
     &__title {
+        margin: 0;
         text-align: center;
         font-size: 80px;
+    }
+
+    &__subTitle {
+        margin: 0;
+        letter-spacing: 1px;
+        font: {
+            size: 25px;
+            weight: 400;
+        }
+        line-height: 40px;
     }
 
     // Modifiers

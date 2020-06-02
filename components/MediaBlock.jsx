@@ -2,6 +2,8 @@ import React from "react";
 import * as PropTypes from "prop-types";
 import classnames from "classnames";
 
+import Heading from "./Heading";
+
 import "./MediaBlock.scss";
 
 // TODO: Image component, Heading component, button component,
@@ -17,8 +19,20 @@ function MediaBlock({ title, subTitle, content, asset, ctaButton, className, var
         )}
       </div>
       <div className="mediaBlock__inner">
-        <h1 className="mediaBlock__title">{title}</h1>
-        {subTitle && <h2 className="mediaBlock__subTitle">{subTitle}</h2>}
+        <Heading
+          level={1}
+          className="mediaBlock__title"
+        >
+          {title}
+        </Heading>
+        {subTitle && (
+          <Heading
+            level={2}
+            className="mediaBlock__subTitle"
+          >
+            {subTitle}
+          </Heading>
+        )}
         {content && (
           <div
             className="mediaBlock__content"
