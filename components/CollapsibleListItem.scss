@@ -15,6 +15,7 @@
     cursor: pointer;
     color: rgba(0, 0, 0, 0.65);
     transition: color 0.15s;
+    user-select: none;
 
     &:hover {
       color: #083140;
@@ -22,7 +23,7 @@
   }
 
   &__titleText {
-      padding: 30px $toggleBtnSize 30px 0;
+    padding: 30px $toggleBtnSize 30px 0;
   }
 
   &__toggleBtn {
@@ -42,13 +43,30 @@
 
   &__content {
     overflow-y: hidden;
-    max-height: 0;
-    transition: max-height 1s;
+    position: absolute;
+    visibility: hidden;
+    transition: max-height 0.5s;
+  }
+
+  &__contentContainer {
+    padding: 0 0 0.4em 0;
   }
 
   // Modifiers
-  &__content.-open {
-    max-height: 100vh;
+  &__content.-transition {
+    position: static;
   }
-  
+
+  &__content.-open.-transition {
+    position: static;
+    visibility: visible;
+    opacity: 0.75;
+    max-height: 0 !important;
+  }
+
+  &__content.-open {
+    position: static;
+    visibility: visible;
+    opacity: 1;
+  }
 }
