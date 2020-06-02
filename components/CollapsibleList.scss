@@ -1,0 +1,74 @@
+@import "../scss/abstracts";
+
+.collapsibleList {
+  $toggleBtnSize: 32px;
+  // Elements
+  width: 100%;
+
+  &__inner {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+
+  &__item {
+    border-bottom: solid 2px rgba(0, 0, 0, 0.08);
+  }
+
+  &__itemTitle {
+    position: relative;
+    letter-spacing: -1px;
+    font-size: 38px;
+    line-height: 42px;
+    font-weight: 700;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.65);
+    transition: color 0.15s;
+
+    &:hover {
+      color: #083140;
+    }
+  }
+
+  &__itemTitleText {
+      padding: 30px $toggleBtnSize 30px 0;
+  }
+
+  &__itemToggleBtn {
+    position: absolute;
+    display: flex;
+    width: $toggleBtnSize;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__itemToggleIcon {
+    margin: auto 0;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  &__itemContent {
+    // border: solid 1px green;
+    overflow: hidden;
+    max-height: 0;
+  }
+
+  // Modifiers
+  &.-bottomDiagonal {
+    overflow: hidden;
+    position: relative;
+    &:after {
+      position: absolute;
+      content: "";
+      background: white;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 150px;
+      z-index: 5;
+      transform-origin: left top;
+      transform: skewY(4.5deg);
+    }
+  }
+}
