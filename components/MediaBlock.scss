@@ -128,11 +128,10 @@
       content: "";
       position: absolute;
       z-index: 5;
-
-      
       left: 0;
       bottom: 0;
       height: 0;
+      display: block;
       width: 0;
       border: {
         top: 70px solid transparent;
@@ -142,7 +141,6 @@
       }
       transition: border-width 0.15s ease;
 
-  
       @include breakpointDown($md) {
         border: {
           top-width: 50px;

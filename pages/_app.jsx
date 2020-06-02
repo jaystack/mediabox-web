@@ -68,6 +68,16 @@ class MyApp extends App {
           href: "/",
         },
       ],
+      iconMenuItems: [
+        {
+          icon: <i className="fa fa-phone" />,
+          href: "tel:02037459067",
+        },
+        {
+          icon: <i className="fa fa-envelope" />,
+          href: "mailto:info@mediaboxsolutions.co.uk",
+        },
+      ],
       
     };
 

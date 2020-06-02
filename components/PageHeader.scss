@@ -2,7 +2,7 @@
 
 .navBar {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-end;
     position: relative;
     z-index: 500;
@@ -14,6 +14,10 @@
         right: 28px;
     }
     height: 70px;
+
+    &__logoLink {
+        margin-right: auto;
+    }
 
     &__logo {
         width: 180px;
@@ -57,6 +61,29 @@
 
         &:hover:after {
             width: calc( 100% - 20px );
+        }
+    }
+
+    &__iconMenu {
+        display: flex;
+        @extend %listReset;
+        margin: {
+            bottom: -10px;
+            left: 10px;
+        }
+        font-size: 20px;
+    }
+
+    &__iconMenuItemLink {
+        position: relative;
+        display: block;
+        padding: 10px;
+        color: $white;
+        text-decoration: none;
+        transition: transform 0.2s ease;
+
+        &:hover {
+            transform: scale(1.25);
         }
     }
 }
