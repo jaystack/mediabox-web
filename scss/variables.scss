@@ -4,3 +4,10 @@ $white: #fff;
 $maskOpacity: 0.8;
 $maskColor: #083140;
 $mask: rgba($maskColor, $maskOpacity);
+
+// Responsive breakpoints
+
+$sm: 540px;
+$md: 720px;
+$lg: 960px;
+$xl: 1140px;

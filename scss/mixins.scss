@@ -1,0 +1,12 @@
+// Breakpints
+@mixin breakpointUp($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin breakpointDown($width) {
+  @media (max-width: ($width - 1px)) {
+    @content;
+  }
+}

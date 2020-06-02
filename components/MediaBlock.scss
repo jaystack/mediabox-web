@@ -1,96 +1,126 @@
-@import '../scss/abstracts';
+@import "../scss/abstracts";
 
 .mediaBlock {
+  position: relative;
+  height: 100vh;
+
+  color: $white;
+
+  // Children
+
+  &__media {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+
+    //mask
+    &:after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $mask;
+    }
+  }
+
+  &__inner {
     position: relative;
-    height: 100vh;
+    z-index: 10;
 
-    color: $white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    // Children
+    height: 100%;
+  }
 
-    &__media {
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 5;
-        width: 100%;
-        height: 100%;
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-        //mask
-        &:after {
-            position: absolute;
-            content: '';
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: $mask;
-        }
+  &__title {
+    margin: {
+      top: 0;
+      bottom: 8px;
+    }
+    text-align: center;
+    font: {
+      weight: 600;
+      size: 80px;
+    }
+    line-height: 85px;
+
+    @include breakpointDown($lg) {
+      font-size: 72px;
+      line-height: 76.5px;
     }
 
-    &__inner {
-        position: relative;
-        z-index: 10;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        height: 100%;
+    @include breakpointDown($md) {
+      font-size: 68px;
+      line-height: 72.25px;
     }
 
-    &__image {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    @include breakpointDown($sm) {
+      font-size: 36px;
+      line-height: 38.25px;
+    }
+  }
+
+  &__subTitle {
+    margin: 0;
+    letter-spacing: 1px;
+    font: {
+      size: 25px;
+      weight: 400;
+    }
+    line-height: 40px;
+
+    @include breakpointDown($lg) {
+      font-size: 22.5px;
+      line-height: 36px;
     }
 
-    &__title {
-        margin: 0;
-        text-align: center;
-        font-size: 80px;
+    @include breakpointDown($md) {
+      font-size: 17.5px;
+      line-height: 28px;
     }
+  }
 
-    &__subTitle {
-        margin: 0;
-        letter-spacing: 1px;
-        font: {
-            size: 25px;
-            weight: 400;
-        }
-        line-height: 40px;
+  // Modifiers
+
+  &.-bottomDiagonal {
+    overflow: hidden;
+    position: relative;
+    &:after {
+      position: absolute;
+      content: "";
+      background: white;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 150px;
+      z-index: 5;
+      transform-origin: left top;
+      transform: skewY(4.5deg);
     }
+  }
 
-    // Modifiers
-
-    &.-bottomDiagonal {
-        overflow: hidden;
-        position: relative;
-        &:after {
-            position: absolute;
-            content: '';
-            background: white;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 150px;
-            z-index: 5;
-            transform-origin: left top;
-            transform: skewY(4.5deg);
-        }
-    }
-
-    // special for FAQS page
-    &.-specialFaqsBackground .mediaBlock__image {
-            display: block;
-            width: auto;
-            height: 1312px;
-    }
-
+  // special for FAQS page
+  &.-specialFaqsBackground .mediaBlock__image {
+    display: block;
+    width: auto;
+    height: 1312px;
+  }
 }
-
 
 // .mediaBlock__image-faqsBackground {
 //     border: solid 10px red !important;
