@@ -6,28 +6,14 @@ import "./MediaBlock.scss";
 
 // TODO: Image component, Heading component, button component,
 
-function createClassNames(prefix, modifiers) {
-  const modifierArr = (typeof modifiers === 'string' ? [modifiers] : modifiers || [])
-  .map(modifier => `-${modifier}`);
-  return classnames(prefix, modifierArr);
-}
-
-function MediaBlock({ title, subTitle, content, asset, ctaButton, variant, className, imageModifiers, mediaModifiers }) {
-  const variants = {
-    bottomDiagonal: '-bottomDiagonal',
-  }
-  // const variants = (typeof variant === 'string' ? [variant] : variant).map(it => 'mediaBlock-' + it)
-
-  const imageModifierArr = (typeof imageModifiers === 'string' ? [imageModifiers] : imageModifiers || [])
-  .map(it => 'mediaBlock__image-' + it);
-
+function MediaBlock({ title, subTitle, content, asset, ctaButton, className, variant  }) {
   return (
     <div
-      className={classnames("mediaBlock", className, variants[variant])}
+      className={classnames("mediaBlock", className, variant)}
     >
-      <div className={createClassNames("mediaBlock__media", mediaModifiers)}>
+      <div className={classnames("mediaBlock__media")}>
         {asset && (
-          <img className={createClassNames("mediaBlock__image", imageModifiers)} src={asset.src} alt={asset.alt} />
+          <img className={classnames("mediaBlock__image")} src={asset.src} alt={asset.alt} />
         )}
       </div>
       <div className="mediaBlock__inner">
@@ -55,7 +41,7 @@ MediaBlock.defaultProps = {
   content: "",
   asset: {},
   ctaButton: {},
-  variant: "",
+  variant: [],
   className: "",
 };
 
@@ -65,7 +51,7 @@ MediaBlock.propTypes = {
   content: PropTypes.string,
   asset: PropTypes.objectOf(PropTypes.string),
   ctaButton: PropTypes.objectOf(PropTypes.string),
-  variant: PropTypes.string,
+  variant: PropTypes.array,
   className: PropTypes.string,
 };
 

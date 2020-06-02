@@ -115,9 +115,7 @@ function Faqs({ faqContent }) {
           src: hero.asset.src,
           alt: hero.asset.alt,
         }}
-        variant="bottomDiagonal"
-        imageModifiers={["faqsBackground"]}
-        mediaModifiers={["masked"]}
+        variant={["-bottomDiagonal", "-specialFaqsBackground"]}
       />
     </>
   );

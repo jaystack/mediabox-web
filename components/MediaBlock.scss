@@ -14,7 +14,18 @@
         right: 0;
         z-index: 5;
         width: 100%;
-        height: 100%
+        height: 100%;
+
+        //mask
+        &:after {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: $mask;
+        }
     }
 
     &__inner {
@@ -40,6 +51,7 @@
         text-align: center;
         font-size: 80px;
         font-family: poppins, sans-serif; //TODO
+        font-weight: 500;
     }
 
     // Modifiers
@@ -61,28 +73,13 @@
         }
     }
 
-    &__media {
-        &.-masked {
-            &:after {
-                position: absolute;
-                content: '';
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: $mask;
-            }
-        }
-    }
-
-    &__image {
-        &.-faqsBackground {
+    // special for FAQS page
+    &.-specialFaqsBackground .mediaBlock__image {
             display: block;
             width: auto;
             height: 1312px;
-            // object-fit: none;
-        }
     }
+
 }
 
 
