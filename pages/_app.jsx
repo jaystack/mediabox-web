@@ -84,9 +84,7 @@ class MyApp extends App {
           <Provider store={store}>
             {/* <CssBaseline /> */}
             <PageHeader navbarContent={navbarContent} />
-            <AnimatePresence exitBeforeEnter>
-              <Component {...pageProps} key={router.asPath} />
-            </AnimatePresence>
+            <Component {...pageProps} key={router.asPath} />
             <Footer />
           </Provider>
         </ThemeProvider>

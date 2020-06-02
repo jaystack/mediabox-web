@@ -2,3 +2,10 @@ body {
     margin: 0;
     font-family: Poppins, sans-serif !important;
 }
+
+#__next + footer {
+    &,
+    & + div {
+        display: none;
+    }
+}
