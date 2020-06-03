@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import Heading from "./Heading";
 import "./MediaBlock.scss";
 
+// TODO: SPLIT MediaBlock to MediaBlock, MediaBlockImage, MediaBlock video component
 function MediaBlock({
   title,
   subTitle,
@@ -13,9 +14,41 @@ function MediaBlock({
   className,
   variant,
 }) {
+  const mediaRef = useRef();
+  const videoRef = useRef();
+  const [videoOpacity, setVideoOpacity] = useState(1);
+
+  useEffect(() => {
+    const scrollListener = () => {
+      // TODO: SPLIT MediaBlock to MediaBlock, MediaBlockImage, MediaBlock video component
+      if (asset?.assetType != "video") {
+        return;
+      }
+      const mediaHeight = mediaRef?.current?.clientHeight || 0;
+      const scrollPos = window.pageYOffset || 0;
+      if (mediaHeight && scrollPos && videoRef?.current) {
+        const ratio = scrollPos / mediaHeight;
+        if (ratio > 0.25) {
+          videoRef.current.pause();
+        } else {
+          videoRef.current.play();
+        }
+
+        const op = 1.1 - ratio;
+        setVideoOpacity(op > 1 ? 1 : op);
+      }
+    };
+
+    // set resize listener
+    window.addEventListener("scroll", scrollListener);
+    // cleanup
+    return () => {
+      window.removeEventListener("scroll", scrollListener);
+    };
+  }, []);
   return (
     <div className={classnames("mediaBlock", className, variant)}>
-      <div className={classnames("mediaBlock__media")}>
+      <div ref={mediaRef} className={classnames("mediaBlock__media")}>
         {asset?.assetType === "image" && (
           <img
             className={classnames("mediaBlock__image")}
@@ -25,11 +58,13 @@ function MediaBlock({
         )}
         {asset?.assetType === "video" && (
           <video
+            ref={videoRef}
             loop={true}
             autoPlay={true}
             muted={true}
             {...asset.video}
             className={classnames(asset?.video.className, "mediaBlock__video")}
+            style={{ opacity: videoOpacity, transition: "opacity 0.05s" }}
           >
             <source {...asset.source} />
           </video>
