@@ -30,9 +30,12 @@ function PageHeader({ className, navbarContent }) {
         <ul className="navBar__iconMenu">
           {navbarContent.iconMenuItems.map((menuItem, key) => (
             <li key={key} className="navBar__iconMenuItem">
-              <Link href={menuItem.href}>
-                <a className="navBar__iconMenuItemLink">{menuItem.icon}</a>
-              </Link>
+              <a 
+                className="navBar__iconMenuItemLink"
+                href={menuItem.href}
+              >
+                {menuItem.icon}
+              </a>
             </li>
           ))}
         </ul>
