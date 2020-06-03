@@ -80,6 +80,79 @@ class MyApp extends App {
       ],
       
     };
+    const footerContent = {
+      logoSrc: "/mediabox-lightbg.svg",
+      copyRight: "© 2020 Mediabox.",
+      contact: {
+        title: "contact details",
+        content: `
+          <p>20-22 Wenlock Road,<br>
+          London, N1 7GU</p>
+          <p><a href="tel:0203 7459067">0203 7459067</a><br>
+          <a href="mailto:info@mediaboxsolutions.co.uk">info@mediaboxsolutions.co.uk</a>`
+      },
+      iconMenuItems: [
+        {
+          icon: <i className="fa fa-phone" />,
+          href: "tel:02037459067",
+        },
+        {
+          icon: <i className="fa fa-envelope" />,
+          href: "mailto:info@mediaboxsolutions.co.uk",
+        },
+      ],
+      menuBlocks: [
+        {
+          title: "quick links",
+          menuItems: [
+            {
+              title: "Why mediabox",
+              href: "/",
+            },
+            {
+              title: "Brand",
+              href: "/",
+            },
+            {
+              title: "About us",
+              href: "/",
+            },
+            {
+              title: "Contact",
+              href: "/",
+            },
+          ],
+        },
+        {
+          title: "quick links",
+          menuItems: [
+            {
+              title: "Account",
+              href: "/",
+            },
+            {
+              title: "FAQs",
+              href: "/faqs",
+            },
+            {
+              title: "Login",
+              href: "/",
+            },
+          ],
+        },
+      ],
+      iconMenuItems: [
+        {
+          icon: <i className="fa fa-phone" />,
+          href: "tel:02037459067",
+        },
+        {
+          icon: <i className="fa fa-envelope" />,
+          href: "mailto:info@mediaboxsolutions.co.uk",
+        },
+      ],
+      
+    };
 
     return (
       <React.Fragment>
@@ -95,7 +168,7 @@ class MyApp extends App {
             {/* <CssBaseline /> */}
             <PageHeader navbarContent={navbarContent} />
             <Component {...pageProps} key={router.asPath} />
-            <Footer />
+            <Footer footerContent={footerContent} />
           </Provider>
         </ThemeProvider>
       </React.Fragment>

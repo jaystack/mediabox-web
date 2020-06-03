@@ -1,13 +1,37 @@
-@import '../scss/font-awesome.css';
+@import "../scss/abstracts.scss";
+@import "../scss/font-awesome.css";
 
 body {
-    margin: 0;
-    font-family: Poppins, sans-serif !important;
+  margin: 0;
+  font-family: Poppins, sans-serif !important;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1320px;
+  padding: {
+    left: 90px;
+    right: 90px;
+  }
+
+  @include breakpointDown($md) {
+    padding: {
+      left: 70px;
+      right: 70px;
+    }
+  }
+
+  @include breakpointDown($sm) {
+    padding: {
+      left: 50px;
+      right: 50px;
+    }
+  }
 }
 
 #__next + footer {
-    &,
-    & + div {
-        display: none;
-    }
+  &,
+  & + div {
+    display: none;
+  }
 }
