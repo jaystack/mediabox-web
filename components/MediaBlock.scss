@@ -34,6 +34,16 @@
     height: 100%;
 
     //mask
+    &:before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $maskColor;
+      z-index: -1;
+    }
     &:after {
       position: absolute;
       content: "";
