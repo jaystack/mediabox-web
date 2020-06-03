@@ -11,6 +11,7 @@ function MediaBlock({
   content,
   asset,
   ctaButton,
+  skiplink,
   className,
   variant,
 }) {
@@ -47,7 +48,8 @@ function MediaBlock({
     };
   }, []);
   return (
-    <div className={classnames("mediaBlock", className, variant)}>
+    <>
+      <div className={classnames("mediaBlock", className, variant)}>
       <div ref={mediaRef} className={classnames("mediaBlock__media")}>
         {asset?.assetType === "image" && (
           <img
@@ -70,29 +72,38 @@ function MediaBlock({
           </video>
         )}
       </div>
-      <div className="mediaBlock__inner">
-        <Heading level={1} className="mediaBlock__title">
-          {title}
-        </Heading>
-        {subTitle && (
-          <Heading level={2} className="mediaBlock__subTitle">
-            {subTitle}
+        <div className="mediaBlock__inner">
+          <Heading level={1} className="mediaBlock__title">
+            {title}
           </Heading>
-        )}
-        {content && (
-          <div
-            className="mediaBlock__content"
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
-        )}
-        {ctaButton && (
-          <a href="mediaBlock__ctaButton" href={ctaButton.url}>
-            <span>{ctaButton.icon}</span>
-            {ctaButton.label}
-          </a>
-        )}
+          {subTitle && (
+            <Heading level={2} className="mediaBlock__subTitle">
+              {subTitle}
+            </Heading>
+          )}
+          {content && (
+            <div
+              className="mediaBlock__content"
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
+          )}
+          {ctaButton && (
+            <a href="mediaBlock__ctaButton" href={ctaButton.url}>
+              <span>{ctaButton.icon}</span>
+              {ctaButton.label}
+            </a>
+          )}
+          {skiplink && (
+            <a className="mediaBlock__skipLink" href="#content">
+              <i className="fa fa-angle-down" />
+            </a>
+          )}
+        </div>
       </div>
-    </div>
+      {skiplink && (
+        <a id="content" />
+      )}
+    </>
   );
 }
 
@@ -101,6 +112,7 @@ MediaBlock.defaultProps = {
   content: "",
   asset: {},
   ctaButton: {},
+  skiplink: false,
   variant: [],
   className: "",
 };
@@ -111,6 +123,7 @@ MediaBlock.propTypes = {
   content: PropTypes.string,
   asset: PropTypes.object,
   ctaButton: PropTypes.objectOf(PropTypes.string),
+  skiplink: PropTypes.bool,
   variant: PropTypes.array,
   className: PropTypes.string,
 };

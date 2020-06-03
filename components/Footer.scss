@@ -1,0 +1,25 @@
+@import "../scss/abstracts";
+
+.footer {
+  &__homeButton {
+    position: fixed;
+    left: 4.2%;
+    bottom: 5%;
+    z-index: 99999;
+    width: 56px;
+    height: 56px;
+    opacity: 1;
+    background-color: #48A4DC;
+    color: $white;
+    line-height: 57px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow:
+      0 2px 5px 0 rgba(0,0,0,.16),
+      0 2px 10px 0 rgba(0,0,0,.12);
+
+    &:hover {
+      background-color: rgba(182, 182, 182, 1);
+    }
+  }
+}
