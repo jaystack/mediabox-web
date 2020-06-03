@@ -75,10 +75,10 @@ const faqContent = {
       title: "What devices is it compatible with?",
       content: `<div class="wpb_wrapper">
         <p>Desktop computers and mobile devices on Android and Apple</p>
-    <div class="nectar_icon_wrap" data-style="border-animation" data-draw="" data-border-thickness="2px" data-padding="20px" data-color="accent-color" style="margin-right: 5px; ">
-        <div class="nectar_icon"><i style="font-size: 30px; line-height: 45px; height: 45px; width: 45px;" class="fa fa-android"></i></div>
+    <div class="nectar_icon_wrap" data-style="border-animation" data-draw="" data-border-thickness="2px" data-padding="20px" data-color="accent-color" style="margin-right: 5px; float:left;">
+        <div class="nectar_icon"><i style="font-size: 36px; line-height: 45px; height: 45px; width: 45px;" class="fa fa-android"></i></div>
       </div><div class="nectar_icon_wrap" data-style="border-animation" data-draw="" data-border-thickness="2px" data-padding="20px" data-color="accent-color" style="">
-        <div class="nectar_icon"><i style="font-size: 30px; line-height: 45px; height: 45px; width: 45px;" class="fa fa-apple"></i></div>
+        <div class="nectar_icon"><i style="font-size: 36px; line-height: 45px; height: 45px; width: 45px;" class="fa fa-apple"></i></div>
       </div>
       </div>`,
     },
