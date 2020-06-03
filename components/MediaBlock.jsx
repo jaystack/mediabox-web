@@ -1,12 +1,8 @@
 import React from "react";
 import * as PropTypes from "prop-types";
 import classnames from "classnames";
-
 import Heading from "./Heading";
-
 import "./MediaBlock.scss";
-
-// TODO: Image component, button component,
 
 function MediaBlock({
   title,
@@ -20,12 +16,23 @@ function MediaBlock({
   return (
     <div className={classnames("mediaBlock", className, variant)}>
       <div className={classnames("mediaBlock__media")}>
-        {asset && (
+        {asset?.assetType === "image" && (
           <img
             className={classnames("mediaBlock__image")}
             src={asset.src}
             alt={asset.alt}
           />
+        )}
+        {asset?.assetType === "video" && (
+          <video
+            loop={true}
+            autoPlay={true}
+            muted={true}
+            {...asset.video}
+            className={classnames(asset?.video.className, "mediaBlock__video")}
+          >
+            <source {...asset.source} />
+          </video>
         )}
       </div>
       <div className="mediaBlock__inner">
@@ -67,7 +74,7 @@ MediaBlock.propTypes = {
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.string,
   content: PropTypes.string,
-  asset: PropTypes.objectOf(PropTypes.string),
+  asset: PropTypes.object,
   ctaButton: PropTypes.objectOf(PropTypes.string),
   variant: PropTypes.array,
   className: PropTypes.string,

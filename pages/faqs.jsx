@@ -33,22 +33,32 @@ export const getServerSideProps = async () => {
 };
 
 function Faqs({ faqContent }) {
-  const { hero, collapsibleList } = faqContent;
-
+  const { hero, videoBanner, collapsibleList } = faqContent;
   const theme = useTheme();
   return (
     <>
+      <MediaBlock
+        title={videoBanner.title}
+        subTitle={videoBanner.subTitle}
+        content={videoBanner.content}
+        asset={{
+          ...videoBanner.asset,
+        }}
+        variant={["-specialFaqsBackground"]}
+      />
       <MediaBlock
         title={hero.title}
         subTitle={hero.subTitle}
         content={hero.content}
         asset={{
-          src: hero.asset.src,
-          alt: hero.asset.alt,
+          ...hero.asset,
         }}
         variant={["-bottomDiagonal", "-specialFaqsBackground"]}
       />
-      <CollapsibleList items={collapsibleList} variant={["-contentLightText"]} />
+      <CollapsibleList
+        items={collapsibleList}
+        variant={["-contentLightText"]}
+      />
     </>
   );
 }

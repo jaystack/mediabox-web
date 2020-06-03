@@ -1,9 +1,26 @@
 const faqContent = {
-  hero: {
+  videoBanner: {
     title: "frequently answered questions",
     subTitle: "at MediaBox we strive to integrate the Hub into your workflows",
     content: "",
     asset: {
+      assetType: "video",
+      video: {
+        autoPlay: true,
+        loop: true
+      },
+      source: {
+        src: "/videos/abstract-earth-background-L7GKP7B_x264_001.mp4",
+        type: "video/mp4",
+      }
+    },
+  },
+  hero: {
+    title: "frequently answered questions",
+    subTitle: "",
+    content: "",
+    asset: {
+      assetType: "image",
       src: "/images/faq/FAQ_People_Answering_Questions.jpg",
       alt: "",
     },
