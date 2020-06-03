@@ -45,6 +45,7 @@ function Faqs({ faqContent }) {
           ...videoBanner.asset,
         }}
         variant={["-specialFaqsBackground"]}
+        skiplink
       />
       <MediaBlock
         title={hero.title}

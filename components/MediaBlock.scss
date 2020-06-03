@@ -122,6 +122,28 @@
     }
   }
 
+  &__skipLink {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    width: 49px;
+    height: 49px;
+    border: 2px solid $white;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 25px;
+    color: $white;
+    opacity: .6;
+    transition: opacity .4s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
   // Modifiers
 
   &.-bottomDiagonal {
