@@ -17,26 +17,35 @@ function MediaBlock({
 }) {
   const mediaRef = useRef();
   const videoRef = useRef();
-  const [videoOpacity, setVideoOpacity] = useState(1);
+  const imageRef = useRef();
+  const [imageParralax, setImageParralax] = useState(0);
 
   useEffect(() => {
     const scrollListener = () => {
       // TODO: SPLIT MediaBlock to MediaBlock, MediaBlockImage, MediaBlock video component
-      if (asset?.assetType != "video") {
-        return;
-      }
-      const mediaHeight = mediaRef?.current?.clientHeight || 0;
       const scrollPos = window.pageYOffset || 0;
-      if (mediaHeight && scrollPos && videoRef?.current) {
-        const ratio = scrollPos / mediaHeight;
-        if (ratio !== 1) {
-          if (ratio > 0.2) {
-            videoRef.current.pause();
-          } else {
-            videoRef.current.play();
+      if (asset?.assetType === "video") {
+        const mediaHeight = mediaRef?.current?.clientHeight || 0;
+        if (mediaHeight && scrollPos && videoRef?.current) {
+          const ratio = scrollPos / mediaHeight;
+          if (ratio !== 1) {
+            if (ratio > 0.2) {
+              if (!videoRef.current.paused) {
+                videoRef.current.pause();
+              }
+            } else if (videoRef.current.paused) {
+              videoRef.current.play();
+            }
           }
-          const op = 1 - ratio;
-          setVideoOpacity(op > 1 ? 1 : op);
+        }
+      }
+      if (asset?.assetType === "image" && imageRef?.current) {
+        const rect = mediaRef.current.getBoundingClientRect();
+        const p = -rect.top * 0.4;
+        if (imageParralax !== p) {
+          requestAnimationFrame(() => {
+            setImageParralax(p);
+          });
         }
       }
     };
@@ -54,9 +63,13 @@ function MediaBlock({
         <div ref={mediaRef} className={classnames("mediaBlock__media")}>
           {asset?.assetType === "image" && (
             <img
+              ref={imageRef}
               className={classnames("mediaBlock__image")}
               src={asset.src}
               alt={asset.alt}
+              style={{
+                transform: `translateY(${imageParralax}px)`,
+              }}
             />
           )}
           {asset?.assetType === "video" && (
@@ -70,7 +83,6 @@ function MediaBlock({
                 asset?.video.className,
                 "mediaBlock__video"
               )}
-              style={{ opacity: videoOpacity, transition: "opacity 0.05s" }}
             >
               <source {...asset.source} />
             </video>
