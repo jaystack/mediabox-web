@@ -1,6 +1,10 @@
 @import "../scss/abstracts.scss";
 @import "../scss/font-awesome.css";
 
+* {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: Poppins, sans-serif !important;
