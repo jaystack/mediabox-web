@@ -15,31 +15,31 @@ const faqContent = {
       <div class="wpb_text_column wpb_content_element ">
         <div class="wpb_wrapper">
           <p>A digital asset can be in the form of a document, presentation, image, video, audio file</p>
-      <p>Images</p>
-      <ul>
-      <li>Jpg, gif, bmp, png, tiff, svg, eps, raw, Psd, svg,</li>
-      <li>RAW</li>
-      </ul>
-      <p>Artwork</p>
-      <ul>
-      <li>Psd, ai, indd, creative suite formats InDesign etc.</li>
-      <li>CDR, EPS, PDF, RAW (.raw, .cr2, .nef, .orf, .sr2 etc),</li>
-      </ul>
-      <p>Videos</p>
-      <ul>
-      <li>Wmv, mpg, mpg4, mov, mpeg, wma, wmv, avi, flv, rm, m4v,</li>
-      <li>OGG, QT, AVCHD, FLV/SWF, MPV, MP2, MPE, WEBM</li>
-      </ul>
-      <p>Audio</p>
-      <ul>
-      <li>Mp3, wav,</li>
-      <li>AIFF, WMA</li>
-      </ul>
-      <p>Documents</p>
-      <ul>
-      <li>Pdf, doc, docx, xls, Excel ,xlsx, ppt, pptx, zip</li>
-      <li>HTML, HTM, ODT, ODS, TXT</li>
-      </ul>
+          <p>Images</p>
+          <ul>
+            <li>Jpg, gif, bmp, png, tiff, svg, eps, raw, Psd, svg,</li>
+            <li>RAW</li>
+          </ul>
+          <p>Artwork</p>
+          <ul>
+            <li>Psd, ai, indd, creative suite formats InDesign etc.</li>
+            <li>CDR, EPS, PDF, RAW (.raw, .cr2, .nef, .orf, .sr2 etc),</li>
+          </ul>
+          <p>Videos</p>
+          <ul>
+            <li>Wmv, mpg, mpg4, mov, mpeg, wma, wmv, avi, flv, rm, m4v,</li>
+            <li>OGG, QT, AVCHD, FLV/SWF, MPV, MP2, MPE, WEBM</li>
+          </ul>
+          <p>Audio</p>
+          <ul>
+            <li>Mp3, wav,</li>
+            <li>AIFF, WMA</li>
+          </ul>
+          <p>Documents</p>
+          <ul>
+            <li>Pdf, doc, docx, xls, Excel ,xlsx, ppt, pptx, zip</li>
+            <li>HTML, HTM, ODT, ODS, TXT</li>
+          </ul>
         </div>
       </div>
       </div></div>`,
@@ -47,7 +47,7 @@ const faqContent = {
     {
       title: "How are my files stored?",
       content:
-        "<div>A cloud based system backed up by XXX servers, saving you space and cost on storage.</div>",
+        "<p>A cloud based system backed up by XXX servers, saving you space and cost on storage.</p>",
     },
     {
       title: "Who can use it?",
@@ -68,17 +68,17 @@ const faqContent = {
     {
       title:
         "Which operating systems and browsers does your system support, and is there complete feature parity across operating systems and browsers?",
-      content: "<div>TBA</div>",
+      content: "<p>TBA</p>",
     },
     {
       title: "How does it integrate with our workflows?",
-      content: "<div>TBA</div>",
+      content: "<p>TBA</p>",
     },
-    { title: "How much does it cost?", content: "<div>TBA</div>" },
+    { title: "How much does it cost?", content: "<p>TBA</p>" },
     {
       title: "Can you tailor the suite to match my needs?",
       content:
-        "<div>Yes. Our team are on hand to discuss your requirements to make the system work for you.</div>",
+        "<p>Yes. Our team are on hand to discuss your requirements to make the system work for you.</p>",
     },
   ],
 };
