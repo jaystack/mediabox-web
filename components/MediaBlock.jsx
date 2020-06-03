@@ -29,14 +29,15 @@ function MediaBlock({
       const scrollPos = window.pageYOffset || 0;
       if (mediaHeight && scrollPos && videoRef?.current) {
         const ratio = scrollPos / mediaHeight;
-        if (ratio > 0.25) {
-          videoRef.current.pause();
-        } else {
-          videoRef.current.play();
+        if (ratio !== 1) {
+          if (ratio > 0.2) {
+            videoRef.current.pause();
+          } else {
+            videoRef.current.play();
+          }
+          const op = 1 - ratio;
+          setVideoOpacity(op > 1 ? 1 : op);
         }
-
-        const op = 1.1 - ratio;
-        setVideoOpacity(op > 1 ? 1 : op);
       }
     };
 
@@ -50,28 +51,31 @@ function MediaBlock({
   return (
     <>
       <div className={classnames("mediaBlock", className, variant)}>
-      <div ref={mediaRef} className={classnames("mediaBlock__media")}>
-        {asset?.assetType === "image" && (
-          <img
-            className={classnames("mediaBlock__image")}
-            src={asset.src}
-            alt={asset.alt}
-          />
-        )}
-        {asset?.assetType === "video" && (
-          <video
-            ref={videoRef}
-            loop={true}
-            autoPlay={true}
-            muted={true}
-            {...asset.video}
-            className={classnames(asset?.video.className, "mediaBlock__video")}
-            style={{ opacity: videoOpacity, transition: "opacity 0.05s" }}
-          >
-            <source {...asset.source} />
-          </video>
-        )}
-      </div>
+        <div ref={mediaRef} className={classnames("mediaBlock__media")}>
+          {asset?.assetType === "image" && (
+            <img
+              className={classnames("mediaBlock__image")}
+              src={asset.src}
+              alt={asset.alt}
+            />
+          )}
+          {asset?.assetType === "video" && (
+            <video
+              ref={videoRef}
+              loop={true}
+              autoPlay={true}
+              muted={true}
+              {...asset.video}
+              className={classnames(
+                asset?.video.className,
+                "mediaBlock__video"
+              )}
+              style={{ opacity: videoOpacity, transition: "opacity 0.05s" }}
+            >
+              <source {...asset.source} />
+            </video>
+          )}
+        </div>
         <div className="mediaBlock__inner">
           <Heading level={1} className="mediaBlock__title">
             {title}
@@ -100,9 +104,7 @@ function MediaBlock({
           )}
         </div>
       </div>
-      {skiplink && (
-        <a id="content" />
-      )}
+      {skiplink && <a id="content" />}
     </>
   );
 }

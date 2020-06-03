@@ -51,7 +51,8 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: $mask;
+      background: $maskColor;
+      opacity: $maskDefaultOpacity;
     }
   }
 
@@ -193,14 +194,18 @@
     }
   }
 
+  &.-mediaMaskOpacity065 .mediaBlock__media:after {
+    opacity: 0.65;
+  }
+
   // special for FAQS page
-  &.-specialFaqsBackground .mediaBlock__video {
+  &.-specialFaqsBackgroundVideo .mediaBlock__video {
     position: absolute;
     right: 0;
     min-height: 100%;
   }
 
-  &.-specialFaqsVideo .mediaBlock__image {
+  &.-specialFaqsBackgroundImage .mediaBlock__image {
     display: block;
     // width: auto;
     height: 1312px;

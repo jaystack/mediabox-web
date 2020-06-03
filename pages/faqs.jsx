@@ -44,7 +44,7 @@ function Faqs({ faqContent }) {
         asset={{
           ...videoBanner.asset,
         }}
-        variant={["-specialFaqsBackground"]}
+        variant={["-specialFaqsBackgroundVideo", "-mediaMaskOpacity065"]}
         skiplink
       />
       <MediaBlock
@@ -54,7 +54,7 @@ function Faqs({ faqContent }) {
         asset={{
           ...hero.asset,
         }}
-        variant={["-bottomDiagonal", "-specialFaqsBackground"]}
+        variant={["-bottomDiagonal", "-specialFaqsBackgroundImage"]}
       />
       <CollapsibleList
         items={collapsibleList}

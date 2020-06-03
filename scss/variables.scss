@@ -4,9 +4,8 @@ $white: #fff;
 $black: #000;
 $blue: #1d96c2;
 $blueDark: #083140;
-$maskOpacity: 0.8;
-$maskColor: $blueDark;
-$mask: rgba($maskColor, $maskOpacity);
+$maskColor: #083140;
+$maskDefaultOpacity: 0.8;
 
 // Responsive breakpoints
 
