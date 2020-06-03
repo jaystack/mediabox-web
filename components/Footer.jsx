@@ -10,6 +10,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import TextField from '@material-ui/core/TextField';
 import Link from 'next/link';
 
+import './Footer.scss';
+
 const useStyles = makeStyles(theme => ({
   root: {
     paddingTop: theme.spacing(10),
@@ -65,7 +67,7 @@ const useStyles = makeStyles(theme => ({
 function Footer() {
   const classes = useStyles();
   return (
-    <React.Fragment>
+    <>
       <footer className={classes.root}>
         <Container>
           <Grid container>
@@ -150,7 +152,12 @@ function Footer() {
           </div>
         </Container>
       </div>
-    </React.Fragment>
+      <Link href="/">
+        <a className="footer__homeButton">
+          <i className="fa fa-home" />
+        </a>
+      </Link>
+    </>
   )
 }
 
