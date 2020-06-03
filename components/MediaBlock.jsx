@@ -8,28 +8,32 @@ import "./MediaBlock.scss";
 
 // TODO: Image component, button component,
 
-function MediaBlock({ title, subTitle, content, asset, ctaButton, className, variant  }) {
+function MediaBlock({
+  title,
+  subTitle,
+  content,
+  asset,
+  ctaButton,
+  className,
+  variant,
+}) {
   return (
-    <div
-      className={classnames("mediaBlock", className, variant)}
-    >
+    <div className={classnames("mediaBlock", className, variant)}>
       <div className={classnames("mediaBlock__media")}>
         {asset && (
-          <img className={classnames("mediaBlock__image")} src={asset.src} alt={asset.alt} />
+          <img
+            className={classnames("mediaBlock__image")}
+            src={asset.src}
+            alt={asset.alt}
+          />
         )}
       </div>
       <div className="mediaBlock__inner">
-        <Heading
-          level={1}
-          className="mediaBlock__title"
-        >
+        <Heading level={1} className="mediaBlock__title">
           {title}
         </Heading>
         {subTitle && (
-          <Heading
-            level={2}
-            className="mediaBlock__subTitle"
-          >
+          <Heading level={2} className="mediaBlock__subTitle">
             {subTitle}
           </Heading>
         )}

@@ -147,7 +147,7 @@
           bottom-width: 50px;
         }
       }
-  
+
       @include breakpointDown($sm) {
         border: {
           top-width: 25px;
@@ -164,7 +164,3 @@
     height: 1312px;
   }
 }
-
-// .mediaBlock__image-faqsBackground {
-//     border: solid 10px red !important;
-// }
