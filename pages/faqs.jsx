@@ -20,7 +20,6 @@ import StandardCTA from "../components/StandardCTA";
 // --- new
 import { getFaqContent } from "../data/faq";
 import MediaBlock from "../components/MediaBlock";
-
 import CollapsibleList from "../components/CollapsibleList";
 
 export const getServerSideProps = async () => {
@@ -60,6 +59,7 @@ function Faqs({ faqContent }) {
         items={collapsibleList}
         variant={["-contentLightText"]}
       />
+      <GotQuestion />
     </>
   );
 }
