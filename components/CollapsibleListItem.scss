@@ -1,29 +1,45 @@
 @import "../scss/abstracts";
 
 .collapsibleListItem {
-  $toggleBtnSize: 32px;
+  $hPadding: 30px;
+  $toggleBtnSize: 40px;
+
   border-bottom: solid 2px rgba(0, 0, 0, 0.08);
   // Elements
   width: 100%;
 
   &__title {
     position: relative;
-    letter-spacing: -1px;
-    font-size: 38px;
-    line-height: 42px;
-    font-weight: 700;
+    user-select: none;
     cursor: pointer;
     color: rgba(0, 0, 0, 0.65);
     transition: color 0.15s;
-    user-select: none;
-
     &:hover {
       color: #083140;
     }
   }
 
   &__titleText {
-    padding: 30px $toggleBtnSize 30px 0;
+    letter-spacing: -1px;
+    font-size: 38px;
+    line-height: 42px;
+    font-weight: 700;
+    $vPaddingLg: 30px;
+    padding: $vPaddingLg $hPadding + $toggleBtnSize $vPaddingLg $hPadding;
+
+    @include breakpointDown($lg) {
+      letter-spacing: -0.5px;
+      font-size: 30px;
+      $vPaddingMd: 25px;
+      padding: $vPaddingMd $hPadding + $toggleBtnSize $vPaddingMd $hPadding;
+    }
+
+    @include breakpointDown($md) {
+      letter-spacing: initial;
+      font-size: 20px;
+      $vPaddingSm: 20px;
+      padding: $vPaddingSm $hPadding + $toggleBtnSize $vPaddingSm $hPadding;
+    }
   }
 
   &__toggleBtn {
@@ -36,6 +52,7 @@
   }
 
   &__toggleIcon {
+    font-size: 32px;
     margin: auto 0;
     font-weight: normal;
     font-style: normal;
@@ -49,24 +66,32 @@
   }
 
   &__contentContainer {
-    padding: 0 0 0.4em 0;
+    padding: 0 $hPadding 0.4em $hPadding;
   }
 
   // Modifiers
+
+  // --------------------------------------------------------
+  // Open-close transitions
   &__content.-transition {
     position: static;
+    visibility: visible;
   }
 
   &__content.-open.-transition {
     position: static;
     visibility: visible;
-    opacity: 0.75;
     max-height: 0 !important;
   }
 
   &__content.-open {
     position: static;
     visibility: visible;
-    opacity: 1;
+  } // End of open-close transitions
+  // --------------------------------------------------------
+
+  &.-contentLightText .mediaBlock__contentContainer {
+    font-size: 20px;
+    font-weight: 200;
   }
 }

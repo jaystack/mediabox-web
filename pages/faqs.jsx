@@ -48,7 +48,7 @@ function Faqs({ faqContent }) {
         }}
         variant={["-bottomDiagonal", "-specialFaqsBackground"]}
       />
-      <CollapsibleList items={collapsibleList} />
+      <CollapsibleList items={collapsibleList} variant={["-contentLightText"]} />
     </>
   );
 }
