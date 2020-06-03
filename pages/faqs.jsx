@@ -44,6 +44,7 @@ function Faqs({ faqContent }) {
         asset={{
           ...videoBanner.asset,
         }}
+        variant={["-specialFaqsBackground"]}
       />
       <MediaBlock
         title={hero.title}

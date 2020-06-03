@@ -27,9 +27,9 @@ function MediaBlock({
           <video
             loop={true}
             autoPlay={true}
-            {...asset.video}
             muted={true}
-            style={{ maxWidth: "100%" }}
+            {...asset.video}
+            className={classnames(asset?.video.className, "mediaBlock__video")}
           >
             <source {...asset.source} />
           </video>
