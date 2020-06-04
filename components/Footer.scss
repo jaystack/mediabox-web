@@ -162,7 +162,7 @@
     position: fixed;
     left: 4.2%;
     bottom: 5%;
-    z-index: 1000;
+    z-index: 1000; // TODO
     width: 56px;
     height: 56px;
     opacity: 1;
@@ -178,5 +178,54 @@
     &:hover {
       background-color: rgba(182, 182, 182, 1);
     }
+  }
+
+  $toTopButtonSize: 29px;
+  $toTopButtonTDuration: 0.3s;
+  &__toTopButton {
+    position: fixed;
+    right: 1%;
+    bottom: 2%;
+    z-index: 1000;  // TODO
+    width: $toTopButtonSize;
+    height: $toTopButtonSize;
+    line-height: $toTopButtonSize * 0.95;
+    overflow: hidden;
+    text-align: center;
+    color: $white;
+    border-radius: 50%;
+    background-color: rgba(black, 0.25);
+    transition: background-color $toTopButtonTDuration * 3,
+      transform $toTopButtonTDuration;
+
+    &:hover {
+      background-color: rgba(black, 0);
+      &:active {
+        transform: scale(0.97);
+      }
+
+      .footer__toTopButtonIcon {
+        transform: translateY(-$toTopButtonSize);
+      }
+      .footer__toTopButtonHoverIcon {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__toTopButtonInner {
+    position: relative;
+  }
+
+  &__toTopButtonIcon,
+  &__toTopButtonHoverIcon {
+    position: absolute;
+    left: $toTopButtonSize / 3;
+    top: $toTopButtonSize / 5;
+    transition: transform $toTopButtonTDuration;
+  }
+
+  &__toTopButtonHoverIcon {
+    transform: translateY($toTopButtonSize);
   }
 }

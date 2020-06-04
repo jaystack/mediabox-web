@@ -60,6 +60,14 @@ function Footer({ className, footerContent }) {
               ))}
             </ul>
           </div>
+          <Link href="#top">
+            <a className="footer__toTopButton">
+              <div className="footer__toTopButtonInner">
+                <i className="footer__toTopButtonIcon fa fa-angle-up"></i>
+                <i className="footer__toTopButtonHoverIcon fa fa-angle-up"></i>
+              </div>
+            </a>
+          </Link>
         </div>
       </footer>
       <Link href="/">
