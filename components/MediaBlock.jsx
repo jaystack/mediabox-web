@@ -11,6 +11,7 @@ function MediaBlock({
   content,
   asset,
   ctaButton,
+  icon,
   skiplink,
   className,
   variant,
@@ -114,6 +115,7 @@ function MediaBlock({
             </a>
           )}
         </div>
+        {icon && <i className={classnames("mediaBlock__icon", "fa", `fa-${icon}`)} />}
       </div>
       {skiplink && <a id="content" />}
     </>
@@ -126,6 +128,7 @@ MediaBlock.defaultProps = {
   asset: {},
   ctaButton: {},
   skiplink: false,
+  icon: "",
   variant: [],
   className: "",
 };
@@ -137,6 +140,7 @@ MediaBlock.propTypes = {
   asset: PropTypes.object,
   ctaButton: PropTypes.objectOf(PropTypes.string),
   skiplink: PropTypes.bool,
+  icon: PropTypes.string,
   variant: PropTypes.array,
   className: PropTypes.string,
 };

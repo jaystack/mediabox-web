@@ -46,6 +46,7 @@ const homeContent = {
         type: "video/mp4",
       },
     },
+    icon: "globe",
   },
 
   diagonalBanner: {

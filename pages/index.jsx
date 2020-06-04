@@ -41,6 +41,7 @@ function Home({ homeContent }) {
         asset={{
           ...introduction.asset,
         }}
+        icon={introduction.icon}
         variant={["-autoHeight", "-introduction","-bottomDiagonal"]}
       />
       <MediaBlock

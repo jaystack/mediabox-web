@@ -134,6 +134,27 @@
     }
   }
 
+  &__icon {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    z-index: 8;
+    transform: translateX(-50%);
+    border: 2px solid $blue;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    line-height: 61px;
+    text-align: center;
+    
+    
+    &:before {
+      line-height: 61px;
+      font-size: 24px;
+      color: $blue;
+    }
+  }
+
   &__skipLink {
     position: absolute;
     bottom: 20px;
@@ -184,6 +205,10 @@
     &.-bottomDiagonal {
       padding-bottom: 200px;
     }
+  }
+
+  &.-introduction {
+    padding-top: 120px;
   }
 
   &.-introduction &__title {
