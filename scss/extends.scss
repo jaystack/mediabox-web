@@ -15,7 +15,7 @@
 %diagonalDecoration {
   content: "";
   position: absolute;
-  z-index: 5;
+  z-index: 9;
   left: 0;
   height: 0;
   display: block;
@@ -56,7 +56,7 @@
 %topDiagonal {
   @extend %diagonal;
 
-  &:after {
+  &:before {
     @extend %diagonalDecoration;
     top: 0;
     border: {

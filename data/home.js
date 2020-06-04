@@ -47,6 +47,26 @@ const homeContent = {
       },
     },
   },
+
+  diagonalBanner: {
+    title: "brand management",
+    subTitle: "the all-in-one solution to manage & distribute content.",
+    asset: {
+      assetType: "video",
+      video: {
+        autoPlay: true,
+        loop: true
+      },
+      source: {
+        src: "/videos/coffe.mp4",
+        type: "video/mp4",
+      },
+    },
+    ctaButton: {
+      label: "Learn more",
+      url: "/brand/"
+    }
+  },
 };
 
 export const getHomeContent = async () => Promise.resolve(homeContent);

@@ -13,7 +13,7 @@ export const getServerSideProps = async () => {
 };
 
 function Home({ homeContent }) {
-  const { hero, videoBanner, introduction } = homeContent;
+  const { hero, videoBanner, introduction,diagonalBanner } = homeContent;
   return (
     <>
       <MediaBlock
@@ -42,6 +42,18 @@ function Home({ homeContent }) {
           ...introduction.asset,
         }}
         variant={["-autoHeight", "-introduction","-bottomDiagonal"]}
+      />
+      <MediaBlock
+        title={diagonalBanner.title}
+        subTitle={diagonalBanner.subTitle}
+        asset={{
+          ...diagonalBanner.asset,
+        }}
+        ctaButton={{
+          label: diagonalBanner.ctaButton.label,
+          url: diagonalBanner.ctaButton.url,
+        }}
+        variant={["-autoHeight", "-topDiagonal","-bottomDiagonal"]}
       />
     </>
   );
