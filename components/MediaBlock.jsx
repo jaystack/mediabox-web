@@ -106,7 +106,7 @@ function MediaBlock({
           )}
           {ctaButton && (
             <a href="mediaBlock__ctaButton" href={ctaButton.url}>
-              <span>{ctaButton.icon}</span>
+              {ctaButton.icon && <span>{ctaButton.icon}</span>}
               {ctaButton.label}
             </a>
           )}
