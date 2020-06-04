@@ -23,23 +23,25 @@ function MediaBlock({
   useEffect(() => {
     const scrollListener = () => {
       // TODO: SPLIT MediaBlock to MediaBlock, MediaBlockImage, MediaBlock video component
-      const scrollPos = window.pageYOffset || 0;
       if (asset?.assetType === "video") {
-        const mediaHeight = mediaRef?.current?.clientHeight || 0;
-        if (mediaHeight && scrollPos && videoRef?.current) {
-          const ratio = scrollPos / mediaHeight;
-          if (ratio !== 1) {
-            if (ratio > 0.2) {
-              if (!videoRef.current.paused) {
-                videoRef.current.pause();
-              }
-            } else if (videoRef.current.paused) {
-              videoRef.current.play();
-            }
+        if (videoRef?.current && mediaRef?.current) {
+          const LIMIT = 200;
+          const rect = mediaRef.current.getBoundingClientRect();
+          const play =
+            rect.top + LIMIT > 0 && rect.top + LIMIT < window.innerHeight;
+          if (play && videoRef.current.paused) {
+            videoRef.current.play();
+          }
+          if (!play && !videoRef.current.paused) {
+            videoRef.current.pause();
           }
         }
       }
-      if (asset?.assetType === "image" && asset?.parallax && imageRef?.current) {
+      if (
+        asset?.assetType === "image" &&
+        asset?.parallax &&
+        imageRef?.current
+      ) {
         const rect = mediaRef.current.getBoundingClientRect();
         const p = -rect.top * 0.4;
         if (imageParallax !== p) {
