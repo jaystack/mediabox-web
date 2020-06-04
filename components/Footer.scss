@@ -72,19 +72,19 @@
     }
 
     &:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 4px;
-        display: block;
-        width: 0;
-        height: 2px;
-        background-color: $black;
-        transition: width 0.23s ease-out;
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 4px;
+      display: block;
+      width: 0;
+      height: 2px;
+      background-color: $black;
+      transition: width 0.23s ease-out;
     }
 
     &:hover:after {
-        width: 100%;
+      width: 100%;
     }
   }
 
@@ -138,16 +138,16 @@
   }
 
   &__iconMenuItemLink {
-      position: relative;
-      display: block;
-      padding: 10px;
-      color: $white;
-      text-decoration: none;
-      transition: transform 0.2s ease;
+    position: relative;
+    display: block;
+    padding: 10px;
+    color: $white;
+    text-decoration: none;
+    transition: transform 0.2s ease;
 
-      &:hover {
-          transform: scale(1.25);
-      }
+    &:hover {
+        transform: scale(1.25);
+    }
   }
 
   &__homeButton {

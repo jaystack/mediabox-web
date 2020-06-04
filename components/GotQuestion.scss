@@ -4,38 +4,11 @@
   width: 100%;
   height: 330px;
   background: $maskColor;
-  position: relative;
+
   margin-top: 80px;
   user-select: none;
-  overflow: hidden;
 
-  &:after {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    border: {
-      top: 70px solid $white;
-      bottom: 70px solid transparent;
-      left: 50vw solid transparent;
-      right: 50vw solid $white;
-    }
-
-    @include breakpointDown($md) {
-      border: {
-        top-width: 50px;
-        bottom-width: 50px;
-      }
-    }
-
-    @include breakpointDown($sm) {
-      border: {
-        top-width: 25px;
-        bottom-width: 25px;
-      }
-    }
-  }
+  @extend %topDiagonal;
 
   &__inner {
     width: 100%;

@@ -8,6 +8,7 @@
     right: 90px;
   }
   color: $white;
+  overflow: hidden;
 
   @include breakpointDown($md) {
     padding: {
@@ -157,41 +158,12 @@
 
   // Modifiers
 
+  &.-topDiagonal {
+    @extend %topDiagonal;
+  }
+
   &.-bottomDiagonal {
-    overflow: hidden;
-    position: relative;
-
-    &:after {
-      content: "";
-      position: absolute;
-      z-index: 5;
-      left: 0;
-      bottom: 0;
-      height: 0;
-      display: block;
-      width: 0;
-      border: {
-        top: 70px solid transparent;
-        bottom: 70px solid $white;
-        left: 50vw solid $white;
-        right: 50vw solid transparent;
-      }
-      transition: border-width 0.15s ease;
-
-      @include breakpointDown($md) {
-        border: {
-          top-width: 50px;
-          bottom-width: 50px;
-        }
-      }
-
-      @include breakpointDown($sm) {
-        border: {
-          top-width: 25px;
-          bottom-width: 25px;
-        }
-      }
-    }
+    @extend %bottomDiagonal;
   }
 
   &.-mediaMaskOpacity065 .mediaBlock__media:after {
