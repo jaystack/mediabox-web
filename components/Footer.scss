@@ -1,6 +1,14 @@
 @import "../scss/abstracts";
 
 .footer {
+  @include breakpointUp($lg + 50px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+
   &__title {
     margin: {
       top: 0;
@@ -154,7 +162,7 @@
     position: fixed;
     left: 4.2%;
     bottom: 5%;
-    z-index: 99999;
+    z-index: 1000;
     width: 56px;
     height: 56px;
     opacity: 1;

@@ -156,6 +156,7 @@ class MyApp extends App {
 
     return (
       <React.Fragment>
+        <a id="top" />
         <Head>
           <meta
             key="viewport"
@@ -167,7 +168,9 @@ class MyApp extends App {
           <Provider store={store}>
             {/* <CssBaseline /> */}
             <PageHeader navbarContent={navbarContent} />
-            <Component {...pageProps} key={router.asPath} />
+            <main>
+              <Component {...pageProps} key={router.asPath} />
+            </main>
             <Footer footerContent={footerContent} />
           </Provider>
         </ThemeProvider>

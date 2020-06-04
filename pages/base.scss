@@ -10,6 +10,17 @@ body {
   font-family: Poppins, sans-serif !important;
 }
 
+main {
+  background-color: $white;
+
+  @include breakpointUp($lg + 50px) {
+    position: relative;
+    z-index: 500;
+    margin-bottom: 480px;
+    box-shadow: rgba($white, 0.75) 0px 70px 110px -30px;
+  }
+}
+
 .container {
   margin: 0 auto;
   max-width: 1320px;
@@ -18,17 +29,24 @@ body {
     right: 90px;
   }
 
-  @include breakpointDown($md) {
+  @include breakpointDown($lg) {
     padding: {
       left: 70px;
       right: 70px;
     }
   }
 
-  @include breakpointDown($sm) {
+  @include breakpointDown($md) {
     padding: {
       left: 50px;
       right: 50px;
+    }
+  }
+
+  @include breakpointDown($sm) {
+    padding: {
+      left: 30px;
+      right: 30px;
     }
   }
 }
