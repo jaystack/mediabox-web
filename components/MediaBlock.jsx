@@ -39,7 +39,7 @@ function MediaBlock({
           }
         }
       }
-      if (asset?.assetType === "image" && asset?.par && imageRef?.current) {
+      if (asset?.assetType === "image" && asset?.parallax && imageRef?.current) {
         const rect = mediaRef.current.getBoundingClientRect();
         const p = -rect.top * 0.4;
         if (imageParallax !== p) {
