@@ -46,15 +46,12 @@ function CollapsibleListItem({ title, content, variant }) {
           {title}
         </div>
         <div className={classnames("collapsibleListItem__toggleBtn")}>
-          <i
+          <span
             className={classnames(
-              "collapsibleListItem__toggleIcon"
-              // "icon-plus-sign" !TODO
+              "collapsibleListItem__toggleIcon",
+              open && "-open"
             )}
-            style={{ width: "32px", height: "32px", textAlign: "center" }} // TODO
-          >
-            {open ? "-" : "+"}
-          </i>
+          />
         </div>
       </div>
       <div
