@@ -2,9 +2,10 @@
 
 .collapsibleList {
   $toggleBtnSize: 32px;
-  // Elements
+  padding-top: 60px;
   width: 100%;
-
+  
+  // Elements
   &__inner {
     margin: 0 auto;
     max-width: 1320px;

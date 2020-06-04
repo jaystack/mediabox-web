@@ -170,13 +170,65 @@
     opacity: 0.65;
   }
 
+  &.-autoHeight {
+    padding: {
+      top: 100px;
+      bottom: 100px;
+    }
+    height: auto;
+
+    &.-topDiagonal {
+      padding-top: 200px;
+    }
+  
+    &.-bottomDiagonal {
+      padding-bottom: 200px;
+    }
+  }
+
+  &.-introduction &__title {
+    font: {
+      weight: 700;
+      size: 38px;
+    }
+    line-height: 42px;
+
+    @include breakpointDown($xl) {
+      font-size: 34px;
+      line-height: 36px;
+    }
+
+    @include breakpointDown($lg) {
+      font-size: 32px;
+    line-height: 36px;
+    }
+
+    @include breakpointDown($md) {
+      font-size: 30px;
+      line-height: 34px;
+    }
+
+    @include breakpointDown($sm) {
+      font-size: 23px;
+      line-height: 25px;
+    }
+  }
+
+  &.-introduction &__subTitle {
+    font: {
+      size: 20px;
+      weight: 200;
+    }
+    line-height: 26px;
+  }
+
   // special for FAQS page
   &.-specialFaqsBackgroundVideo .mediaBlock__video {
     position: absolute;
     right: 0;
     min-height: 100%;
   }
-
+  
   &.-specialFaqsBackgroundImage .mediaBlock__image {
     display: block;
     // width: auto;

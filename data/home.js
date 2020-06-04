@@ -31,7 +31,22 @@ const homeContent = {
         alt: "",
       }
     },
-  }
+  },
+  introduction: {
+    title: "advanced digital asset and brand management software",
+    subTitle: "protecting your assets, globally, from one centralised resource.",
+    asset: {
+      assetType: "video",
+      video: {
+        autoPlay: true,
+        loop: true
+      },
+      source: {
+        src: "/videos/creative-team.mp4",
+        type: "video/mp4",
+      },
+    },
+  },
 };
 
 export const getHomeContent = async () => Promise.resolve(homeContent);
