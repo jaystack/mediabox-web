@@ -24,15 +24,15 @@
 
   @include breakpointDown($md) {
     border: {
-      top-width: 50px;
-      bottom-width: 50px;
+      top-width: 50px !important;
+      bottom-width: 50px !important;
     }
   }
 
   @include breakpointDown($sm) {
     border: {
-      top-width: 25px;
-      bottom-width: 25px;
+      top-width: 25px !important;
+      bottom-width: 25px !important;
     }
   }
 }
