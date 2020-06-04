@@ -18,7 +18,7 @@ function MediaBlock({
   const mediaRef = useRef();
   const videoRef = useRef();
   const imageRef = useRef();
-  const [imageParralax, setImageParralax] = useState(0);
+  const [imageParallax, setImageParallax] = useState(0);
 
   useEffect(() => {
     const scrollListener = () => {
@@ -39,12 +39,12 @@ function MediaBlock({
           }
         }
       }
-      if (asset?.assetType === "image" && imageRef?.current) {
+      if (asset?.assetType === "image" && asset?.par && imageRef?.current) {
         const rect = mediaRef.current.getBoundingClientRect();
         const p = -rect.top * 0.4;
-        if (imageParralax !== p) {
+        if (imageParallax !== p) {
           requestAnimationFrame(() => {
-            setImageParralax(p);
+            setImageParallax(p);
           });
         }
       }
@@ -64,11 +64,10 @@ function MediaBlock({
           {asset?.assetType === "image" && (
             <img
               ref={imageRef}
-              className={classnames("mediaBlock__image")}
-              src={asset.src}
-              alt={asset.alt}
+              {...asset.img}
+              className={classnames(asset?.img.className, "mediaBlock__image")}
               style={{
-                transform: `translateY(${imageParralax}px)`,
+                transform: asset.parallax && `translateY(${imageParallax}px)`,
               }}
             />
           )}

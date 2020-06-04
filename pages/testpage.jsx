@@ -21,10 +21,7 @@ function Test({ testpageContent }) {
         title={hero.title}
         subTitle={hero.subTitle}
         content={hero.content}
-        asset={{
-          src: hero.asset.src,
-          alt: hero.asset.alt,
-        }}
+        asset={...hero.asset}
         variant="bottomDiagonal"
       />
     </div>
