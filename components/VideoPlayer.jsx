@@ -30,7 +30,12 @@ function VideoPlayer({
       <button
         className={classnames("videoPlayButton", className, variant)}
         onClick={() => handleVideoOpen(true)}
-      >{buttonLabel}</button>
+      >
+        <span className="videoPlayButton__icon">
+          <i className="fa fa-play" />
+        </span>
+        {buttonLabel}
+      </button>
       {open && (
         <div className={classnames("videoPlayer", className, variant)}>
           <div className="videoPlayer__inner">

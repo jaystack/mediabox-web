@@ -127,11 +127,13 @@ function MediaBlock({
             </div>
           )}
           {video && (
-            <VideoPlayer
-              type={video.type}
-              videoId={video.videoId}
-              buttonLabel={video.buttonLabel}
-            />
+            <div className="mediaBlock__videoPlayerContainer">
+              <VideoPlayer
+                type={video.type}
+                videoId={video.videoId}
+                buttonLabel={video.buttonLabel}
+              />
+            </div>
           )}
           {skiplink && (
             <a className="mediaBlock__skipLink" href="#content">

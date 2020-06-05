@@ -1,12 +1,60 @@
 @import "../scss/abstracts";
 
 .videoPlayButton {
+  display: flex;
+  align-items: center;
+  border: none;
+  text-transform: uppercase;
+  font: {
+    size: 20px;
+    weight: 200;
+  }
+  background-color: transparent;
+  color: $white;
+  cursor: pointer;
+  outline: none;
 
+  &__icon {
+    position: relative;
+    display: block;
+    margin-right: 25px;
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    line-height: 53px;
+    text-align: center;
+    background-color: $blue;
+    color: $white;
+    transition: transform 0.15s ease;
+    font-size: 13px;
+
+    i {
+      margin-left: 3px;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 1px solid rgba(255,255,255,.5);
+      border-radius: 50%;
+      transform: scale(.35) translateY(-50%) translateX(-50%);
+      opacity: 0;
+      animation: playButtonPulse 2.6s cubic-bezier(.25,.9,.2,1) 0.4s infinite;
+    }
+  }
+
+  &:hover &__icon {
+    transform: scale(1.15);
+  }
 }
 
 .videoPlayer {
   &__inner {
-
     position: fixed;
     top: 0;
     bottom: 0;
@@ -93,5 +141,17 @@ body.videoPlayerOpen {
   
   .footer__homeButton {
     display: none;
+  }
+}
+
+@keyframes playButtonPulse {
+  0% {
+      transform: translate3d(-50%,-50%,0)scale(1);
+      opacity: 1
+  }
+
+  100% {
+      transform: translate3d(-50%,-50%,0)scale(1.7);
+      opacity: 0
   }
 }
