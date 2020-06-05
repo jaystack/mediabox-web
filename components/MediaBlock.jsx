@@ -116,10 +116,8 @@ function MediaBlock({
           )}
           {ctaButton?.label && (
             <div className="mediaBlock__ctaButtonContainer">
-              {/* TODO: display ctaButton.icon in the button */}
-              <span>{ctaButton.icon}</span>
               <Button
-                url="ctaButton.url"
+                url={ctaButton.url}
                 text={ctaButton.label}
                 variant={ctaButton.variant}
               />
