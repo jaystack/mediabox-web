@@ -10,3 +10,19 @@
     @content;
   }
 }
+
+@mixin buttonSize($name, $size) {
+  &.#{$name} {
+    border-radius: ($size / 2);
+    padding: {
+      left: ($size - 15px);
+      right: ($size - 15px);
+    }
+    min-height: $size;
+    line-height: $size - 34;
+    &.buttonAlternate {
+      min-height: ($size - 4px);
+      line-height: ($size - 38px);
+    }
+  }
+}
