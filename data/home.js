@@ -21,8 +21,12 @@ const homeContent = {
     content: `<div>
     <p>MediaBox is a cloud-based product offering a centralised asset management system and an integrated suite of software solutions to manage and manipulate your media assets efficiently.</p>
     <p>Allowing collaboration with clients and colleagues all over the world, from one centralised management tool.</p>
-    <h3>VIEW A DEMO</h3>
     </div>`,
+    video: {
+      type: "vimeo",
+      videoId: "336368135",
+      buttonLabel: "View a Demo",
+    },
     asset: {
       assetType: "image",
       parallax: true,

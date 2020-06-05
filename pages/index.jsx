@@ -33,6 +33,11 @@ function Home({ homeContent }) {
         asset={{
           ...hero.asset,
         }}
+        video={{
+          type: hero.video.type,
+          videoId: hero.video.videoId,
+          buttonLabel: hero.video.buttonLabel,
+        }}
         variant={["-specialFaqsBackgroundImage"]}
       />
       <MediaBlock

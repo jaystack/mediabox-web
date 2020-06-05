@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import Heading from "./Heading";
+import VideoPlayer from "./VideoPlayer";
 import "./MediaBlock.scss";
 
 // TODO: SPLIT MediaBlock to MediaBlock, MediaBlockImage, MediaBlock video component
@@ -12,6 +13,7 @@ function MediaBlock({
   asset,
   ctaButton,
   icon,
+  video,
   skiplink,
   className,
   variant,
@@ -111,6 +113,13 @@ function MediaBlock({
               {ctaButton.label}
             </a>
           )}
+          {video && (
+            <VideoPlayer
+              type={video.type}
+              videoId={video.videoId}
+              buttonLabel={video.buttonLabel}
+            />
+          )}
           {skiplink && (
             <a className="mediaBlock__skipLink" href="#content">
               <i className="fa fa-angle-down" />
@@ -128,9 +137,10 @@ MediaBlock.defaultProps = {
   subTitle: "",
   content: "",
   asset: {},
-  ctaButton: {},
+  ctaButton: null,
   skiplink: false,
   icon: "",
+  video: null,
   variant: [],
   className: "",
 };
@@ -143,6 +153,7 @@ MediaBlock.propTypes = {
   ctaButton: PropTypes.objectOf(PropTypes.string),
   skiplink: PropTypes.bool,
   icon: PropTypes.string,
+  video: PropTypes.object,
   variant: PropTypes.array,
   className: PropTypes.string,
 };
