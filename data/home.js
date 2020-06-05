@@ -57,8 +57,11 @@ const homeContent = {
   diagonalBanner: {
     title: "brand management",
     subTitle: "the all-in-one solution to manage & distribute content.",
+    variant: ["-topDiagonal", "-bottomDiagonal"],
     asset: {
       assetType: "video",
+      maskColor: "#333334",
+      maskOpacity: 0.68,
       video: {
         autoPlay: true,
         loop: true
