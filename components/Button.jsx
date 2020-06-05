@@ -5,12 +5,12 @@ import Link from "next/link";
 
 import "./Button.scss";
 
-const Button = ({ text, href, variant }) => (
+const Button = ({ text, url, variant }) => (
   <div
     className={classnames("button", variant?.length ? variant : "-buttonMd")}
   >
-    <Link href="contact">
-      <a href={href} className="button__link">
+    <Link href={url}>
+      <a className="button__link">
         {text}
       </a>
     </Link>
@@ -19,13 +19,13 @@ const Button = ({ text, href, variant }) => (
 
 Button.defaultProps = {
   text: "",
-  href: "",
+  url: "",
   variant: [],
 };
 
 Button.propTypes = {
   text: PropTypes.string,
-  href: PropTypes.string,
+  url: PropTypes.string,
   variant: PropTypes.array,
 };
 

@@ -9,7 +9,7 @@ function GotQuestion({}) {
     <div className="gotQuestion">
       <div className="gotQuestion__inner container">
         <h2 className="gotQuestion__title">Got a question?</h2>
-        <Button href="contact" text="CONTACT US" variant={["-buttonMd"]} />
+        <Button url="contact" text="CONTACT US" variant={["-buttonMd"]} />
       </div>
     </div>
   );

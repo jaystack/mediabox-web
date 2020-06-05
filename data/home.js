@@ -64,8 +64,9 @@ const homeContent = {
       },
     },
     ctaButton: {
-      label: "Learn more",
-      url: "/brand/"
+      label: "LEARN MORE",
+      url: "/brand/",
+      variant: ["-buttonLg"]
     }
   },
 };
