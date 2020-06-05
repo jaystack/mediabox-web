@@ -67,7 +67,7 @@ function MediaBlock({
 
   return (
     <>
-      <div className={classnames("mediaBlock", className, variant)}>
+      <div className={classnames("mediaBlock", className, variant, video && "-withVideo")}>
         <div ref={mediaRef} className={classnames("mediaBlock__media")}>
           {asset?.assetType === "image" && (
             <img

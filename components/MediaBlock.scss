@@ -2,6 +2,7 @@
 
 .mediaBlock {
   position: relative;
+  z-index: 5;
   height: 100vh;
   padding: {
     left: 90px;
@@ -251,6 +252,10 @@
       weight: 200;
     }
     line-height: 26px;
+  }
+
+  &.-withVideo {
+    z-index: 10;
   }
 
   // special for FAQS page

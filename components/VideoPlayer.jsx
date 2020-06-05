@@ -43,9 +43,9 @@ function VideoPlayer({
                 />
               )}
               <button
-                className={classnames("videoPlayButton", className, variant)}
+                className={classnames("videoPlayer__closeButton", className, variant)}
                 onClick={() => handleVideoClose(false)}
-              >X Close video</button>
+              ><span className="videoPlayer__close" /><span className="srOnly">Close video</span></button>
             </div>
           </div>
         </div>
