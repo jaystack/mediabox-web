@@ -1,0 +1,189 @@
+@import "../scss/abstracts";
+
+.article {
+  position: relative;
+  height: 100vh;
+  padding: {
+    left: 90px;
+    right: 90px;
+  }
+  color: $white;
+  background-color: #083140;
+  overflow: hidden;
+
+  @include breakpointDown($md) {
+    padding: {
+      left: 70px;
+      right: 70px;
+    }
+  }
+
+  @include breakpointDown($sm) {
+    padding: {
+      left: 50px;
+      right: 50px;
+    }
+  }
+
+  // Children
+
+  &__inner {
+    position: relative;
+    z-index: 10;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    max-width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__imageColumn {
+    flex: 1;
+  }
+
+  &__contentColumn {
+    flex: 1;
+  }
+
+  &__contentContainer {
+    display: block;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__video {
+    display: block;
+  }
+
+  &__title {
+    margin: {
+      top: 0;
+      bottom: 8px;
+    }
+    text-align: left;
+    font: {
+      weight: 600;
+      size: 56px;
+    }
+    letter-spacing: -1;
+    line-height: 60px;
+
+
+    @include breakpointDown($xl) {
+      color: red !important;
+      border: solid 10px red;
+      font-size: 56px;
+      line-height: 76.5px;
+    }
+
+    @include breakpointDown($lg) {
+      color: green !important;
+      border: solid 10px red;
+      font-size: 56px;
+      line-height: 72.25px;
+    }
+
+    @include breakpointDown($md) {
+      color: blue !important;
+      border: solid 10px red;
+      font-size: 36px;
+      line-height: 38.25px;
+    }
+
+    @include breakpointDown($sm) {
+      color: yellow !important;
+      border: solid 10px red;
+      font-size: 30px;
+      line-height: 32.25px;
+    }
+  }
+
+  &__subTitle {
+    margin: 0;
+    letter-spacing: 1px;
+    text-align: left;
+    margin: {
+      top: 1em;
+      bottom: 1em;
+    }
+    opacity: 0.8;
+    font: {
+      size: 20px;
+      weight: 600;
+    }
+    line-height: 40px;
+
+    @include breakpointDown($lg) {
+      font-size: 22.5px;
+      line-height: 36px;
+    }
+
+    @include breakpointDown($md) {
+      font-size: 17.5px;
+      line-height: 28px;
+    }
+  }
+
+  &__ctaButtonContainer {
+    margin-top: 10px;
+  }
+
+  &__icon {
+    position: absolute;
+    top: -4.5em;
+    left: 2em;
+    z-index: 8;
+    transform: translateX(-50%);
+    border: 2px solid $blue;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    line-height: 61px;
+    text-align: center;
+
+    &:before {
+      line-height: 61px;
+      font-size: 24px;
+      color: $blue;
+    }
+  }
+
+  // Modifiers
+
+  &.-whiteTheme {
+    color: $blackText;
+    background-color: $white;
+  }
+
+  &.-topDiagonal {
+    @extend %topDiagonal;
+  }
+
+  &.-bottomDiagonal {
+    @extend %bottomDiagonal;
+  }
+
+  &.-autoHeight {
+    padding: {
+      top: 100px;
+      bottom: 60px;
+    }
+    height: auto;
+
+    &.-topDiagonal {
+      padding-top: 200px;
+    }
+
+    &.-bottomDiagonal {
+      padding-bottom: 200px;
+    }
+  }
+}
