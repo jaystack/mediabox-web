@@ -2,6 +2,7 @@ const homeContent = {
   videoBanner: {
     title: "advanced digital asset and brand management software",
     subTitle: "protecting your assets, globally, from one centralised resource. ",
+    variant: ["-specialFaqsBackgroundVideo", "-mediaMaskOpacity065"],
     content: "",
     asset: {
       assetType: "video",
@@ -18,6 +19,7 @@ const homeContent = {
   hero: {
     title: "share and promote your digital assets with mediabox",
     subTitle: "",
+    variant: [],
     content: `<div>
     <p>MediaBox is a cloud-based product offering a centralised asset management system and an integrated suite of software solutions to manage and manipulate your media assets efficiently.</p>
     <p>Allowing collaboration with clients and colleagues all over the world, from one centralised management tool.</p>
@@ -29,7 +31,7 @@ const homeContent = {
     },
     asset: {
       assetType: "image",
-      parallax: true,
+      parallax: false,
       img: {
         src: "/images/home/Group-of-people-using-computer-to-share-files_1920px.jpg",
         alt: "",
@@ -37,10 +39,13 @@ const homeContent = {
     },
   },
   introduction: {
-    title: "advanced digital asset and brand management software",
-    subTitle: "protecting your assets, globally, from one centralised resource.",
+    title: "MediaBox automates marketing’s creative, acquisition, execution and fulfilment processes.",
+    subTitle: "Enabling corporate marketing departments to ingest, create, store, edit, and fulfil demands for marketing assets globally.",
+    variant: ["-autoHeight", "-introduction", "-bottomDiagonal"],
     asset: {
       assetType: "video",
+      maskColor: "#000",
+      maskOpacity: 0.8,
       video: {
         autoPlay: true,
         loop: true
@@ -56,8 +61,11 @@ const homeContent = {
   diagonalBanner: {
     title: "brand management",
     subTitle: "the all-in-one solution to manage & distribute content.",
+    variant: ["-topDiagonal", "-bottomDiagonal"],
     asset: {
       assetType: "video",
+      maskColor: "#333334",
+      maskOpacity: 0.68,
       video: {
         autoPlay: true,
         loop: true
@@ -68,8 +76,9 @@ const homeContent = {
       },
     },
     ctaButton: {
-      label: "Learn more",
-      url: "/brand/"
+      label: "LEARN MORE",
+      url: "/brand/",
+      variant: ["-buttonLg"]
     }
   },
 };

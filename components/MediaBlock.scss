@@ -42,19 +42,21 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: $maskColor;
+      background: $maskDefaultColor;
       z-index: -1;
     }
-    &:after {
-      position: absolute;
-      content: "";
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: $maskColor;
-      opacity: $maskDefaultOpacity;
-    }
+  }
+
+  &__mediaMask {
+    pointer-events: none;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $maskDefaultColor;
+    opacity: $maskDefaultOpacity;
   }
 
   &__inner {
@@ -132,6 +134,10 @@
       font-size: 17.5px;
       line-height: 28px;
     }
+  }
+
+  &__ctaButtonContainer {
+    margin-top: 10px;
   }
 
   &__icon {

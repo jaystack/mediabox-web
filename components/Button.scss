@@ -38,6 +38,9 @@
   @include buttonSize(-buttonLg, 60px);
   @include buttonSize(-buttonMd, 50px);
   @include buttonSize(-buttonSm, 40px);
+  &.-buttonLg {
+    font-size: 18px;
+  }
 
   &.-buttonAlternate {
     border: 2px solid $blue;

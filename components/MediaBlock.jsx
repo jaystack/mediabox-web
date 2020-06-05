@@ -3,6 +3,8 @@ import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import Heading from "./Heading";
 import VideoPlayer from "./VideoPlayer";
+import Button from "../components/Button";
+
 import "./MediaBlock.scss";
 
 // TODO: SPLIT MediaBlock to MediaBlock, MediaBlockImage, MediaBlock video component
@@ -62,6 +64,7 @@ function MediaBlock({
       window.removeEventListener("scroll", scrollListener);
     };
   }, []);
+
   return (
     <>
       <div className={classnames("mediaBlock", className, variant)}>
@@ -91,6 +94,13 @@ function MediaBlock({
               <source {...asset.source} />
             </video>
           )}
+          <div
+            className="mediaBlock__mediaMask"
+            style={{
+              backgroundColor: asset?.maskColor || null,
+              opacity: asset?.maskOpacity || null,
+            }}
+          />
         </div>
         <div className="mediaBlock__inner">
           <Heading level={1} className="mediaBlock__title">
@@ -107,11 +117,14 @@ function MediaBlock({
               dangerouslySetInnerHTML={{ __html: content }}
             />
           )}
-          {ctaButton && (
-            <a href="mediaBlock__ctaButton" href={ctaButton.url}>
-              {ctaButton.icon && <span>{ctaButton.icon}</span>}
-              {ctaButton.label}
-            </a>
+          {ctaButton?.label && (
+            <div className="mediaBlock__ctaButtonContainer">
+              <Button
+                url={ctaButton.url}
+                text={ctaButton.label}
+                variant={ctaButton.variant}
+              />
+            </div>
           )}
           {video && (
             <VideoPlayer
@@ -126,7 +139,9 @@ function MediaBlock({
             </a>
           )}
         </div>
-        {icon && <i className={classnames("mediaBlock__icon", "fa", `fa-${icon}`)} />}
+        {icon && (
+          <i className={classnames("mediaBlock__icon", "fa", `fa-${icon}`)} />
+        )}
       </div>
       {skiplink && <a id="content" />}
     </>
