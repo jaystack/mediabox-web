@@ -91,6 +91,13 @@ function MediaBlock({
               <source {...asset.source} />
             </video>
           )}
+          <div
+            className="mediaBlock__mediaMask"
+            style={{
+              backgroundColor: asset?.maskColor || null,
+              opacity: asset?.maskOpacity || null,
+            }}
+          />
         </div>
         <div className="mediaBlock__inner">
           <Heading level={1} className="mediaBlock__title">

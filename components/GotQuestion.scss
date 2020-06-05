@@ -3,7 +3,7 @@
 .gotQuestion {
   width: 100%;
   height: 190px;
-  background: $maskColor;
+  background: $maskDefaultColor;
 
   margin-top: 80px;
   padding-top: 140px;
@@ -36,62 +36,6 @@
 
     @include breakpointDown($md) {
       bottom: 60px;
-    }
-  }
-
-  &__contactButton {
-    width: 170px;
-    height: 52px;
-    background: $blueButtonBG;
-    border-radius: 40px;
-    cursor: pointer;
-    opacity: 0.9;
-    position: relative;
-
-    font-size: 14px;
-    font-weight: 700;
-    text-decoration: none;
-    color: $white;
-    line-height: 3.75em;
-    padding-left: 2em;
-    
-    & > img {
-      pointer-events: none;
-    }
-
-    &:hover {
-      opacity: 1;
-      &:active{
-        opacity: 0.9;
-        transform: scale(0.98);
-      }
-    }
-    
-    @include breakpointDown($lg) {
-      right: 60px;
-    }
-
-    @include breakpointDown($md) {
-      right: unset;
-      left: 25px;
-      bottom: 30px;
-    }
-  }
-
-  &__contactButtonIcon {
-    position: absolute;
-    display: block;
-    background-color: rgba(white,.22);
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    top: 9px;
-    right: 12px;
-    text-align: center;
-    i {
-      position: absolute;
-      top: 9px;
-      left: 12px;
     }
   }
 }

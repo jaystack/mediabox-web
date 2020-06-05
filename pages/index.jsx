@@ -23,7 +23,7 @@ function Home({ homeContent }) {
         asset={{
           ...videoBanner.asset,
         }}
-        variant={["-specialFaqsBackgroundVideo", "-mediaMaskOpacity065"]}
+        variant={videoBanner.variant}
         skiplink
       />
       <MediaBlock
@@ -33,7 +33,7 @@ function Home({ homeContent }) {
         asset={{
           ...hero.asset,
         }}
-        variant={["-specialFaqsBackgroundImage"]}
+        variant={hero.variant}
       />
       <MediaBlock
         title={introduction.title}
@@ -42,7 +42,7 @@ function Home({ homeContent }) {
           ...introduction.asset,
         }}
         icon={introduction.icon}
-        variant={["-autoHeight", "-introduction", "-bottomDiagonal"]}
+        variant={introduction.variant}
       />
       <MediaBlock
         title={diagonalBanner.title}
@@ -53,7 +53,7 @@ function Home({ homeContent }) {
         ctaButton={{
           ...diagonalBanner.ctaButton,
         }}
-        variant={["-autoHeight", "-topDiagonal", "-bottomDiagonal"]}
+        variant={diagonalBanner.variant}
       />
     </>
   );
