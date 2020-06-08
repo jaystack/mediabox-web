@@ -107,6 +107,10 @@
       font-size: 39px; //16
       line-height: 32.25px;
     }
+
+    opacity: 1;
+    transform: rotateX(0) scale(1);
+    transition: opacity 2s 0.25s, transform 1.5s ease-out 0s;
   }
 
   &__subTitle {
@@ -226,4 +230,9 @@
 .article__content.-appear ul li {
   opacity: 0;
   transform: translateX(-6%) translateY(-20%);
+}
+
+.article__title.-appear {
+  opacity: 0;
+  transform: rotateY(120deg) scale(0.8);
 }

@@ -20,7 +20,8 @@ function Article({
   const contentColRef = useRef();
 
   const [imageScale, setImageScale] = useState(1);
-  const [appearClass, setAppearClass] = useState(true);
+  const [appearList, setAppearList] = useState(true);
+  const [appearTitle, setAppearTitle] = useState(true);
 
   useEffect(() => {
     const scrollListener = () => {
@@ -31,16 +32,25 @@ function Article({
         setImageScale(1 - scaleFactor * 0.25);
       }
 
-      if (appearClass && contentColRef?.current) {
+      if (appearList && contentColRef?.current) {
         const rect = contentColRef.current.getBoundingClientRect();
         if (!rect || rect.top < window.innerHeight - 100) {
           const items = contentColRef.current.querySelectorAll("ul li");
           (items || []).forEach((it, i) => {
             if (it?.style) {
-              it.style.transitionDelay = 0.25 + i * 0.1 + "s";
+              it.style.transitionDelay = 0.5 + i * 0.1 + "s";
             }
           });
-          setAppearClass(false);
+          setAppearList(false);
+        }
+      }
+
+
+      if (contentColRef && contentColRef?.current) {
+        const rect = contentColRef.current.getBoundingClientRect();
+        
+        if (!rect || rect.top < window.innerHeight - 100) {
+          setAppearTitle(false);
         }
       }
     };
@@ -64,7 +74,10 @@ function Article({
             {icon && (
               <i className={classnames("article__icon", "fa", `fa-${icon}`)} />
             )}
-            <Heading level={1} className="article__title">
+            <Heading
+              level={1}
+              className={classnames("article__title", appearTitle && "-appear")}
+            >
               {title}
             </Heading>
             {subTitle && (
@@ -77,7 +90,7 @@ function Article({
                 <div
                   className={classnames(
                     "article__content",
-                    appearClass && "-appear"
+                    appearList && "-appear"
                   )}
                   dangerouslySetInnerHTML={{ __html: content }}
                 ></div>
