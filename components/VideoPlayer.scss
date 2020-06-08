@@ -51,6 +51,19 @@
   &:hover &__icon {
     transform: scale(1.15);
   }
+
+  // Modifiers
+  &.-simpleButton {
+   border-radius: 200px;
+   background-color: #a2b8bf !important;
+   padding: 1em 1.7em;
+   font-size: 14px;
+   font-weight: 600;
+   opacity: 0.9;
+   &:hover {
+     opacity: 1;
+   };
+  }
 }
 
 .videoPlayer {

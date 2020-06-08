@@ -3,6 +3,7 @@ import * as PropTypes from "prop-types";
 import classnames from "classnames";
 
 import Vimeo from '@u-wave/react-vimeo';
+import Button from "../components/Button";
 
 import "./VideoPlayer.scss";
 
@@ -11,7 +12,8 @@ function VideoPlayer({
   videoId,
   buttonLabel,
   variant,
-  className
+  className,
+  simpleButton
 }) {
   const [open, setOpen] = useState(false);
 
@@ -28,12 +30,14 @@ function VideoPlayer({
   return (
     <>
       <button
-        className={classnames("videoPlayButton", className, variant)}
+        className={classnames("videoPlayButton", className, variant, simpleButton && '-simpleButton')}
         onClick={() => handleVideoOpen(true)}
       >
-        <span className="videoPlayButton__icon">
-          <i className="fa fa-play" />
-        </span>
+        {!simpleButton && (
+          <span className="videoPlayButton__icon">
+            <i className="fa fa-play" />
+          </span>
+        )}
         {buttonLabel}
       </button>
       {open && (
@@ -47,6 +51,7 @@ function VideoPlayer({
                   className="videoPlayer__video"
                 />
               )}
+              sim
               <button
                 className={classnames("videoPlayer__closeButton", className, variant)}
                 onClick={() => handleVideoClose(false)}
@@ -65,6 +70,7 @@ VideoPlayer.defaultProps = {
   buttonLabel: "Watch video",
   variant: [],
   className: "",
+  simpleButton: false
 };
 
 VideoPlayer.propTypes = {
@@ -73,6 +79,7 @@ VideoPlayer.propTypes = {
   buttonLabel: PropTypes.string,
   variant: PropTypes.array,
   className: PropTypes.string,
+  simpleButton: PropTypes.bool,
 };
 
 export default VideoPlayer;
