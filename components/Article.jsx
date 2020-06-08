@@ -16,9 +16,20 @@ function Article({
   image,
 }) {
   const imageRef = useRef();
+  const imageColRef = useRef();
+  const contentColRef = useRef();
+
+  const [imageScale, setImageScale] = useState(1);
 
   useEffect(() => {
-    const scrollListener = () => {};
+    const scrollListener = () => {
+      if (imageColRef?.current && imageRef?.current) {
+        const rect = imageColRef.current.getBoundingClientRect();
+        const scaleFactor =
+          rect.top / (window.innerHeight || rect.height || 1024);
+        setImageScale(1 - scaleFactor * 0.25);
+      }
+    };
 
     // set resize listener
     window.addEventListener("scroll", scrollListener);
@@ -32,7 +43,10 @@ function Article({
     <>
       <div className={classnames("article", className, variant)}>
         <div className="article__inner">
-          <div className={classnames("article__contentColumn")}>
+          <div
+            ref={contentColRef}
+            className={classnames("article__contentColumn")}
+          >
             {icon && (
               <i className={classnames("article__icon", "fa", `fa-${icon}`)} />
             )}
@@ -63,10 +77,15 @@ function Article({
             )}
           </div>
           {image && (
-            <div className={classnames("article__imageColumn")}>
+            <div
+              ref={imageColRef}
+              className={classnames("article__imageColumn")}
+            >
               <img
+                ref={imageRef}
                 {...image}
                 className={classnames(image.className, "article__image")}
+                style={{ transform: `scale(${imageScale})` }}
               />
             </div>
           )}
