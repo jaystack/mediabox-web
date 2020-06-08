@@ -8,7 +8,7 @@
   // Elements
   &__inner {
     margin: 0 auto;
-    max-width: 1320px;
+    max-width: $xlMaxWidth;
     @include breakpointDown($xl) {
       max-width: 960px;
     }
