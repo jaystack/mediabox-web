@@ -48,7 +48,7 @@ function Article({
       if (contentColRef && contentColRef?.current) {
         const rect = contentColRef.current.getBoundingClientRect();
 
-        if (!rect || rect.top < window.innerHeight - 100) {
+        if (!rect || rect.top < window.innerHeight) {
           setAppearTitle(false);
         }
       }
