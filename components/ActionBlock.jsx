@@ -8,13 +8,23 @@ import Link from "next/link";
 import "./ActionBlock.scss";
 
 function ActionBlock({ title, subTitle, className, variant, video }) {
-  const mediaRef = useRef();
-  const videoRef = useRef();
-  const imageRef = useRef();
-  const [imageParallax, setImageParallax] = useState(0);
+  const cardContainerRef = useRef();
+  const [appearClass, setAppearClass] = useState(true);
+  const [removeTransformClass, setRemoveTransformClass] = useState(false);
 
   useEffect(() => {
-    const scrollListener = () => {};
+    const scrollListener = () => {
+      if (cardContainerRef?.current) {
+        const rect = cardContainerRef.current.getBoundingClientRect();
+        if (!rect || rect.top < window.innerHeight) {
+          setAppearClass(false);
+          setTimeout(() => {
+            setRemoveTransformClass(true);
+          }, 2500);
+          window.removeEventListener("scroll", scrollListener);
+        }
+      }
+    };
 
     // set resize listener
     window.addEventListener("scroll", scrollListener);
@@ -35,7 +45,14 @@ function ActionBlock({ title, subTitle, className, variant, video }) {
             {subTitle}
           </Heading>
         )}
-        <div className="actionBlock__cardContainer">
+        <div
+          ref={cardContainerRef}
+          className={classnames(
+            "actionBlock__cardContainer",
+            appearClass && "-appear",
+            removeTransformClass && "-removeTransform" // Prevent video window display error
+          )}
+        >
           <div className="actionBlock__card cardVideo">
             <div className="actionBlock__cardTitle">watch our demo</div>
             <div className="actionBlock__cardButton">

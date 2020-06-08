@@ -112,6 +112,8 @@
     font-weight: 600;
     padding: 74px;
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.15), 0 25px 80px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    transform: rotateX(0deg);
 
     height: 150px;
     @include breakpointDown($lg) {
@@ -143,6 +145,7 @@
   }
 
   &__card.cardVideo {
+    transition: transform 0.75s ease-in 0.1s, opacity 3s 0s, background-color 0.3s 0s;
     color: $white;
     background-color: #083140;
     &:hover {
@@ -150,9 +153,11 @@
     }
   }
   &__card.liveDemo {
+    transition: transform 0.75s  ease-in 0.6s, opacity 3s 0.5s, background-color 0.3s 0s;
     color: $blue;
   }
   &__card.speakTo {
+    transition: transform 0.75s  ease-in 1.1s, opacity 3s 1s, background-color 0.3s 0s;
     color: $white;
     background-color: $blue;
     &:hover {
@@ -205,4 +210,16 @@
     color: $blue;
     border-color: $blue;
   }
+
+  &__cardContainer.-appear .actionBlock__card {
+    opacity: 0 !important;
+    transform: rotateX(90deg) !important;
+  }
+
+  &__cardContainer.-removeTransform .actionBlock__card {
+    transform: initial !important; // Prevent video window display error
+  }
+
+
+
 }
