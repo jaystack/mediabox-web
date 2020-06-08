@@ -2,6 +2,7 @@ import React from "react";
 
 import { getHomeContent } from "../data/home";
 import MediaBlock from "../components/MediaBlock";
+import ActionBlock from "../components/ActionBlock";
 import Article from "../components/Article";
 
 export const getServerSideProps = async () => {
@@ -92,6 +93,18 @@ function Home({ homeContent }) {
           ...diagonalBanner.ctaButton,
         }}
         variant={diagonalBanner.variant}
+      />
+
+      <ActionBlock
+        title={"START CENTRALISING, SHARING & PROMOTING YOUR ASSETS NOW"}
+        subTitle={
+          "Protecting your brand, globally, from one centralised resource."
+        }
+        video={{
+          type: "vimeo",
+          videoId: "336368135",
+          buttonLabel: "WATCH VIDEO",
+        }}
       />
     </>
   );

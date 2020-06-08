@@ -157,8 +157,7 @@
     height: 60px;
     line-height: 61px;
     text-align: center;
-    
-    
+
     &:before {
       line-height: 61px;
       font-size: 24px;
@@ -180,8 +179,8 @@
     border-radius: 50%;
     font-size: 25px;
     color: $white;
-    opacity: .6;
-    transition: opacity .4s ease;
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
 
     &:hover {
       opacity: 0.9;
@@ -210,11 +209,11 @@
     height: auto;
 
     &.-topDiagonal {
-      padding-top: 200px;
+      padding-top: 250px;
     }
-  
+
     &.-bottomDiagonal {
-      padding-bottom: 200px;
+      padding-bottom: 250px;
     }
   }
 
@@ -236,7 +235,7 @@
 
     @include breakpointDown($lg) {
       font-size: 32px;
-    line-height: 36px;
+      line-height: 36px;
     }
 
     @include breakpointDown($md) {
@@ -262,13 +261,37 @@
     z-index: 10;
   }
 
+  &.-showVideoBottom .mediaBlock__video {
+    position: relative;
+    max-height: 1100px;
+    top: -200px;
+    @include breakpointDown($xl) {
+      top: -100px;
+      max-height: 850px;
+    }
+    @include breakpointDown($md) {
+      top: -120px;
+      left: -300px;
+    }
+    @include breakpointDown($sm) {
+      left: -460px;
+    }
+  }
+
+  &.-smallerTitle .mediaBlock__title {
+    font-size: 56px;
+  }
+  &.-smallerTitle .mediaBlock__subTitle {
+    font-size: 20px;
+  }
+
   // special for FAQS page
   &.-specialFaqsBackgroundVideo .mediaBlock__video {
     position: absolute;
     right: 0;
     min-height: 100%;
   }
-  
+
   &.-specialFaqsBackgroundImage .mediaBlock__image {
     display: block;
     // width: auto;

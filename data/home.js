@@ -27,7 +27,7 @@ const homeContent = {
     video: {
       type: "vimeo",
       videoId: "336368135",
-      buttonLabel: "View a Demo",
+      buttonLabel: "VIEW A DEMO",
     },
     asset: {
       assetType: "image",
@@ -61,7 +61,7 @@ const homeContent = {
   diagonalBanner: {
     title: "brand management",
     subTitle: "the all-in-one solution to manage & distribute content.",
-    variant: ["-topDiagonal", "-bottomDiagonal", "-autoHeight"],
+    variant: ["-topDiagonal", "-bottomDiagonal", "-autoHeight", "-showVideoBottom", "-smallerTitle"],
     asset: {
       assetType: "video",
       maskColor: "#333334",
