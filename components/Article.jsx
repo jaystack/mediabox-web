@@ -45,10 +45,9 @@ function Article({
         }
       }
 
-
       if (contentColRef && contentColRef?.current) {
         const rect = contentColRef.current.getBoundingClientRect();
-        
+
         if (!rect || rect.top < window.innerHeight - 100) {
           setAppearTitle(false);
         }
@@ -61,6 +60,12 @@ function Article({
     return () => {
       window.removeEventListener("scroll", scrollListener);
     };
+  }, []);
+
+  React.useEffect(() => {
+    // Trigger scrollbar to show innitially hidden items (TODO: better solution);
+    window.scrollBy(0, 1);
+    window.scrollBy(0, -1);
   }, []);
 
   return (
