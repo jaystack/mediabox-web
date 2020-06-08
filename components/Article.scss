@@ -110,8 +110,8 @@
 
     opacity: 1;
     transform: rotateX(5deg) scale(1);
-    transform: left top;
-    transition: opacity 3.5s 0.1s, transform 1.75s ease-out 0s;
+    transform-origin: right top;
+    transition: opacity 2.5s 0.25s, transform 1.25s ease-out 0s;
   }
 
   &__subTitle {
@@ -235,5 +235,5 @@
 
 .article__title.-appear {
   opacity: 0;
-  transform: rotateY(120deg) scale(0.7);
+  transform: rotateX(100deg) rotateY(-40deg) scale(1);
 }
