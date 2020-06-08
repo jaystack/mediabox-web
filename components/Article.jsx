@@ -20,6 +20,7 @@ function Article({
   const contentColRef = useRef();
 
   const [imageScale, setImageScale] = useState(1);
+  const [appearClass, setAppearClass] = useState(true);
 
   useEffect(() => {
     const scrollListener = () => {
@@ -28,6 +29,19 @@ function Article({
         const scaleFactor =
           rect.top / (window.innerHeight || rect.height || 1024);
         setImageScale(1 - scaleFactor * 0.25);
+      }
+
+      if (appearClass && contentColRef?.current) {
+        const rect = contentColRef.current.getBoundingClientRect();
+        if (!rect || rect.top < window.innerHeight - 100) {
+          const items = contentColRef.current.querySelectorAll("ul li");
+          (items || []).forEach((it, i) => {
+            if (it?.style) {
+              it.style.transitionDelay = 0.25 + i * 0.1 + "s";
+            }
+          });
+          setAppearClass(false);
+        }
       }
     };
 
@@ -59,9 +73,12 @@ function Article({
               </Heading>
             )}
             {content && (
-              <div className="article__contentContainer">
+              <div className={classnames("article__contentContainer")}>
                 <div
-                  className="article__content"
+                  className={classnames(
+                    "article__content",
+                    appearClass && "-appear"
+                  )}
                   dangerouslySetInnerHTML={{ __html: content }}
                 ></div>
                 {ctaButton?.label && (

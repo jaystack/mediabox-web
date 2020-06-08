@@ -205,6 +205,8 @@
       opacity: 0.8;
       line-height: 28px; //23
       margin-bottom: 5px;
+
+      transition: transform 1s 0.7s, opacity 1s 0.5s;
       &::before {
         content: "\f061";
         display: inline-block;
@@ -219,5 +221,9 @@
   p {
     font-weight: 200;
   }
-  
+}
+
+.article__content.-appear ul li {
+  opacity: 0;
+  transform: translateX(-6%) translateY(-20%);
 }
