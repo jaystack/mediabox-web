@@ -66,14 +66,14 @@ function Home({ homeContent }) {
           ...diagonalBanner.ctaButton,
         }}
         content={`<ul>
-        <li style="opacity: 1; left: 0px;"><i class="icon-default-style icon-arrow-right extra-color-1"></i> <strong>Upload</strong></li>
-        <li style="opacity: 1; left: 0px;"><i class="icon-default-style icon-arrow-right extra-color-1"></i> <strong>Store</strong></li>
-        <li style="opacity: 1; left: 0px;"><i class="icon-default-style icon-arrow-right extra-color-1"></i> <strong>Organise</strong></li>
-        <li style="opacity: 1; left: 0px;"><i class="icon-default-style icon-arrow-right extra-color-1"></i> <strong>Manage</strong></li>
-        <li style="opacity: 1; left: 0px;"><i class="icon-default-style icon-arrow-right extra-color-1"></i> <strong>Find</strong></li>
-        <li style="opacity: 1; left: 0px;"><i class="icon-default-style icon-arrow-right extra-color-1"></i> <strong>Distribute</strong></li>
-        <li style="opacity: 1; left: 0px;"><i class="icon-default-style icon-arrow-right extra-color-1"></i> <strong>Protect</strong></li>
-        <li style="opacity: 1; left: 0px;"><i class="icon-default-style icon-arrow-right extra-color-1"></i> <strong>Promote</strong></li>
+        <li>Upload</li>
+        <li>Store</li>
+        <li>Organise</li>
+        <li>Manage</li>
+        <li>Find</li>
+        <li>Distribute</li>
+        <li>Protect</li>
+        <li>Promote</li>
         </ul>
         <p>All your digital assets in one place, with secure access anytime, anywhere, worldwide.</p>
         `}

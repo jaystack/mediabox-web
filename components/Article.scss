@@ -36,8 +36,19 @@
     flex-wrap: wrap;
     height: 100%;
     max-width: 85%;
+    min-width: 75%;
     margin-left: auto;
     margin-right: auto;
+
+    @include breakpointDown($xl) {
+      max-width: 90%;
+    }
+    @include breakpointDown($lg) {
+      max-width: 100%;
+    }
+    @include breakpointDown($md) {
+      display: block;
+    }
   }
 
   &__imageColumn {
@@ -54,8 +65,9 @@
 
   &__image {
     display: block;
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
     object-fit: cover;
   }
 
@@ -76,32 +88,23 @@
     letter-spacing: -1;
     line-height: 60px;
 
-
     @include breakpointDown($xl) {
-      color: red !important;
-      border: solid 10px red;
-      font-size: 56px;
+      font-size: 48px;
       line-height: 76.5px;
     }
 
     @include breakpointDown($lg) {
-      color: green !important;
-      border: solid 10px red;
-      font-size: 56px;
+      font-size: 48px;
       line-height: 72.25px;
     }
 
     @include breakpointDown($md) {
-      color: blue !important;
-      border: solid 10px red;
-      font-size: 36px;
+      font-size: 45px;
       line-height: 38.25px;
     }
 
     @include breakpointDown($sm) {
-      color: yellow !important;
-      border: solid 10px red;
-      font-size: 30px;
+      font-size: 39px; //16
       line-height: 32.25px;
     }
   }
@@ -173,7 +176,7 @@
 
   &.-autoHeight {
     padding: {
-      top: 100px;
+      top: 90px;
       bottom: 60px;
     }
     height: auto;
@@ -186,4 +189,35 @@
       padding-bottom: 200px;
     }
   }
+}
+
+// CONTENT
+.article__contentColumn {
+  font-size: 20px;
+  ul {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    & > li {
+      list-style: none;
+      left: 0;
+      font-weight: 600;
+      font-size: 20px;
+      opacity: 0.8;
+      line-height: 28px; //23
+      margin-bottom: 5px;
+      &::before {
+        content: "\f061";
+        display: inline-block;
+        font-family: "FontAwesome";
+        font-size: 16px;
+        color: $blue;
+        margin: 0 15px 0 -40px;
+      }
+    }
+  }
+
+  p {
+    font-weight: 200;
+  }
+  
 }
