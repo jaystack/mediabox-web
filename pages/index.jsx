@@ -15,7 +15,14 @@ export const getServerSideProps = async () => {
 };
 
 function Home({ homeContent }) {
-  const { hero, videoBanner, introduction, diagonalBanner } = homeContent;
+  const {
+    hero,
+    videoBanner,
+    introduction,
+    diagonalBanner,
+    article,
+    actionBlock,
+  } = homeContent;
   return (
     <>
       <MediaBlock
@@ -40,7 +47,7 @@ function Home({ homeContent }) {
           videoId: hero.video.videoId,
           buttonLabel: hero.video.buttonLabel,
         }}
-        variant={["-specialFaqsBackgroundImage"]}
+        variant={[...hero.variant]}
       />
       <MediaBlock
         title={introduction.title}
@@ -52,36 +59,14 @@ function Home({ homeContent }) {
         variant={introduction.variant}
       />
       <Article
-        title={"complete asset management"}
-        subTitle={"The All-in-One Digital Asset Management Solution"}
-        content={hero.content}
-        asset={null}
-        video={{
-          type: hero.video.type,
-          videoId: hero.video.videoId,
-          buttonLabel: hero.video.buttonLabel,
-        }}
-        icon={"sitemap"}
-        variant={["-autoHeight", "-whiteTheme"]}
-        ctaButton={{
-          ...diagonalBanner.ctaButton,
-        }}
-        content={`<ul>
-        <li>Upload</li>
-        <li>Store</li>
-        <li>Organise</li>
-        <li>Manage</li>
-        <li>Find</li>
-        <li>Distribute</li>
-        <li>Protect</li>
-        <li>Promote</li>
-        </ul>
-        <p>All your digital assets in one place, with secure access anytime, anywhere, worldwide.</p>
-        `}
-        image={{
-          src: "images/home/All-in-one-asset-management1000px_1-1536x1536.jpg",
-          alt: "",
-        }}
+        title={article.title}
+        subTitle={article.subTitle}
+        video={article.video}
+        icon={article.icon}
+        variant={article.variant}
+        ctaButton={article.ctaButton}
+        content={article.content}
+        image={article.image}
       />
       <MediaBlock
         title={diagonalBanner.title}
@@ -94,17 +79,10 @@ function Home({ homeContent }) {
         }}
         variant={diagonalBanner.variant}
       />
-
       <ActionBlock
-        title={"START CENTRALISING, SHARING & PROMOTING YOUR ASSETS NOW"}
-        subTitle={
-          "Protecting your brand, globally, from one centralised resource."
-        }
-        video={{
-          type: "vimeo",
-          videoId: "336368135",
-          buttonLabel: "WATCH VIDEO",
-        }}
+        title={actionBlock.title}
+        subTitle={actionBlock.subTitle}
+        video={actionBlock.video}
       />
     </>
   );
