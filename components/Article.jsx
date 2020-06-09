@@ -64,8 +64,12 @@ function Article({
 
   React.useEffect(() => {
     // Trigger scrollbar to show innitially hidden items (TODO: better solution);
-    window.scrollBy(0, 1);
     window.scrollBy(0, -1);
+    setTimeout(() => {
+      requestAnimationFrame(() => {
+        window.scrollBy(0, 1);
+      });
+    });
   }, []);
 
   return (
