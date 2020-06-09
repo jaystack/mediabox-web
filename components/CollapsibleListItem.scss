@@ -22,7 +22,7 @@
   &__titleText {
     letter-spacing: -1px;
     font-size: 38px;
-    line-height: 42px;
+    line-height: $defaultLineHeight;
     font-weight: 700;
     $vPaddingLg: 30px;
     padding: $vPaddingLg $hPadding + $toggleBtnSize $vPaddingLg $hPadding;

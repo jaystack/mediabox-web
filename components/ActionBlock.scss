@@ -50,7 +50,7 @@
       weight: 600;
       size: 56px;
     }
-    line-height: 1.2em;
+    line-height: $defaultLineHeight;
 
     @include breakpointDown($xl) {
       font-size: 56px;

@@ -86,7 +86,7 @@
       size: 56px;
     }
     letter-spacing: -1;
-    line-height: 1.2em;
+    line-height: $defaultLineHeight;
 
     @include breakpointDown($xl) {
       font-size: 48px;
@@ -200,7 +200,7 @@
       font-weight: 200;
       font-size: 20px;
       opacity: 0.8;
-      line-height: 28px; //23
+      line-height: $defaultLineHeight;
       margin-bottom: 5px;
 
       transition: transform 1s 0.7s, opacity 1s 0.5s;
