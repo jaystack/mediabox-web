@@ -41,7 +41,7 @@ class MyApp extends App {
       menuItems: [
         {
           title: "digital asset managment",
-          href: "/",
+          href: "/digitalAssetManagement",
         },
         {
           title: "why mediabox",

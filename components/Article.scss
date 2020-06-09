@@ -86,7 +86,7 @@
       size: 56px;
     }
     letter-spacing: -1;
-    line-height: 60px;
+    line-height: 1.2em;
 
     @include breakpointDown($xl) {
       font-size: 48px;
@@ -94,12 +94,10 @@
 
     @include breakpointDown($md) {
       font-size: 45px;
-      line-height: 44px;
     }
 
     @include breakpointDown($sm) {
-      font-size: 39px; //16
-      line-height: 32.25px;
+      font-size: 39px;
     }
 
     opacity: 1;
@@ -199,7 +197,7 @@
     & > li {
       list-style: none;
       left: 0;
-      font-weight: 600;
+      font-weight: 200;
       font-size: 20px;
       opacity: 0.8;
       line-height: 28px; //23
@@ -218,7 +216,14 @@
   }
 
   p {
-    font-weight: 200;
+    line-height: 1.4em;
+    font: {
+      size: 20;
+      weight: 200;
+    }
+    @include breakpointDown($sm) {
+      font-size: 16px;
+    }
   }
 }
 
@@ -230,4 +235,24 @@
 .article__title.-appear {
   opacity: 0;
   transform: rotateX(100deg) rotateY(-40deg) scale(1);
+}
+
+// content modifiers
+.article.-boldArticleListItem .article__contentColumn ul > li {
+  font-weight: 600;
+}
+
+.article.-tallArticleListItem .article__contentColumn {
+  ul {
+    margin-top: 2em;
+    & > li {
+      line-height: 1.7em;
+    }
+  }
+}
+
+.article.-darkArticleBullet .article__contentColumn {
+  ul > li:before {
+    color: $blueDark;
+  }
 }
