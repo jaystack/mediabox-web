@@ -3,7 +3,6 @@ const heroVideo = {
   videoId: "336368135",
   buttonLabel: "VIEW A DEMO",
 };
-
 const homeContent = {
   videoBanner: {
     title: "advanced digital asset and brand management software",
@@ -98,7 +97,7 @@ const homeContent = {
     title: "complete asset management",
     subTitle: "The All-in-One Digital Asset Management Solution",
     icon: "sitemap",
-    variant: ["-autoHeight", "-whiteTheme"],
+    variant: ["-autoHeight", "-whiteTheme", "-boldArticleListItem"],
     ctaButton: {
       label: "LEARN MORE",
       url: "/digital-asset-management/",

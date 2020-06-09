@@ -28,12 +28,16 @@
   &__inner {
     position: relative;
     max-width: $xlMaxWidth;
-    margin: 150px auto 120px auto;
+    margin: 140px auto 0 auto;
     z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-bottom: 130px;
+    @include breakpointDown($md) {
+      padding-bottom: 80px;
+    }
   }
 
   &__title {
@@ -46,26 +50,22 @@
       weight: 600;
       size: 56px;
     }
-    line-height: 60px;
+    line-height: 1.2em;
 
     @include breakpointDown($xl) {
-      font-size: 72px;
-      line-height: 76.5px;
+      font-size: 56px;
     }
 
     @include breakpointDown($lg) {
-      font-size: 68px;
-      line-height: 72.25px;
+      font-size: 48px;
     }
 
     @include breakpointDown($md) {
       font-size: 36px;
-      line-height: 38.25px;
     }
 
     @include breakpointDown($sm) {
       font-size: 30px;
-      line-height: 32.25px;
     }
   }
 
