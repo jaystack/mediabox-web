@@ -90,17 +90,11 @@
 
     @include breakpointDown($xl) {
       font-size: 48px;
-      line-height: 76.5px;
-    }
-
-    @include breakpointDown($lg) {
-      font-size: 48px;
-      line-height: 72.25px;
     }
 
     @include breakpointDown($md) {
       font-size: 45px;
-      line-height: 38.25px;
+      line-height: 44px;
     }
 
     @include breakpointDown($sm) {
@@ -111,7 +105,7 @@
     opacity: 1;
     transform: rotateX(5deg) scale(1);
     transform-origin: right top;
-    transition: opacity 2.5s 0.25s, transform 1.25s ease-out 0s;
+    transition: opacity 2.5s 0.1s, transform 1.2s ease-out 0s;
   }
 
   &__subTitle {

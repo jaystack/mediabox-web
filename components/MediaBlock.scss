@@ -278,11 +278,13 @@
     }
   }
 
-  &.-smallerTitle .mediaBlock__title {
-    font-size: 56px;
-  }
-  &.-smallerTitle .mediaBlock__subTitle {
-    font-size: 20px;
+  @include breakpointUp($md) {
+    &.-smallerTitle .mediaBlock__title {
+      font-size: 56px;
+    }
+    &.-smallerTitle .mediaBlock__subTitle {
+      font-size: 20px;
+    }
   }
 
   // special for FAQS page
