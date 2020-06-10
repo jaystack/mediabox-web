@@ -3,10 +3,10 @@ const digitalAssetManagementContent = {
     title: "digital asset management",
     subTitle:
       "full control and management over the lifecycle of your digital assets",
-    variant: ["-mediaMaskOpacity065"],
     content: "",
     asset: {
       assetType: "video",
+      maskOpacity: 0.65,
       video: {
         autoPlay: true,
         loop: true,

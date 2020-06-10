@@ -147,7 +147,7 @@
   &__card.cardVideo {
     transition: transform 0.75s ease-in 0.1s, opacity 3s 0s, background-color 0.3s 0s;
     color: $white;
-    background-color: #083140;
+    background-color: $blueDark;
     &:hover {
       background-color: $blue;
     }
@@ -161,7 +161,7 @@
     color: $white;
     background-color: $blue;
     &:hover {
-      background-color: #083140;
+      background-color: $blueDark;
     }
   }
 

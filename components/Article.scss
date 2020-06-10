@@ -8,7 +8,7 @@
     right: 90px;
   }
   color: $white;
-  background-color: #083140;
+  background-color: $blueDark;
   overflow: hidden;
 
   @include breakpointDown($md) {

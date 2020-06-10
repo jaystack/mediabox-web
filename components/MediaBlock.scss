@@ -206,10 +206,6 @@
     @extend %bottomDiagonal;
   }
 
-  &.-mediaMaskOpacity065 .mediaBlock__media:after {
-    opacity: 0.65;
-  }
-
   &.-autoHeight {
     padding: {
       top: 100px;

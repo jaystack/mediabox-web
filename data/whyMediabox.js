@@ -8,11 +8,10 @@ const whyMediaboxContent = {
     title: "why mediabox?",
     subTitle:
       "future-proofing the way you manage and control your digital assets",
-      // // // OPACITY 0.7!!!
-    variant: ["-mediaMaskOpacity065"],
     content: "",
     asset: {
       assetType: "video",
+      maskOpacity: 0.7,
       video: {
         autoPlay: true,
         loop: true,

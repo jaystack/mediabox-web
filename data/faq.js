@@ -5,6 +5,7 @@ const faqContent = {
     content: "",
     asset: {
       assetType: "video",
+      maskOpacity: 0.65,
       video: {
         autoPlay: true,
         loop: true,

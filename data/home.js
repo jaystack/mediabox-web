@@ -8,10 +8,10 @@ const homeContent = {
     title: "advanced digital asset and brand management software",
     subTitle:
       "protecting your assets, globally, from one centralised resource. ",
-    variant: ["-mediaMaskOpacity065"],
     content: "",
     asset: {
       assetType: "video",
+      maskOpacity: 0.65,
       video: {
         autoPlay: true,
         loop: true,
