@@ -252,8 +252,8 @@
 
   &.-showVideoBottom .mediaBlock__video {
     position: relative;
-    max-height: 1100px;
-    top: -200px;
+    max-height: 1200px;
+    top: -250px;
     @include breakpointDown($xl) {
       top: -100px;
       max-height: 850px;
