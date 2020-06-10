@@ -28,6 +28,24 @@ const brandContent = {
     subTitle: "",
     variant: ["-autoHeight"],
     content: `
+    <div class="imageColumn">
+      <div>
+        <img src="images/brand/brand1.svg" alt="">
+        <div>Organise</div>
+      </div>
+      <div>
+        <img src="images/brand/brand2.svg" alt="">
+        <div>Centralise</div>
+      </div>
+      <div>
+        <img src="images/brand/brand3.svg" alt="">
+        <div>Search</div>
+      </div>
+      <div>
+        <img src="images/brand/brand4.svg" alt="">
+        <div>Distribute</div>
+      </div>
+    </div>
     <p>The more successful the company and its marketing organisation is in presenting a consistent, compelling, informative brand, the greater the likelihood of sales success. The equation is simple; enforcing it is not.</p>
     <p>Mobilising your brand with MediaBox will increase sales and marketing opportunities because without rigourous standards and controls, a company’s brand can be diluted, leading to customer confusion and lost business. As a result, most companies implement rigid, highly manual and centralised marketing practices</p>
     <p>Marketing Automation (MAM) can steward the brand control process, whilst also empower the end users (corporate, networks, and field marketers, agencies) who are ultimately responsible for facilitating the brand’s regional and worldwide product sales and promotions.</p>
