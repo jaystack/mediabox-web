@@ -45,7 +45,7 @@ class MyApp extends App {
         },
         {
           title: "why mediabox",
-          href: "/",
+          href: "/whyMediabox",
         },
         {
           title: "brand",

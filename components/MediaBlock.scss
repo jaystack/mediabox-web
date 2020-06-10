@@ -181,7 +181,17 @@
     }
   }
 
+  &__content {
+    display: block;
+  }
+
   // Modifiers
+
+  &.-longContent {
+    .mediaBlock__videoPlayerContainer {
+      margin-top: 40px;
+    }
+  }
 
   &.-topDiagonal {
     @extend %topDiagonal;
@@ -345,5 +355,42 @@
     display: block;
     // width: auto;
     height: 1312px;
+  }
+}
+
+// CONTENT
+.mediaBlock__content {
+  & > div {
+    max-width: 85%;
+    margin: auto;
+    padding-top: 20px;
+    p {
+      font: {
+        size: 20px;
+        weight: 300;
+      }
+    }
+
+    h3 {
+      margin: 0.6em 0 0.8em 0;
+      letter-spacing: -1px;
+      text-align: center;
+      font: {
+        size: 38px;
+        weight: 600;
+      }
+    }
+    @include breakpointDown($lg) {
+      max-width: 95%;
+    }
+    @include breakpointDown($md) {
+      max-width: 100%;
+      p {
+        font-size: 16px;
+      }
+      h3 {
+        font-size: 23px;
+      }
+    }
   }
 }
