@@ -8,7 +8,7 @@ const homeContent = {
     title: "advanced digital asset and brand management software",
     subTitle:
       "protecting your assets, globally, from one centralised resource. ",
-    variant: ["-specialFaqsBackgroundVideo", "-mediaMaskOpacity065"],
+    variant: ["-mediaMaskOpacity065"],
     content: "",
     asset: {
       assetType: "video",

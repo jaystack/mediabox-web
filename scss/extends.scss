@@ -20,7 +20,6 @@
   height: 0;
   display: block;
   width: 0;
-  transition: border-width 0.15s ease;
 
   @include breakpointDown($md) {
     border: {

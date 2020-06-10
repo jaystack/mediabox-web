@@ -43,7 +43,7 @@ function Faqs({ faqContent }) {
         asset={{
           ...videoBanner.asset,
         }}
-        variant={["-specialFaqsBackgroundVideo", "-mediaMaskOpacity065"]}
+        variant={["-mediaMaskOpacity065"]}
         skiplink
       />
       <MediaBlock

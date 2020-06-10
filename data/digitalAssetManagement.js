@@ -3,7 +3,7 @@ const digitalAssetManagementContent = {
     title: "digital asset management",
     subTitle:
       "full control and management over the lifecycle of your digital assets",
-    variant: ["-specialFaqsBackgroundVideo", "-mediaMaskOpacity065"],
+    variant: ["-mediaMaskOpacity065"],
     content: "",
     asset: {
       assetType: "video",
