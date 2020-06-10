@@ -26,7 +26,6 @@
   }
 
   // Children
-
   &__media {
     position: absolute;
     top: 0;
@@ -62,14 +61,18 @@
 
   &__inner {
     position: relative;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+    max-width: 1400px;
+    height: 100%;
     z-index: 10;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    height: 100%;
   }
 
   &__image {
@@ -82,7 +85,7 @@
   &__video {
     display: block;
     margin-left: 50vw;
-    transform: translate(-50%);
+    transform: translateX(-50%);
     @include breakpointDown($xlMaxWidth) {
       max-height: 100%;
     }
@@ -186,9 +189,45 @@
     }
   }
 
-  &__content {
+  &__contentContainer {
+    display: block;
+    position: relative;
+    max-width: 85%;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+    padding-top: 20px;
+  }
+
+  &__content,
+  &__moreContent {
     display: block;
   }
+
+  &__content,
+  &__moreContent {
+    display: block;
+    overflow: hidden;
+    transition: max-height 1s;
+  }
+
+  &__moreContentButton,
+  &__moreContentCloseButton {
+    display: block;
+    position: absolute; // prevent change container height during the open/close transition
+    cursor: pointer;
+    animation: moreContentBtnDelayedFadeIn 1.5s;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @keyframes moreContentBtnDelayedFadeIn {
+    from { opacity: 0; }
+    50% { opacity: 0; }
+    to   { opacity: 1; }
+}
 
   // Modifiers
 
@@ -350,41 +389,44 @@
     // width: auto;
     height: 1312px;
   }
+
+  // need for brand page video
+  &.-cropVideoTopBorder .mediaBlock__video {
+    transform: translate(-50%, -3%);
+    @include breakpointDown($xlMaxWidth) {
+      transform: translate(-50%, 0.5%) scale(1.06);
+    }
+  }
 }
 
 // CONTENT
-.mediaBlock__content {
-  & > div {
-    max-width: 85%;
-    margin: auto;
-    padding-top: 20px;
-    p {
-      font: {
-        size: 20px;
-        weight: 300;
-      }
+.mediaBlock__contentContainer > div > div {
+  p {
+    font: {
+      size: 20px;
+      weight: 300;
     }
+  }
 
+  h3 {
+    margin: 0.6em 0 0.8em 0;
+    letter-spacing: -1px;
+    text-align: center;
+    font: {
+      size: 38px;
+      weight: 600;
+    }
+  }
+  @include breakpointDown($lg) {
+    max-width: 95%;
+  }
+  @include breakpointDown($md) {
+    max-width: 100%;
+    p {
+      font-size: 16px;
+    }
     h3 {
-      margin: 0.6em 0 0.8em 0;
-      letter-spacing: -1px;
-      text-align: center;
-      font: {
-        size: 38px;
-        weight: 600;
-      }
-    }
-    @include breakpointDown($lg) {
-      max-width: 95%;
-    }
-    @include breakpointDown($md) {
-      max-width: 100%;
-      p {
-        font-size: 16px;
-      }
-      h3 {
-        font-size: 23px;
-      }
+      font-size: 23px;
     }
   }
 }

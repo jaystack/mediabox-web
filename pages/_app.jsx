@@ -49,7 +49,7 @@ class MyApp extends App {
         },
         {
           title: "brand",
-          href: "/",
+          href: "/brand",
         },
         {
           title: "about us",

@@ -12,6 +12,9 @@ function MediaBlock({
   title,
   subTitle,
   content,
+  moreContent,
+  moreContentButton,
+  moreContentCloseButton,
   asset,
   ctaButton,
   icon,
@@ -23,7 +26,9 @@ function MediaBlock({
   const mediaRef = useRef();
   const videoRef = useRef();
   const imageRef = useRef();
+  const moreContentHeightRef = useRef();
   const [imageParallax, setImageParallax] = useState(0);
+  const [moreContentHeight, setMoreContentHeight] = useState(0);
 
   useEffect(() => {
     const scrollListener = () => {
@@ -67,7 +72,14 @@ function MediaBlock({
 
   return (
     <>
-      <div className={classnames("mediaBlock", className, variant, video && "-withVideo")}>
+      <div
+        className={classnames(
+          "mediaBlock",
+          className,
+          variant,
+          video && "-withVideo"
+        )}
+      >
         <div ref={mediaRef} className={classnames("mediaBlock__media")}>
           {asset?.assetType === "image" && (
             <img
@@ -111,12 +123,51 @@ function MediaBlock({
               {subTitle}
             </Heading>
           )}
-          {content && (
-            <div
-              className="mediaBlock__content"
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
-          )}
+          <div className="mediaBlock__contentContainer">
+            {content && (
+              <div className="mediaBlock__content">
+                <div
+                  className="mediaBlock__contentHeight"
+                  dangerouslySetInnerHTML={{ __html: content }}
+                />
+              </div>
+            )}
+            {moreContent && (
+              <>
+                {moreContentHeight === 0 && (
+                  <div
+                    onClick={() => {
+                      const height =
+                        moreContentHeightRef.current.clientHeight + 40;
+                      setMoreContentHeight(height);
+                    }}
+                    className="mediaBlock__moreContentButton"
+                    dangerouslySetInnerHTML={{ __html: moreContentButton }}
+                  />
+                )}
+                <div
+                  className="mediaBlock__moreContent"
+                  style={{ maxHeight: `${moreContentHeight}px` }}
+                >
+                  <div
+                    ref={moreContentHeightRef}
+                    className="mediaBlock__moreContentHeight"
+                    dangerouslySetInnerHTML={{ __html: moreContent }}
+                  />
+                </div>
+                {moreContentHeight > 0 && (
+                  <div
+                    onClick={() => {
+                      setMoreContentHeight(0);
+                    }}
+                    className="mediaBlock__moreContentCloseButton"
+                    dangerouslySetInnerHTML={{ __html: moreContentCloseButton }}
+                  />
+                )}
+              </>
+            )}
+          </div>
+
           {ctaButton?.label && (
             <div className="mediaBlock__ctaButtonContainer">
               <Button
@@ -153,6 +204,9 @@ function MediaBlock({
 MediaBlock.defaultProps = {
   subTitle: "",
   content: "",
+  moreContent: "",
+  moreContentButton: "more...",
+  moreContentCloseButton: "less...",
   asset: {},
   ctaButton: null,
   skiplink: false,
@@ -166,6 +220,9 @@ MediaBlock.propTypes = {
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.string,
   content: PropTypes.string,
+  moreContent: PropTypes.string,
+  moreContentButton: PropTypes.string,
+  moreContentCloseButton: PropTypes.string,
   asset: PropTypes.object,
   ctaButton: PropTypes.objectOf(PropTypes.string),
   skiplink: PropTypes.bool,
