@@ -63,7 +63,7 @@ const brandContent = {
       assetType: "image",
       parallax: false,
       img: {
-        src: "/images/whyMediaBox/Happy_staff_deliver_brandconsistency.jpg",
+        src: "/images/whyMediabox/Happy_staff_deliver_brandconsistency.jpg",
         alt: "",
       },
     },
