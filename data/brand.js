@@ -73,7 +73,13 @@ const brandContent = {
     title: "brand management",
     subTitle: "",
     icon: "cogs",
-    variant: ["-autoHeight", "-whiteTheme", "-bottomDiagonal", "-narrowTitle", "-inlineListItem"],
+    variant: [
+      "-autoHeight",
+      "-whiteTheme",
+      "-bottomDiagonal",
+      "-narrowTitle",
+      "-inlineListItem",
+    ],
     ctaButton: {
       label: "SPEAK TO US",
       url: "/Contanct/",
@@ -90,7 +96,8 @@ const brandContent = {
     <p>Our unique asset management software caters for video, images, documentation and multimedia whilst allowing for intuitive file organisation alongside a detailed search functionality.</p>
     `,
     image: {
-      src: "images/brand/xxBrand-managementoptimized.jpg.pagespeed.ic.VSHBiXcR6i.jpg",
+      src:
+        "images/brand/xxBrand-managementoptimized.jpg.pagespeed.ic.VSHBiXcR6i.jpg",
       alt: "",
     },
   },
@@ -103,7 +110,7 @@ const brandContent = {
       "-bottomDiagonal",
       "-autoHeight",
       "-smallerTitle",
-      "-titleLeft"
+      "-titleLeft",
     ],
     asset: {
       assetType: "image",
@@ -119,7 +126,7 @@ const brandContent = {
       <p>The collation, management and distribution of brand assets is at the frontline of this hefty task, with endless numbers of parties requiring access to the right digital assets.  More importantly, they need these often gigabyte heavy assets, on demand and securely.</p>
       <p>Internal Marketing, marketing agencies, brand associates, agents, social media influencers, press, PR and social departments, sponsors…. the list goes on.</p>
       <p><strong>Take back control of your  brand’s digital assets with MediaBox.</strong></p>
-      `
+      `,
   },
 
   speedArticle: {
@@ -144,6 +151,7 @@ const brandContent = {
       src: "images/brand/built_for_speed.jpg",
       alt: "",
     },
+    imageScaleEffect: false,
   },
 
   platformArticle: {
@@ -164,6 +172,7 @@ const brandContent = {
       src: "images/brand/Login_page-436x503px.png",
       alt: "",
     },
+    imageScaleEffect: false,
   },
 
   actionBlock: {

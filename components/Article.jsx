@@ -14,6 +14,7 @@ function Article({
   className,
   variant,
   image,
+  imageScaleEffect,
 }) {
   const imageRef = useRef();
   const imageColRef = useRef();
@@ -25,7 +26,7 @@ function Article({
 
   useEffect(() => {
     const scrollListener = () => {
-      if (imageColRef?.current && imageRef?.current) {
+      if (imageScaleEffect && imageColRef?.current && imageRef?.current) {
         const rect = imageColRef.current.getBoundingClientRect();
         const scaleFactor =
           rect.top / (window.innerHeight || rect.height || 1024);
@@ -143,6 +144,7 @@ Article.defaultProps = {
   variant: [],
   className: "",
   image: null,
+  imageScaleEffect: true,
 };
 
 Article.propTypes = {
@@ -155,6 +157,7 @@ Article.propTypes = {
   variant: PropTypes.array,
   className: PropTypes.string,
   image: PropTypes.objectOf(PropTypes.string),
+  imageScaleEffect: PropTypes.bool,
 };
 
 export default Article;
