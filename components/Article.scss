@@ -34,18 +34,9 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 100%;
-    max-width: 85%;
-    min-width: 75%;
-    margin-left: auto;
-    margin-right: auto;
 
-    @include breakpointDown($xl) {
-      max-width: 90%;
-    }
-    @include breakpointDown($lg) {
-      max-width: 100%;
-    }
+    @extend %innerContainerSizing;
+
     @include breakpointDown($md) {
       display: block;
     }
@@ -185,6 +176,10 @@
     &.-bottomDiagonal {
       padding-bottom: 200px;
     }
+  }
+
+  &.-narrowTitle &__title {
+    max-width: 520px;
   }
 }
 

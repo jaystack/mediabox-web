@@ -62,18 +62,14 @@
 
   &__inner {
     position: relative;
-    margin: {
-      left: auto;
-      right: auto;
-    }
-    max-width: 1400px;
-    height: 100%;
     z-index: 10;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @extend %innerContainerSizing;
   }
 
   &__image {
@@ -87,7 +83,7 @@
     display: block;
     margin-left: 50vw;
     transform: translateX(-50%);
-    @include breakpointDown($xlMaxWidth) {
+    @include breakpointDown($lgMaxWidth) {
       max-height: 100%;
     }
   }
@@ -320,13 +316,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.4);
-    transform-origin: left top;
     transition: transform $moreContentTransitionDur,
       transform-origin $moreContentTransitionDur;
-  }
-  &.-brandImage.-moreContentOpen &__image {
-    transform: scale(1);
   }
 
   &.-showVideoBottom .mediaBlock__video {
@@ -422,7 +413,7 @@
   // need for brand page video
   &.-cropVideoTopBorder .mediaBlock__video {
     transform: translate(-50%, -3%);
-    @include breakpointDown($xlMaxWidth) {
+    @include breakpointDown($lgMaxWidth) {
       transform: translate(-50%, 0.5%) scale(1.06);
     }
   }

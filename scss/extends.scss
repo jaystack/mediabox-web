@@ -66,3 +66,21 @@
     }
   }
 }
+
+
+%innerContainerSizing {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  height: 100%;
+  min-width: 75%;
+  max-width: 80%;
+  @include breakpointDown($xlMaxWidth) {
+    max-width: 90%;
+  }
+
+  @include breakpointDown($lgMaxWidth) {
+    max-width: 100%;
+  }
+}

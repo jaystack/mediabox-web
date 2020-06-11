@@ -18,18 +18,14 @@ function Brand({ content }) {
   const {
     videoBanner,
     hero,
-    introduction,
-    diagonalBanner,
-    article,
+    brandArticle,
     actionBlock,
   } = content;
   return (
     <>
       <MediaBlock {...videoBanner} skiplink />
       <MediaBlock {...hero} />
-      {/* <MediaBlock {...introduction} />
-      <Article {...article} />
-      <MediaBlock {...diagonalBanner} /> */}
+      <Article {...brandArticle} />
       <ActionBlock {...actionBlock} />
     </>
   );

@@ -58,7 +58,7 @@ const brandContent = {
     moreContentButton: `<p>more...</p>`,
     moreContentCloseButton: `<p>less...</p>`,
     video: { ...heroVideo },
-    variant: ["-autoHeight", "-lightHeader", "-brandImage"],
+    variant: ["-autoHeight", "-lightHeader", "-brandImage", "-bottomDiagonal"],
     asset: {
       maskOpacity: 0.8,
       assetType: "image",
@@ -69,81 +69,31 @@ const brandContent = {
       },
     },
   },
-  introduction: {
-    title:
-      "MediaBox automates marketing’s creative, acquisition, execution and fulfilment processes.",
-    subTitle:
-      "Enabling corporate marketing departments to ingest, create, store, edit, and fulfil demands for marketing assets globally.",
-    variant: ["-autoHeight", "-introduction", "-bottomDiagonal"],
-    asset: {
-      assetType: "video",
-      maskColor: "#000",
-      maskOpacity: 0.8,
-      video: {
-        autoPlay: true,
-        loop: true,
-      },
-      source: {
-        src: "/videos/creative-team.mp4",
-        type: "video/mp4",
-      },
-    },
-    icon: "globe",
-  },
-
-  diagonalBanner: {
+  brandArticle: {
     title: "brand management",
-    subTitle: "the all-in-one solution to manage & distribute content.",
-    variant: [
-      "-topDiagonal",
-      "-bottomDiagonal",
-      "-autoHeight",
-      "-showVideoBottom",
-      "-smallerTitle",
-    ],
-    asset: {
-      assetType: "video",
-      maskColor: "#333334",
-      maskOpacity: 0.68,
-      video: {
-        autoPlay: true,
-        loop: true,
-      },
-      source: {
-        src: "/videos/coffe.mp4",
-        type: "video/mp4",
-      },
-    },
+    subTitle: "",
+    icon: "cogs",
+    variant: ["-autoHeight", "-whiteTheme", "-bottomDiagonal", "-narrowTitle"],
     ctaButton: {
-      label: "LEARN MORE",
-      url: "/brand/",
+      label: "SPEAK TO US",
+      url: "/contanct/",
       variant: ["-buttonLg"],
     },
-  },
-
-  article: {
-    title: "complete asset management",
-    subTitle: "The All-in-One Digital Asset Management Solution",
-    icon: "sitemap",
-    variant: ["-autoHeight", "-whiteTheme", "-boldArticleListItem"],
-    ctaButton: {
-      label: "LEARN MORE",
-      url: "/digital-asset-management/",
-      variant: ["-buttonLg"],
-    },
-    content: `<ul>
-        <li>Upload</li>
-        <li>Store</li>
-        <li>Organise</li>
-        <li>Manage</li>
-        <li>Find</li>
-        <li>Distribute</li>
-        <li>Protect</li>
-        <li>Promote</li>
-        </ul>
-        <p>All your digital assets in one place, with secure access anytime, anywhere, worldwide.</p>`,
+    content: `
+    <p>MediaBox delivers full control and management over the lifecycle of your digital assets, from creation to archive.</p>
+    <p><strong>Turbocharge how your team operates.</strong></p>
+    <div>
+      <span>-></span>
+      <span>ONE TOOL</span>
+      <span>-></span>
+      <span>ONE RESOURCE</span>
+      <span>-></span>
+      <span>COMPLETE CONTROL</span>
+    </div>
+    <p>Our unique asset management software caters for video, images, documentation and multimedia whilst allowing for intuitive file organisation alongside a detailed search functionality.</p>
+    `,
     image: {
-      src: "images/brand/All-in-one-asset-management1000px_1-1536x1536.jpg",
+      src: "images/brand/xxBrand-managementoptimized.jpg.pagespeed.ic.VSHBiXcR6i.jpg",
       alt: "",
     },
   },
