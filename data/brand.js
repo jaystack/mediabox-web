@@ -122,6 +122,30 @@ const brandContent = {
       `
   },
 
+  speedArticle: {
+    title: "Speed is of the essence",
+    subTitle: "",
+    icon: "",
+    variant: ["-autoHeight", "-whiteTheme", "-narrowTitle"],
+    ctaButton: null,
+    content: `
+    <p>Slow and steady doesn’t always win the race.</p>
+    <p><strong>Deliver on time with the click of a button.</strong></p>
+    <p>Make sure the right brand images and messages are in the right place at the right time – every time.</p>
+    <ul>
+      <li>Super-fast upload and download speeds</li>
+      <li>Advanced metadata for search and share</li>
+      <li>Global distribution</li>
+      <li>Share or embed in a single click</li>
+      <li>Multi-language available</li>
+    </ul>
+    `,
+    image: {
+      src: "images/brand/built_for_speed.jpg",
+      alt: "",
+    },
+  },
+
   actionBlock: {
     title: "START CENTRALISING, SHARING & PROMOTING YOUR ASSETS NOW",
     subTitle: "Protecting your brand, globally, from one centralised resource.",
