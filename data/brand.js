@@ -95,6 +95,33 @@ const brandContent = {
     },
   },
 
+  diagonalBanner: {
+    title: "brands never sleep",
+    subTitle: "",
+    variant: [
+      "-topDiagonal",
+      "-bottomDiagonal",
+      "-autoHeight",
+      "-smallerTitle",
+      "-titleLeft"
+    ],
+    asset: {
+      assetType: "image",
+      parallax: true,
+      maskOpacity: 0.8,
+      img: {
+        src: "/images/brand/brand_never_sleeps_cut.jpg",
+        alt: "",
+      },
+    },
+    content: `
+      <p>Brands never sleep, engaging audiences all around the world, and evolving daily to stay ahead of the game.</p>
+      <p>The collation, management and distribution of brand assets is at the frontline of this hefty task, with endless numbers of parties requiring access to the right digital assets.  More importantly, they need these often gigabyte heavy assets, on demand and securely.</p>
+      <p>Internal Marketing, marketing agencies, brand associates, agents, social media influencers, press, PR and social departments, sponsors…. the list goes on.</p>
+      <p><strong>Take back control of your  brand’s digital assets with MediaBox.</strong></p>
+      `
+  },
+
   actionBlock: {
     title: "START CENTRALISING, SHARING & PROMOTING YOUR ASSETS NOW",
     subTitle: "Protecting your brand, globally, from one centralised resource.",

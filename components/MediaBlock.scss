@@ -346,6 +346,11 @@
     }
   }
 
+  &.-titleLeft .mediaBlock__title {
+    width: 100%;
+    text-align: left;
+  }
+
   &.-blueBackground {
     &:after,
     & .mediaBlock__mediaMask {

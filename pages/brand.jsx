@@ -19,6 +19,7 @@ function Brand({ content }) {
     videoBanner,
     hero,
     brandArticle,
+    diagonalBanner,
     actionBlock,
   } = content;
   return (
@@ -26,6 +27,7 @@ function Brand({ content }) {
       <MediaBlock {...videoBanner} skiplink />
       <MediaBlock {...hero} />
       <Article {...brandArticle} />
+      <MediaBlock {...diagonalBanner} />
       <ActionBlock {...actionBlock} />
     </>
   );
