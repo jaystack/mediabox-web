@@ -24,9 +24,8 @@ const brandContent = {
     },
   },
   hero: {
-    title: "share and promote your digital assets with mediabox",
+    title: "delivering a consistent brand experience",
     subTitle: "",
-    variant: ["-autoHeight"],
     content: `
     <div class="imageColumn">
       <div>
@@ -59,7 +58,9 @@ const brandContent = {
     moreContentButton: `<p>more...</p>`,
     moreContentCloseButton: `<p>less...</p>`,
     video: { ...heroVideo },
+    variant: ["-autoHeight", "-lightHeader", "-brandImage"],
     asset: {
+      maskOpacity: 0.8,
       assetType: "image",
       parallax: false,
       img: {

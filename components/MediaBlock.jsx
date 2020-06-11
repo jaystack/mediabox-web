@@ -77,7 +77,8 @@ function MediaBlock({
           "mediaBlock",
           className,
           variant,
-          video && "-withVideo"
+          video && "-withVideo",
+          moreContentHeight === 0 ? "-moreContentClose" : "-moreContentOpen"
         )}
       >
         <div ref={mediaRef} className={classnames("mediaBlock__media")}>
