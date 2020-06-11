@@ -73,23 +73,20 @@ const brandContent = {
     title: "brand management",
     subTitle: "",
     icon: "cogs",
-    variant: ["-autoHeight", "-whiteTheme", "-bottomDiagonal", "-narrowTitle"],
+    variant: ["-autoHeight", "-whiteTheme", "-bottomDiagonal", "-narrowTitle", "-inlineListItem"],
     ctaButton: {
       label: "SPEAK TO US",
-      url: "/contanct/",
+      url: "/Contanct/",
       variant: ["-buttonLg"],
     },
     content: `
     <p>MediaBox delivers full control and management over the lifecycle of your digital assets, from creation to archive.</p>
     <p><strong>Turbocharge how your team operates.</strong></p>
-    <div>
-      <span>-></span>
-      <span>ONE TOOL</span>
-      <span>-></span>
-      <span>ONE RESOURCE</span>
-      <span>-></span>
-      <span>COMPLETE CONTROL</span>
-    </div>
+    <ul>
+      <li>ONE TOOL</li>
+      <li>ONE RESOURCE</li>
+      <li>COMPLETE CONTROL</li>
+    </ul>
     <p>Our unique asset management software caters for video, images, documentation and multimedia whilst allowing for intuitive file organisation alongside a detailed search functionality.</p>
     `,
     image: {
