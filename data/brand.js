@@ -146,6 +146,26 @@ const brandContent = {
     },
   },
 
+  platformArticle: {
+    title: "your platform your brand",
+    subTitle: "",
+    icon: "",
+    variant: ["-autoHeight", "-topDiagonal", "-bottomDiagonal", "-narrowTitle"],
+    content: `
+    <p>Brand consistency is key, that’s why with MediaBox, your brand is at the forefront.</p>
+    <p>You get:</p>
+    <ul>
+      <li>Tailored layout/styling in your Hub</li>
+      <li>Branded URL</li>
+      <li>Branded Watermarking</li>
+    </ul>
+    `,
+    image: {
+      src: "images/brand/Login_page-436x503px.png",
+      alt: "",
+    },
+  },
+
   actionBlock: {
     title: "START CENTRALISING, SHARING & PROMOTING YOUR ASSETS NOW",
     subTitle: "Protecting your brand, globally, from one centralised resource.",

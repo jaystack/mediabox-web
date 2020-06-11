@@ -21,6 +21,7 @@ function Brand({ content }) {
     brandArticle,
     diagonalBanner,
     speedArticle,
+    platformArticle,
     actionBlock,
   } = content;
   return (
@@ -30,6 +31,7 @@ function Brand({ content }) {
       <Article {...brandArticle} />
       <MediaBlock {...diagonalBanner} />
       <Article {...speedArticle} />
+      <Article {...platformArticle} />
       <ActionBlock {...actionBlock} />
     </>
   );
