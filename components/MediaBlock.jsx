@@ -91,9 +91,9 @@ function MediaBlock({
             <img
               ref={imageRef}
               {...asset.img}
-              className={classnames(asset?.img.className, "mediaBlock__image")}
+              className={classnames(asset?.img?.className, "mediaBlock__image")}
               style={{
-                transform: asset.parallax && `translateY(${imageParallax}px)`,
+                transform: asset?.parallax && `translateY(${imageParallax}px)`,
               }}
             />
           )}

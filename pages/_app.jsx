@@ -61,7 +61,7 @@ class MyApp extends App {
         },
         {
           title: "contact",
-          href: "/",
+          href: "/contact",
         },
         {
           title: "login",
