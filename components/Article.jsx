@@ -3,6 +3,7 @@ import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import Heading from "./Heading";
 import Button from "../components/Button";
+import useScrollPhase from "../hooks/useScrollPase";
 import "./Article.scss";
 
 function Article({
@@ -20,19 +21,16 @@ function Article({
   const imageColRef = useRef();
   const contentColRef = useRef();
 
-  const [imageScale, setImageScale] = useState(1);
   const [appearList, setAppearList] = useState(true);
   const [appearTitle, setAppearTitle] = useState(true);
 
+  const scrollPhase = useScrollPhase(imageColRef, imageRef, 85, 95, 5);
+  const scalePhase = imageScaleEffect
+    ? useScrollPhase(imageColRef, imageRef, 70, 130, 1)
+    : 100;
+
   useEffect(() => {
     const scrollListener = () => {
-      if (imageScaleEffect && imageColRef?.current && imageRef?.current) {
-        const rect = imageColRef.current.getBoundingClientRect();
-        const scaleFactor =
-          rect.top / (window.innerHeight || rect.height || 1024);
-        setImageScale(1 - scaleFactor * 0.25);
-      }
-
       if (appearList && contentColRef?.current) {
         const rect = contentColRef.current.getBoundingClientRect();
         if (!rect || rect.top < window.innerHeight - 100) {
@@ -48,7 +46,6 @@ function Article({
 
       if (contentColRef && contentColRef?.current) {
         const rect = contentColRef.current.getBoundingClientRect();
-
         if (!rect || rect.top < window.innerHeight + 40) {
           setAppearTitle(false);
         }
@@ -73,9 +70,22 @@ function Article({
     });
   }, []);
 
+  const transformStyle = imageScaleEffect
+    ? {
+        transform: `scale(${scalePhase / 100})`,
+      }
+    : null;
+
   return (
     <>
-      <div className={classnames("article", className, variant)}>
+      <div
+        className={classnames(
+          "article",
+          className,
+          variant,
+          `-scrollPhase${scrollPhase}`
+        )}
+      >
         <div className="article__inner">
           <div
             ref={contentColRef}
@@ -125,7 +135,7 @@ function Article({
                 ref={imageRef}
                 {...image}
                 className={classnames(image.className, "article__image")}
-                style={{ transform: `scale(${imageScale})` }}
+                style={transformStyle}
               />
             </div>
           )}

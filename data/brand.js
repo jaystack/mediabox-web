@@ -133,7 +133,12 @@ const brandContent = {
     title: "Speed is of the essence",
     subTitle: "",
     icon: "",
-    variant: ["-autoHeight", "-whiteTheme", "-narrowTitle"],
+    variant: [
+      "-autoHeight",
+      "-whiteTheme",
+      "-narrowTitle",
+      "-imageMoveInEffect",
+    ],
     ctaButton: null,
     content: `
     <p>Slow and steady doesn’t always win the race.</p>
@@ -158,7 +163,14 @@ const brandContent = {
     title: "your platform your brand",
     subTitle: "",
     icon: "",
-    variant: ["-autoHeight", "-topDiagonal", "-bottomDiagonal", "-narrowTitle"],
+    variant: [
+      "-autoHeight",
+      "-topDiagonal",
+      "-bottomDiagonal",
+      "-narrowTitle",
+      "-imageRotateInEffect",
+      "-imageMoveRight100px",
+    ],
     content: `
     <p>Brand consistency is key, that’s why with MediaBox, your brand is at the forefront.</p>
     <p>You get:</p>

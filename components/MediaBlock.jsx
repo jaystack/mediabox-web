@@ -4,6 +4,7 @@ import classnames from "classnames";
 import Heading from "./Heading";
 import VideoPlayer from "./VideoPlayer";
 import Button from "../components/Button";
+import useScrollPhase from "../hooks/useScrollPase";
 
 import "./MediaBlock.scss";
 
@@ -26,9 +27,12 @@ function MediaBlock({
   const mediaRef = useRef();
   const videoRef = useRef();
   const imageRef = useRef();
+  const contentRef = useRef();
+  const contentContainerRef = useRef();
   const moreContentHeightRef = useRef();
   const [imageParallax, setImageParallax] = useState(0);
   const [moreContentHeight, setMoreContentHeight] = useState(0);
+  const contentScrolledIn = useScrollPhase(contentContainerRef, contentRef, 80, 90, 10);
 
   useEffect(() => {
     const scrollListener = () => {
@@ -78,7 +82,8 @@ function MediaBlock({
           className,
           variant,
           video && "-withVideo",
-          moreContentHeight === 0 ? "-moreContentClose" : "-moreContentOpen"
+          moreContentHeight === 0 ? "-moreContentClose" : "-moreContentOpen",
+          contentScrolledIn >= 90 && "-contentScrolledIn"
         )}
       >
         <div ref={mediaRef} className={classnames("mediaBlock__media")}>
@@ -124,9 +129,12 @@ function MediaBlock({
               {subTitle}
             </Heading>
           )}
-          <div className="mediaBlock__contentContainer">
+          <div
+            ref={contentContainerRef}
+            className="mediaBlock__contentContainer"
+          >
             {content && (
-              <div className="mediaBlock__content">
+              <div ref={contentRef} className="mediaBlock__content">
                 <div
                   className="mediaBlock__contentHeight"
                   dangerouslySetInnerHTML={{ __html: content }}
