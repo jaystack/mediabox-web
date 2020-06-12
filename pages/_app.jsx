@@ -53,7 +53,7 @@ class MyApp extends App {
         },
         {
           title: "about us",
-          href: "/",
+          href: "/about",
         },
         {
           title: "faqs",

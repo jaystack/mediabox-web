@@ -261,6 +261,13 @@
 
     &.-bottomDiagonal {
       padding-bottom: 250px;
+      @include breakpointDown($md) {
+        padding-bottom: 210px;
+      }
+
+      @include breakpointDown($sm) {
+        padding-bottom: 170px;
+      }
     }
   }
 
@@ -430,6 +437,30 @@
     font: {
       size: 20px;
       weight: 300;
+    }
+  }
+
+  h2 {
+    margin: 1em 0;
+    letter-spacing: -1px;
+    text-align: center;
+    line-height: 1.1em;
+    font: {
+      size: 56px;
+      weight: 600;
+    }
+    &:last-child {
+      margin-bottom: 0.1em;
+    }
+
+    @include breakpointDown($xl) {
+      font-size: 50px;
+    }
+    @include breakpointDown($lg) {
+      font-size: 44px;
+    }
+    @include breakpointDown($md) {
+      font-size: 39px;
     }
   }
 
