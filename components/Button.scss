@@ -42,6 +42,10 @@
     font-size: 18px;
   }
 
+  &.-buttonDark {
+    background-color: $blueDark;
+  }
+
   &.-buttonAlternate {
     border: 2px solid $blue;
     background-color: $white;

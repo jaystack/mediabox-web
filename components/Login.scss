@@ -1,0 +1,125 @@
+@import "../scss/abstracts";
+
+.login {
+  $color: rgba($black, 0.75);
+  $fontWeight: 200;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+
+  // Children
+  &__background,
+  &__formContainer {
+    position: absolute;
+    display: flex;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__background {
+    display: block;
+  }
+
+  &__loginBackgroundImage {
+    display: block;
+  }
+
+  &__form {
+    display: block;
+    min-width: 460px;
+    max-width: 30vw;
+    min-height: 42vh;
+    margin: auto;
+    margin-right: 0;
+    border-radius: 5px;
+
+    font-size: 20px;
+    padding: 4em;
+
+    background-color: rgba($white, 0.9);
+    color: $color;
+  }
+
+  &__section {
+    width: 100%;
+    flex: 1;
+    margin-top: 1em;
+  }
+
+  &__input {
+    width: 100%;
+    font-size: 14px;
+    padding: 0.75em;
+    line-height: 1.5em;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(black, 0.04);
+  }
+
+  &__label,
+  &__checkboxLabel {
+    width: 100%;
+    font-weight: $fontWeight;
+    line-height: 2em;
+  }
+
+  &__checkboxLabel {
+    margin-left: 0.3em;
+  }
+
+  &__submitButton {
+    min-width: 110px;
+    margin: -35px;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: $white;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: rgba($white, 0.15);
+    }
+  }
+
+  &__link {
+    opacity: 0.9;
+    & > a {
+      color: $blueDark;
+      text-decoration: none;
+      font-weight: $fontWeight;
+      &:hover {
+        color: rgba($black, 0.8);
+      }
+    }
+  }
+
+  &__errors {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      opacity: 0.9;
+  }
+
+  &__error {
+    line-height: 1.5em;
+    margin-bottom: 1.5em;
+    padding: 0.5em;
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,.1);
+    border-left: solid 4px $red;
+    color: $color;
+    font-weight: $fontWeight;
+  }
+
+  // Modifiers
+}

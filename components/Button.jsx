@@ -5,15 +5,16 @@ import Link from "next/link";
 
 import "./Button.scss";
 
-const Button = ({ text, url, variant }) => (
+const Button = ({ text, url, variant, children }) => (
   <div
     className={classnames("button", variant?.length ? variant : "-buttonMd")}
   >
-    <Link href={url}>
-      <a className="button__link">
-        {text}
-      </a>
-    </Link>
+    {url && text && (
+      <Link href={url}>
+        <a className="button__link">{text}</a>
+      </Link>
+    )}
+    {children}
   </div>
 );
 

@@ -1,23 +1,22 @@
-import App from 'next/app';
-import React from 'react';
-import Head from 'next/head';
-import { compose } from 'recompose';
-import { withRouter } from 'next/router';
+import App from "next/app";
+import React from "react";
+import Head from "next/head";
+import { compose } from "recompose";
+import { withRouter } from "next/router";
 
-import { Provider } from 'react-redux';
-import { ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import withReduxStore from 'next-redux-wrapper';
-import { AnimatePresence } from 'framer-motion';
+import { Provider } from "react-redux";
+import { ThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import withReduxStore from "next-redux-wrapper";
+import { AnimatePresence } from "framer-motion";
 
 // import api from '../api';
-import theme from '../lib/theme';
-import makeStore from '../storecp';
-import PageHeader from '../components/PageHeader';
-import Footer from '../components/Footer';
+import theme from "../lib/theme";
+import makeStore from "../storecp";
+import PageHeader from "../components/PageHeader";
+import Footer from "../components/Footer";
 
 import "./base.scss";
-
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -37,7 +36,10 @@ class MyApp extends App {
     const { Component, pageProps, store, router } = this.props;
     const navbarContent = {
       title: "mediabox",
-      logoSrc: "/mediabox-darkbg.svg",
+      logoSrc:
+        (router.asPath || "").indexOf("/login") > -1
+          ? "/mediabox-lightbg.svg"
+          : "/mediabox-darkbg.svg",
       menuItems: [
         {
           title: "digital asset managment",
@@ -65,7 +67,7 @@ class MyApp extends App {
         },
         {
           title: "login",
-          href: "/",
+          href: "/login",
         },
       ],
       iconMenuItems: [
@@ -78,7 +80,6 @@ class MyApp extends App {
           href: "mailto:info@mediaboxsolutions.co.uk",
         },
       ],
-      
     };
     const footerContent = {
       logoSrc: "/mediabox-lightbg.svg",
@@ -89,7 +90,7 @@ class MyApp extends App {
           <p>20-22 Wenlock Road,<br>
           London, N1 7GU</p>
           <p><a href="tel:0203 7459067">0203 7459067</a><br>
-          <a href="mailto:info@mediaboxsolutions.co.uk">info@mediaboxsolutions.co.uk</a>`
+          <a href="mailto:info@mediaboxsolutions.co.uk">info@mediaboxsolutions.co.uk</a>`,
       },
       iconMenuItems: [
         {
@@ -151,7 +152,6 @@ class MyApp extends App {
           href: "mailto:info@mediaboxsolutions.co.uk",
         },
       ],
-      
     };
 
     return (
@@ -179,9 +179,6 @@ class MyApp extends App {
   }
 }
 
-const enhance = compose(
-  withReduxStore(makeStore),
-  withRouter,
-);
+const enhance = compose(withReduxStore(makeStore), withRouter);
 
 export default enhance(MyApp);
