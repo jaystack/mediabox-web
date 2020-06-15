@@ -3,13 +3,24 @@
 .login {
   $color: rgba($black, 0.75);
   $fontWeight: 200;
-
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
   display: flex;
+  position: relative;
+
+  @media screen and (max-height: 800px) {
+    padding-top: 150px;
+  }
+  @media screen and (max-height: 650px) {
+    padding-top: 300px;
+  }
+  @media screen and (max-height: 500px) {
+    padding-top: 400px;
+  }
+  @media screen and (max-height: 400px) {
+    padding-top: 600px;
+  }
 
   // Children
   &__background,
@@ -24,6 +35,21 @@
 
   &__background {
     display: block;
+    position: relative;
+    &:after {
+        display: block;
+        content: "";
+        position: absolute;
+        top: 0px;
+        right: 0;
+        left: 0;
+        height: 180px;
+        background: linear-gradient(
+          rgba(black, 0) 0,
+          rgba(black, 0.1) 50%,
+          rgba(black, 0) 100%,
+        );
+      }
   }
 
   &__loginBackgroundImage {
@@ -105,17 +131,17 @@
   }
 
   &__errors {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      opacity: 0.9;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    opacity: 0.9;
   }
 
   &__error {
     line-height: 1.5em;
     margin-bottom: 1.5em;
     padding: 0.5em;
-    box-shadow: 1px 1px 2px 1px rgba(0,0,0,.1);
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
     border-left: solid 4px $red;
     color: $color;
     font-weight: $fontWeight;
