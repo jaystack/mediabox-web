@@ -1,89 +1,89 @@
 @import "../scss/abstracts";
 
 .navBar {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    position: relative;
-    z-index: 600;
-    margin-bottom: (70 + 28 +28) * -1px;
-    padding: {
-        top: 28px;
-        bottom: 28px;
-        left: 28px;
-        right: 28px;
-    }
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  position: relative;
+  z-index: 600;
+  margin-bottom: (70 + 28 +28) * -1px;
+  padding: {
+    top: 28px;
+    bottom: 28px;
+    left: 28px;
+    right: 28px;
+  }
+  height: 70px;
+
+  &__logoLink {
+    margin-right: auto;
+  }
+
+  &__logo {
+    width: 180px;
     height: 70px;
+  }
 
-    &__logoLink {
-        margin-right: auto;
+  &__menu {
+    display: flex;
+    @extend %listReset;
+    margin-bottom: -10px;
+    font-size: 20px;
+
+    @include breakpointDown(1275px) {
+      margin-bottom: -9px;
+      font-size: 18px;
     }
 
-    &__logo {
-        width: 180px;
-        height: 70px;
+    @include breakpointDown(1150px) {
+      display: none;
+    }
+  }
+
+  &__menuItemLink {
+    position: relative;
+    display: block;
+    padding: 10px;
+    color: $white;
+    text-decoration: none;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      display: block;
+      width: 0;
+      height: 2px;
+      background-color: $white;
+      transition: width 0.23s ease-out;
     }
 
-    &__menu {
-        display: flex;
-        @extend %listReset;
-        margin-bottom: -10px;
-        font-size: 20px;
-        
-        @include breakpointDown(1275px) {
-            margin-bottom: -9px;
-            font-size: 18px;
-        }
-
-        @include breakpointDown(1150px) {
-            display: none;
-        }
+    &:hover:after {
+      width: calc(100% - 20px);
     }
+  }
 
-    &__menuItemLink {
-        position: relative;
-        display: block;
-        padding: 10px;
-        color: $white;
-        text-decoration: none;
-
-        &:after {
-            content: '';
-            position: absolute;
-            left: 10px;
-            bottom: 10px;
-            display: block;
-            width: 0;
-            height: 2px;
-            background-color: $white;
-            transition: width 0.23s ease-out;
-        }
-
-        &:hover:after {
-            width: calc( 100% - 20px );
-        }
+  &__iconMenu {
+    display: flex;
+    @extend %listReset;
+    margin: {
+      bottom: -10px;
+      left: 10px;
     }
+    font-size: 20px;
+  }
 
-    &__iconMenu {
-        display: flex;
-        @extend %listReset;
-        margin: {
-            bottom: -10px;
-            left: 10px;
-        }
-        font-size: 20px;
+  &__iconMenuItemLink {
+    position: relative;
+    display: block;
+    padding: 10px;
+    color: $white;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.25);
     }
-
-    &__iconMenuItemLink {
-        position: relative;
-        display: block;
-        padding: 10px;
-        color: $white;
-        text-decoration: none;
-        transition: transform 0.2s ease;
-
-        &:hover {
-            transform: scale(1.25);
-        }
-    }
+  }
 }
