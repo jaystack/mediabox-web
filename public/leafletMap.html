@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mediabox Map</title>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <style type="text/css">
+        .leaflet-marker-icon,
+        .leaflet-marker-shadow {
+            background-color: #1d96c2;
+            border-radius: 50%;
+        }
+
+        .leaflet-marker-shadow {
+            background-color: #1d96c2;
+            border-radius: 50%;
+            transform: scale(2)
+        }
+
+        /* .leaflet-popup>* {
+            transform: translate(5px, -3px);
+        } */
+
+        /* .leaflet-popup-tip:after {
+            content: 'x';
+            background-color: #1d96c2;
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            z-index: 999999;
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="map" style="width: 900px; height: 900px"></div>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script>
+        // Creating map options
+        var mapOptions = {
+            center: [51.532150, -0.095120],
+            zoom: 13
+        }
+
+        // Creating a map object
+        var map = new L.map('map', mapOptions);
+
+        map.on("move", function () {
+            console.log(map.getCenter().toString());
+        });
+
+        // Creating a Layer object
+        var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+        // Adding layer to the map
+        map.addLayer(layer);
+
+        var markerIcon = L.icon({
+            iconUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABGdBTUEAALGPC/xhBQAAAANQTFRFAAAAp3o92gAAAAF0Uk5TAEDm2GYAAAAMSURBVAjXY2AY3AAAAKAAAWElfUcAAAAASUVORK5CYII=',
+            iconSize: [20, 20],
+            iconAnchor: [15, 3],
+        });
+
+        L.marker([51.532150, -0.095120], { icon: markerIcon }).addTo(map);
+
+        var popup = L.popup()
+            .setLatLng([51.532150, -0.095120])
+            .setContent('<p><strong>Mediabox Solutions Limited</strong><br />20-22 Wenlock Road, London, N1 7G</p>')
+            .openOn(map);
+    </script>
+</body>
+
+</html>
+
+
+
+<!-- <html>
+
+<body>
+    <div id="mapdiv"></div>
+    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+    <script>
+        map = new OpenLayers.Map("mapdiv");
+        map.addLayer(new OpenLayers.Layer.OSM());
+
+        var lonLat = new OpenLayers.LonLat(-0.095120, 51.532150)
+            .transform(
+                new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                map.getProjectionObject() // to Spherical Mercator Projection
+            );
+
+        var zoom = 13;
+
+        var markers = new OpenLayers.Layer.Markers("Markers");
+        map.addLayer(markers);
+
+        markers.addMarker(new OpenLayers.Marker(lonLat));
+
+        map.setCenter(lonLat, zoom);
+    </script>
+</body>
+
+</html> -->
