@@ -1,5 +1,5 @@
 @import "../scss/abstracts";
-
+$compactMenuWidthBreakpoint: 1150px; // Have to sync with "compactMenuWidthBreakpoint" prop.
 .navBar {
   display: flex;
   justify-content: flex-start;
@@ -35,7 +35,7 @@
       font-size: 18px;
     }
 
-    @include breakpointDown(1150px) {
+    @include breakpointDown($compactMenuWidthBreakpoint) {
       display: none;
     }
   }
@@ -84,6 +84,50 @@
 
     &:hover {
       transform: scale(1.25);
+    }
+  }
+
+  &__menuButton {
+    display: block;
+    pointer-events: none;
+    opacity: 0;
+    margin-left: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: opacity 0.2s, transform 0.05s;
+
+    &.-visible {
+      pointer-events: all;
+      opacity: 1;
+
+      &:hover {
+        opacity: 0.9;
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+    }
+
+    &.-open {
+      display: none;
+      @include breakpointDown($compactMenuWidthBreakpoint) {
+        display: block;
+      }
+    }
+  }
+
+  &__menuButton.-close {
+    position: absolute;
+    transform: translateY(-100%);
+    z-index: 999999;
+
+    &.-visible {
+      &:hover {
+        opacity: 0.9;
+        &:active {
+          transform: translateY(-100%) scale(0.95);
+        }
+      }
     }
   }
 }

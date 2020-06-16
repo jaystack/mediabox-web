@@ -1,0 +1,154 @@
+@import "../scss/abstracts";
+$compactMenuWidthBreakpoint: 1150px; // Have to sync with "compactMenuWidthBreakpoint" prop.
+.menu {
+  position: fixed;
+  display: block;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 99999;
+  background-color: rgba($maskDefaultColor, 0.96);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+
+  &__homeLink {
+    display: block;
+    position: absolute;
+    width: 180px;
+    height: 70px;
+    left: 28px;
+    top: 20px;
+  }
+
+  &__logo {
+    width: 100%;
+    height: auto;
+  }
+
+  &__button {
+    position: absolute;
+    right: 28px;
+    top: 57px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    &:hover {
+      opacity: 0.8;
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+
+  &__left,
+  &__right {
+    display: block;
+    position: absolute;
+    width: 50%;
+    padding: 100px;
+    margin-top: 200px;
+    color: $white;
+
+    @include breakpointDown($md) {
+      padding: {
+        left: 40px;
+        right: 1px;
+      }
+    }
+
+    @include breakpointDown($sm) {
+      position: static;
+      padding: 50px;
+      width: 100%;
+      margin-top: 100px;
+    }
+  }
+
+  &__right {
+    left: 50%;
+    @include breakpointDown($sm) {
+      margin-top: 0;
+      padding-top: 0;
+    }
+  }
+
+  &__items {
+    @extend %listReset;
+    position: relative;
+  }
+
+  &__item {
+    display: table;
+    position: relative;
+  }
+
+  &__itemLink {
+    position: relative;
+    display: block;
+    padding: 10px;
+    color: $white;
+
+    text-decoration: none;
+    line-height: $defaultLineHeight;
+    font-weight: 700;
+    letter-spacing: -1;
+    font-size: 32px;
+    @include breakpointDown($lg) {
+      font-size: 28px;
+    }
+    @include breakpointDown($md) {
+      font-size: 24px;
+    }
+    @include breakpointDown($sm) {
+      font-size: 20px;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      display: block;
+      width: 0;
+      height: 2px;
+      background-color: $white;
+      transition: width 0.23s ease-out;
+    }
+
+    &:hover:after {
+      width: calc(100% - 20px);
+    }
+  }
+
+  &__iconItems {
+    width: 100%;
+    display: flex;
+    @extend %listReset;
+    margin: {
+      bottom: -10px;
+      left: 10px;
+    }
+    font-size: 20px;
+  }
+
+  &__iconItemLink {
+    position: relative;
+    display: block;
+    padding: 10px;
+    color: $white;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.25);
+    }
+  }
+
+  // modifiers
+  &.-open {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
