@@ -56,7 +56,7 @@ function PageHeader({ className, navbarContent, compactMenuWidthBreakpoint }) {
               </a>
             </li>
           ))}
-          <li>
+          <li className="navBar__menuButtonContainer">
             <img
               onClick={() => {
                 setShowMenu(true);

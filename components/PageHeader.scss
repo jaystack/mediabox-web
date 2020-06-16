@@ -116,6 +116,11 @@ $compactMenuWidthBreakpoint: 1150px; // Have to sync with "compactMenuWidthBreak
     }
   }
 
+  &__menuButtonContainer {
+      position: relative;
+      overflow: hidden;
+  }
+
   &__menuButton.-close {
     position: absolute;
     transform: translateY(-100%);
