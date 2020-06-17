@@ -5,52 +5,145 @@
     <title>Mediabox Map</title>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <style type="text/css">
+        .leaflet-map-container {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+        }
+
         .leaflet-marker-icon,
         .leaflet-marker-shadow {
             background-color: #1d96c2;
             border-radius: 50%;
+            opacity: 0.8;
         }
 
-        .leaflet-marker-shadow {
-            background-color: #1d96c2;
-            border-radius: 50%;
-            transform: scale(2)
+        .leaflet-control-attribution.leaflet-control {
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.7);
+            word-spacing: -1.3px;
+            letter-spacing: -0.1px;
+            max-height: 3em;
         }
 
-        /* .leaflet-popup>* {
-            transform: translate(5px, -3px);
-        } */
-
-        /* .leaflet-popup-tip:after {
-            content: 'x';
-            background-color: #1d96c2;
+        .marker-anim {
+            width: 30px;
+            height: 30px;
+            position: absolute;
             border-radius: 50%;
-            width: 300px;
-            height: 300px;
-            z-index: 999999;
-        } */
+            background-color: #1d96c2;
+            margin-left: -5px;
+            margin-top: -5px;
+
+            animation: waves 2.5s linear infinite;
+            animation-delay: .2s;
+            opacity: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .marker-anim:after {
+            content: '';
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            border-radius: 50%;
+            background-color: #1d96c2;
+
+            animation: waves 2.5s linear infinite;
+            animation-delay: .2s;
+        }
+
+        @keyframes waves {
+            0% {
+                transform: scale(1);
+                opacity: 0.45;
+            }
+
+            100% {
+                transform: scale(2.75);
+                opacity: 0;
+            }
+        }
+
+        @-webkit-keyframes waves {
+            0% {
+                transform: scale(1);
+                opacity: 0.45;
+            }
+
+            100% {
+                transform: scale(2.75);
+                opacity: 0;
+            }
+        }
     </style>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
 </head>
 
 <body>
-    <div id="map" style="width: 900px; height: 900px"></div>
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <div class="marker-anim"></div>
+    <div id="map" class="leaflet-map-container"></div>
+
     <script>
+        function updateMarkerAnim() {
+            var icon = document.querySelector('.leaflet-marker-icon');
+            if (icon) {
+                var rect = icon.getBoundingClientRect(),
+                    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+                    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                var pos = { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+                var marker = document.querySelector('.marker-anim');
+                marker.style.left = pos.left + 'px';
+                marker.style.top = pos.top + 'px';
+            }
+        }
+
+
+        var iframeList = window.parent.document.querySelectorAll('iframe');
+        var iframe = null;
+        iframeList.forEach(function (it) {
+            if (it.contentWindow === window) {
+                iframe = it;
+            }
+        });
+
+        var x = iframe.getAttribute('data-x');
+        var y = iframe.getAttribute('data-y');
+        var zoom = iframe.getAttribute('data-zoom');
+        var popupHTML = iframe.getAttribute('data-popupHTML');
+
+        var pos = [x, y];
+
         // Creating map options
         var mapOptions = {
-            center: [51.532150, -0.095120],
-            zoom: 13
+            center: pos,
+            zoom: zoom,
+            scrollWheelZoom: false
         }
 
         // Creating a map object
         var map = new L.map('map', mapOptions);
-
-        map.on("move", function () {
-            console.log(map.getCenter().toString());
+        map.on("move", updateMarkerAnim);
+        map.on("zoomstart", function () {
+            document.querySelector('.marker-anim').style.visibility = 'hidden';
         });
+        map.on("zoomend", function () {
+            document.querySelector('.marker-anim').style.visibility = '';
+        })
+
+        var z = map.getZoom();
+        map.setZoom(z + 1);
+        setTimeout(function () { map.setZoom(z); });
+
 
         // Creating a Layer object
-        var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+        // var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+        var layer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri - EsriDeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, METI, GIS User Community'
+        });
 
         // Adding layer to the map
         map.addLayer(layer);
@@ -58,46 +151,19 @@
         var markerIcon = L.icon({
             iconUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABGdBTUEAALGPC/xhBQAAAANQTFRFAAAAp3o92gAAAAF0Uk5TAEDm2GYAAAAMSURBVAjXY2AY3AAAAKAAAWElfUcAAAAASUVORK5CYII=',
             iconSize: [20, 20],
-            iconAnchor: [15, 3],
+            iconAnchor: [14, 3],
         });
 
-        L.marker([51.532150, -0.095120], { icon: markerIcon }).addTo(map);
+        L.marker(pos, { icon: markerIcon }).addTo(map);
 
-        var popup = L.popup()
-            .setLatLng([51.532150, -0.095120])
-            .setContent('<p><strong>Mediabox Solutions Limited</strong><br />20-22 Wenlock Road, London, N1 7G</p>')
+        var popup = L.popup({
+            closeOnClick: false,
+            autoClose: false
+        })
+            .setLatLng(pos)
+            .setContent(popupHTML)
             .openOn(map);
     </script>
 </body>
 
 </html>
-
-
-
-<!-- <html>
-
-<body>
-    <div id="mapdiv"></div>
-    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-    <script>
-        map = new OpenLayers.Map("mapdiv");
-        map.addLayer(new OpenLayers.Layer.OSM());
-
-        var lonLat = new OpenLayers.LonLat(-0.095120, 51.532150)
-            .transform(
-                new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-                map.getProjectionObject() // to Spherical Mercator Projection
-            );
-
-        var zoom = 13;
-
-        var markers = new OpenLayers.Layer.Markers("Markers");
-        map.addLayer(markers);
-
-        markers.addMarker(new OpenLayers.Marker(lonLat));
-
-        map.setCenter(lonLat, zoom);
-    </script>
-</body>
-
-</html> -->

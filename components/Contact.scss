@@ -1,12 +1,12 @@
 @import "../scss/abstracts";
-
+$paddingByWidth: 7vw;
 .contact {
   position: relative;
   padding: 90px 0;
   color: $white;
   background-color: $blueDark;
   overflow: hidden;
-  padding: calc(100vw * 0.07);
+  padding: $paddingByWidth;
   padding-right: 0;
   min-height: 80vh;
 
@@ -28,40 +28,12 @@
 
   &__mapColumn {
     flex: 1;
-    margin-top: -134px;
-    margin-right: -28px;
-    height: 100vh;
     right: 0;
-
-    @include breakpointDown($xl) {
-      display: block;
-      min-height: 70vh;
-      height: 70vh;
-      margin-top: 30px;
-      margin-right: 0;
-    }
-
-    @include breakpointDown($md) {
-      display: block;
-      min-height: 80vh;
-    }
-
+    position: relative;
     @include breakpointDown($sm + 300px) {
-      display: block;
-      margin-left:-50px;
-      min-height: 60vh;
-      max-height: 70vh;
+      min-height: 70vh;
     }
 
-    @include breakpointDown($sm + 200px) {
-      display: block;
-      margin-left:-100px;
-    }
-
-    @include breakpointDown($sm) {
-      display: block;
-      margin-left:-200px;
-    }
   }
 
   &__contentColumn {
@@ -72,6 +44,27 @@
     display: block;
     padding-right: 1em;
   }
+
+  &__mapContainer,
+  &__mapContainerIframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+  }
+
+  &__mapContainer {
+    margin: {
+      top: -$paddingByWidth;
+      bottom: -$paddingByWidth * 1.7;
+    }
+    @include breakpointDown($md) {
+      margin: 0;
+    }
+  }
+
 
   &__map {
     display: block;

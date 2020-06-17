@@ -2,13 +2,15 @@ import React from "react";
 import * as PropTypes from "prop-types";
 import classnames from "classnames";
 import "./Contact.scss";
-import dynamic from 'next/dynamic';
-const MapContainer = dynamic(() => import('./MapContainer'), {
+import dynamic from "next/dynamic";
+
+const MapContainer = dynamic(() => import("./MapContainer"), {
   loading: () => <p>Loading...</p>,
-  ssr: false
+  ssr: false,
 });
 
 function Contact({ className, variant, content }) {
+  const position = [51.505, -0.09];
   return (
     <>
       <div className={classnames("contact", className, variant)}>
@@ -24,7 +26,17 @@ function Contact({ className, variant, content }) {
             )}
           </div>
           <div className={classnames("contact__mapColumn")}>
-            <MapContainer />
+            <MapContainer
+              className="contact__mapContainer"
+              iframeClassName="contact__mapContainerIframe"
+              x={51.53215}
+              y={-0.09512}
+              zoom={16}
+              popupHTML={`<p>
+                <strong>Mediabox Solutions Limited</strong>
+                <br /> 20-22 Wenlock Road, London, N1 7G
+              </p>`}
+            />
           </div>
         </div>
       </div>
