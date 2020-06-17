@@ -14,8 +14,17 @@ const contactContent = {
       },
     },
   },
-  contactComponent: {
+  contactComponentData: {
     variant: [],
+    map: {
+      x: 51.53215,
+      y: -0.09512,
+      zoom: 15,
+      popupHTML: `<p>
+        <strong>Mediabox Solutions Limited</strong>
+        <br /> 20-22 Wenlock Road, London, N1 7G
+      </p>`,
+    },
     content: `
     <h1>HAVE A QUESTION?</h1>
     <h2>The MediaBox team would be happy to help</h2>

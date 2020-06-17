@@ -2,7 +2,7 @@ import React from "react";
 
 import { getContactContent } from "../data/contact";
 import MediaBlock from "../components/MediaBlock";
-import Contact from "../components/Contact";
+import ContactComponent from "../components/Contact";
 
 export const getServerSideProps = async () => {
   const content = await getContactContent();
@@ -13,14 +13,14 @@ export const getServerSideProps = async () => {
   };
 };
 
-function DigitalAssetManagement({ content }) {
-  const { imageBanner, contactComponent } = content;
+function Contact({ content }) {
+  const { imageBanner, contactComponentData } = content;
   return (
     <>
       <MediaBlock {...imageBanner} skiplink />
-      <Contact {...contactComponent} />
+      <ContactComponent {...contactComponentData} />
     </>
   );
 }
 
-export default DigitalAssetManagement;
+export default Contact;
