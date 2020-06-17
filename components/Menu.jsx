@@ -11,6 +11,7 @@ function Menu({
   onCloseBtnClick,
   menuItems,
   iconMenuItems,
+  cardContent,
 }) {
   useEffect(() => {
     const resizeListener = () => {};
@@ -37,11 +38,14 @@ function Menu({
       </div>
       <div className="menu__right">
         <div className="menu__card">
-          <h3>GET IN TOUCH</h3>
-          <p>20-22 Wenlock Road</p>
-          <p>London, N1 7GU</p>
-          <p>T: 0203 7459067</p>
-          <p>E: info@mediaboxsolutions.co.uk</p>
+          {cardContent && (
+            <div
+              className="menu__cardContent"
+              dangerouslySetInnerHTML={{
+                __html: cardContent,
+              }}
+            />
+          )}
         </div>
         <ul className="menu__iconItems">
           {iconMenuItems.map((menuItem, key) => (
@@ -80,11 +84,13 @@ Menu.defaultProps = {
   variant: [],
   className: "",
   onCloseBtnClick: () => {},
+  cardContent: "",
 };
 
 Menu.propTypes = {
   variant: PropTypes.array,
   className: PropTypes.string,
+  cardContent: PropTypes.string,
   onCloseBtnClick: PropTypes.func,
   menuItems: PropTypes.arrayOf(object).isRequired,
   iconMenuItems: PropTypes.arrayOf(object).isRequired,

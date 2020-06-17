@@ -35,6 +35,11 @@ class MyApp extends App {
   render() {
     const { Component, pageProps, store, router } = this.props;
     const navbarContent = {
+      cardContent: `<h3>GET IN TOUCH</h3>
+        <p>20-22 Wenlock Road</p>
+        <p>London, N1 7GU</p>
+        <p>T: <a href="tel:02037459067">0203 7459067</a></p>
+        <p>E: <a href="mailto:info@mediaboxsolutions.co.uk">info@mediaboxsolutions.co.uk</a></p>`,
       title: "mediabox",
       logoSrc:
         (router.asPath || "").indexOf("/login") > -1

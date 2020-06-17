@@ -146,9 +146,30 @@ $compactMenuWidthBreakpoint: 1150px; // Have to sync with "compactMenuWidthBreak
     }
   }
 
+  &__card {
+    display: block;
+  }
+
+  &__cardContent {
+    display: block;
+  }
+
   // modifiers
   &.-open {
     pointer-events: all;
     opacity: 1;
+  }
+
+  // content
+  &__cardContent {
+    display: block;
+    a {
+      color: $white;
+      text-decoration: none;
+      margin-left: 0.25em;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }

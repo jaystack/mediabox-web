@@ -5,7 +5,6 @@ import Link from "next/link";
 import Menu from "./Menu";
 
 import "./PageHeader.scss";
-import { PropertyBinding } from "three";
 
 function PageHeader({ className, navbarContent, compactMenuWidthBreakpoint }) {
   const [showMenu, setShowMenu] = useState(false);
@@ -91,6 +90,7 @@ function PageHeader({ className, navbarContent, compactMenuWidthBreakpoint }) {
         }}
         menuItems={[...navbarContent.menuItems]}
         iconMenuItems={[...navbarContent.iconMenuItems]}
+        cardContent={navbarContent.cardContent || ""}
       />
     </>
   );
