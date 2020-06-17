@@ -128,7 +128,7 @@ $compactMenuWidthBreakpoint: 1150px; // Have to sync with "compactMenuWidthBreak
     @extend %listReset;
     margin: {
       bottom: -10px;
-      left: 10px;
+      left: -10px;
     }
     font-size: 20px;
   }
