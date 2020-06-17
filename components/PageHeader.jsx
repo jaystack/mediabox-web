@@ -85,7 +85,7 @@ function PageHeader({ className, navbarContent, compactMenuWidthBreakpoint }) {
         </ul>
       </nav>
       <Menu
-        className={showMenu && "-open"}
+        className={showMenu ? "-open" : ""}
         onCloseBtnClick={() => {
           setShowMenu(false);
         }}
